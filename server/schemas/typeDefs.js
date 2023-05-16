@@ -6,7 +6,7 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
-    comment: [Comment]
+    comments: [Comment]
     order: [Order]
   }
 

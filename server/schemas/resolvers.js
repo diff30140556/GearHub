@@ -1,6 +1,7 @@
 const { User, Product } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
+// const mongoose = require('mongoose');
 
 const resolvers = {
   Query: {
@@ -59,10 +60,11 @@ const resolvers = {
     addProducts: async (parent, { userId, productId }) => {
       try {
         // if (context.user) {
-          const item = Product.findOne({ productId });
+          // const product = mongoose.Types.ObjectId(productId.trim());
+          const item = Product.findOne({ _id: productId });
 
           await User.findOneAndUpdate(
-            { _id: userId },
+            { _id: userId},
             { $addToSet: { order: item } },
             {
               new: true,
