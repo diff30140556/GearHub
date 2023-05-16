@@ -4,8 +4,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <button>Login</button>
-        <button>Logout</button>
+        <h1>this works!</h1>
       </header>
     </div>
   );
