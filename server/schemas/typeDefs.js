@@ -6,6 +6,8 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
+    comment: [Comment]
+    order: [Order]
   }
 
   type Product {
@@ -17,20 +19,32 @@ const typeDefs = gql`
     description: String
   }
 
+  type Order {
+    savedProducts: [Product]
+  }
+
+  type Comment {
+    _id: ID
+    comment: String
+    createAt: String
+    userId: ID
+    productId: ID
+  }
+
   type Auth {
     token: ID!
     user: User
   }
 
   type Query {
-    me: [User]
+    me: User
     findProducts(name: String!): [Product]
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    
+    addProducts(userId: ID!, productId: ID!): User
   }
 `;
 

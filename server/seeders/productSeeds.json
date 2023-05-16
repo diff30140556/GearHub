@@ -1,57 +1,23 @@
 [
   {
-    "name": "Product 1",
+    "name": "Apple",
     "price": 10.99,
     "quantity": 5,
     "status": "In stock",
     "description": "This is product 1."
   },
   {
-    "name": "Product 2",
+    "name": "Orange",
     "price": 19.99,
     "quantity": 8,
     "status": "Out of stock",
     "description": "This is product 2."
   },
   {
-    "name": "Product 3",
+    "name": "Banana",
     "price": 7.99,
-    "quantity": 12,
-    "status": "In stock",
-    "description": "This is product 3."
-  },
-  {
-    "name": "Product 3",
-    "price": 10.11,
-    "quantity": 0,
-    "status": "In stock",
-    "description": "This is product 3."
-  },
-  {
-    "name": "Product 3",
-    "price": 1.00,
-    "quantity": 12,
-    "status": "In stock",
-    "description": "This is product 3."
-  },
-  {
-    "name": "Product 3",
-    "price": 200.00,
-    "quantity": 12,
-    "status": "In stock",
-    "description": "This is product 3."
-  },
-  {
-    "name": "Product 3",
-    "price": 123.123,
     "quantity": 12,
     "status": "In stock",
     "description": "This is product 3."
   }
 ]
-
-
-
-
-
-
