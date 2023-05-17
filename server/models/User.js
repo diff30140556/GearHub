@@ -13,6 +13,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
     unique: true,
+    trim: true,
     match: [
       /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
       "Please fill a valid email address",
@@ -22,26 +23,27 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true,
+    trim: true,
     // match: /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/, // enforce at least 8 characters with at least one capital letter and one number
   },
 
   comments: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Comment"
+      ref: "Comment",
     },
   ],
 
   order: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Order"
+      ref: "Order",
     },
   ],
 });
 
-userSchema.pre('save', async function (next) {
-  if (this.isNew || this.isModified('password')) {
+userSchema.pre("save", async function (next) {
+  if (this.isNew || this.isModified("password")) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(this.password, saltRounds);
   }
