@@ -1,4 +1,5 @@
-const { Schema, model, mongoose } = require("mongoose");
+const { Schema, model } = require("mongoose");
+const bcrypt = require("bcrypt");
 
 const userSchema = new Schema({
   username: {
@@ -21,22 +22,36 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true,
-    match: /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/ // enforce at least 8 characters with at least one capital letter and one number
+    // match: /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/, // enforce at least 8 characters with at least one capital letter and one number
   },
-  
-  comments:[{
-    type: Schema.Types.ObjectId,
-    ref:"Comment",
-  }],
 
-  order:[
+  comments: [
     {
-        type: Schema.Types.ObjectId,
-        ref:'Order'
-    }
+      type: Schema.Types.ObjectId,
+      ref: "Comment"
+    },
   ],
 
+  order: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Order"
+    },
+  ],
 });
+
+userSchema.pre('save', async function (next) {
+  if (this.isNew || this.isModified('password')) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
+  }
+
+  next();
+});
+
+userSchema.methods.isCorrectPassword = async function (password) {
+  return bcrypt.compare(password, this.password);
+};
 
 const User = model("User", userSchema);
 

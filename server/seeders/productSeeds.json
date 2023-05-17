@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Apple",
+    "price": 10.99,
+    "quantity": 5,
+    "status": "In stock",
+    "description": "This is product 1."
+  },
+  {
+    "name": "Orange",
+    "price": 19.99,
+    "quantity": 8,
+    "status": "Out of stock",
+    "description": "This is product 2."
+  },
+  {
+    "name": "Banana",
+    "price": 7.99,
+    "quantity": 12,
+    "status": "In stock",
+    "description": "This is product 3."
+  }
+]
