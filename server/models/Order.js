@@ -9,7 +9,7 @@ const orderSchema = new Schema(
       },
     ],
 
-    Total_Price: {
+    total_price: {
       type: Number,
       required: true,
     },
@@ -19,7 +19,7 @@ const orderSchema = new Schema(
       ref: "User",
     },
 
-    CreatedAt: {
+    purchasedAt: {
       type: Date,
       default: Date.now,
       get: function (timestamp) {
