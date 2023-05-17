@@ -17,6 +17,7 @@ const typeDefs = gql`
     quantity: Int
     status: String
     description: String
+    comments: [Comment]
   }
 
   type Order {
@@ -26,9 +27,8 @@ const typeDefs = gql`
   type Comment {
     _id: ID
     comment: String
-    createAt: String
-    userId: ID
-    productId: ID
+    user: ID
+    product: ID
   }
 
   type Auth {

@@ -91,8 +91,8 @@ const resolvers = {
 
       const product = mongoose.Types.ObjectId(productId);
       const user = mongoose.Types.ObjectId(userId);
-      console.log(product);
-      console.log(user);
+      // console.log(product);
+      // console.log(user);
       return Product.findOneAndUpdate(
         { _id: product },
         { $addToSet: { comments: { comment, user } } },
