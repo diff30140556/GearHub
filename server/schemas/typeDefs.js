@@ -21,7 +21,11 @@ const typeDefs = gql`
   }
 
   type Order {
-    savedProducts: [Product]
+    _id: ID
+    total_price: Float
+    products: [Product]
+    user: [User]
+    createdAt: String
   }
 
   type Comment {
@@ -44,11 +48,11 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    addProducts(userId: ID!, productId: ID!): Order
     addComment(productId: ID!, comment: String!, userId: ID!): Product
     updateComment(productId: ID!, commentId: ID!, userId: ID!, comment: String!): Product
     removeComment(productId: ID!, commentId: ID!): Product
   }
 `;
-  // addProducts(userId: ID!, productId: ID!): User
 
 module.exports = typeDefs;
