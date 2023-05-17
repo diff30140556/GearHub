@@ -61,25 +61,32 @@ const resolvers = {
       }
     },
 
-    // addProducts: async (parent, { userId, productId }) => {
-    //   try {
-    //     // if (context.user) {
-    //       // const product = mongoose.Types.ObjectId(productId.trim());
-    //       const item = Product.findOne({ _id: productId });
+    addProducts: async (parent, { userId, productId }) => {
+      try {
+        // if (context.user) {
+          // const product = mongoose.Types.ObjectId(productId.trim());
+          const user = mongoose.Types.ObjectId(userId);
+          const product = mongoose.Types.ObjectId(productId);
 
-    //       await User.findOneAndUpdate(
-    //         { _id: userId},
-    //         { $addToSet: { order: item } },
-    //         {
-    //           new: true,
-    //           runValidators: true,
-    //         }
-    //       );
-    //     // }
-    //   } catch (err) {
-    //     console.error(err);
-    //   }
-    // },
+          const item = await Product.findOne({ _id: product });
+          const { name, price } = item;
+
+          console.log({ item });
+
+          const updatedUser = await User.findOneAndUpdate(
+            { _id: user },
+            { $addToSet: { order: { name, price } } },
+            { new: true }
+          );
+
+          console.log(updatedUser);
+
+          return updatedUser;
+        // }
+      } catch (err) {
+        console.error(err);
+      }
+    },
 
     // deleteProducts: async (parent, { userId, productId }) => {
 
