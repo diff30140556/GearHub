@@ -1,23 +1,23 @@
-const { Schema, model } = require("mongoose");
+const { Schema } = require("mongoose");
 
 const orderSchema = new Schema(
   {
-    products: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Product",
-      },
-    ],
+    // products: [
+    //   {
+    //     type: Schema.Types.ObjectId,
+    //     ref: "Product",
+    //   },
+    // ],
 
     total_price: {
       type: Number,
       required: true,
     },
 
-    user: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-    },
+    // user: {
+    //   type: Schema.Types.ObjectId,
+    //   ref: "User",
+    // },
 
     purchasedAt: {
       type: Date,
@@ -34,6 +34,4 @@ const orderSchema = new Schema(
   }
 );
 
-const Order = model("Order", orderSchema);
-
-module.exports = Order;
+module.exports = orderSchema;
