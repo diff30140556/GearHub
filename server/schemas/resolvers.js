@@ -1,10 +1,14 @@
 const { User, Product } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
+const mongoose = require('mongoose');
 const { signToken } = require("../utils/auth");
-// const mongoose = require('mongoose');
 
 const resolvers = {
   Query: {
+    // me: async (parent, args, context) => {
+
+    // },
+
     findProducts: async (parent, { name }) => {
       try {
         const product = await Product.find({ name });
@@ -61,20 +65,65 @@ const resolvers = {
       try {
         // if (context.user) {
           // const product = mongoose.Types.ObjectId(productId.trim());
-          const item = Product.findOne({ _id: productId });
+          const user = mongoose.Types.ObjectId(userId);
+          const product = mongoose.Types.ObjectId(productId);
 
-          await User.findOneAndUpdate(
-            { _id: userId},
-            { $addToSet: { order: item } },
-            {
-              new: true,
-              runValidators: true,
-            }
+          const item = await Product.findOne({ _id: product });
+          const { name, price } = item;
+
+          console.log({ item });
+
+          const updatedUser = await User.findOneAndUpdate(
+            { _id: user },
+            { $addToSet: { order: { name, price } } },
+            { new: true }
           );
+
+          console.log(updatedUser);
+
+          return updatedUser;
         // }
       } catch (err) {
         console.error(err);
       }
+    },
+
+    // deleteProducts: async (parent, { userId, productId }) => {
+
+    // }
+
+    addComment: async (parent, { productId, comment, userId }) => {
+      const productObjectId = mongoose.Types.ObjectId(productId);
+      const user = mongoose.Types.ObjectId(userId);
+
+      return Product.findOneAndUpdate(
+        { _id: productObjectId },
+        { $addToSet: { comments: { comment, user } } },
+        { new: true }
+      );
+    },
+
+    updateComment: async (parent, { productId, commentId, userId, comment }) => {
+      const product = mongoose.Types.ObjectId(productId);
+      const comments = mongoose.Types.ObjectId(commentId);
+      const user = mongoose.Types.ObjectId(userId);
+
+      return Product.findOneAndUpdate(
+        { _id: product, "comments._id": comments },
+        { $set: { "comments.$.comment": comment, "comments.$.user": user } },
+        { new: true }
+      )
+    },
+
+    removeComment: async (parent, { productId, commentId }) => {
+      const productObjectId = mongoose.Types.ObjectId(productId);
+      const comment = mongoose.Types.ObjectId(commentId);
+
+      return Product.findOneAndUpdate(
+        { _id: productObjectId },
+        { $pull: { comments: { _id: comment } } },
+        { new: true }
+      );
     },
   },
 };

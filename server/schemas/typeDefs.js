@@ -17,18 +17,20 @@ const typeDefs = gql`
     quantity: Int
     status: String
     description: String
+    comments: [Comment]
   }
 
   type Order {
-    savedProducts: [Product]
+    _id: ID
+    total_price: Float
+    purchasedAt: String
   }
 
   type Comment {
     _id: ID
     comment: String
-    createAt: String
-    userId: ID
-    productId: ID
+    user: ID
+    product: ID
   }
 
   type Auth {
@@ -45,6 +47,9 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addProducts(userId: ID!, productId: ID!): User
+    addComment(productId: ID!, comment: String!, userId: ID!): Product
+    updateComment(productId: ID!, commentId: ID!, userId: ID!, comment: String!): Product
+    removeComment(productId: ID!, commentId: ID!): Product
   }
 `;
 
