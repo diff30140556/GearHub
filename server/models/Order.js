@@ -18,11 +18,6 @@ const orderSchema = new Schema(
     //   type: Number,
     // },
 
-    // user: {
-    //   type: Schema.Types.ObjectId,
-    //   ref: "User",
-    // },
-
     purchasedAt: {
       type: Date,
       default: Date.now,

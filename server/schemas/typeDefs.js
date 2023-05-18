@@ -24,7 +24,6 @@ const typeDefs = gql`
     _id: ID
     total_price: Float
     products: [Product]
-    user: [User]
     purchasedAt: String
   }
 

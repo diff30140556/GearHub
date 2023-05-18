@@ -74,7 +74,7 @@ const resolvers = {
             { products: [{ productId: _id, name, quantity: 1, price }] }
           );
           
-          const addToUser = await User.findOneAndUpdate(
+          await User.findOneAndUpdate(
             { _id: user },
             { $addToSet: { order: order._id } },
             { new: true },
@@ -111,46 +111,70 @@ const resolvers = {
       try {
         const order = mongoose.Types.ObjectId(orderId);
 
-        return Order.findOneAndDelete(
+        const deleteSingleProduct = await Order.findOneAndDelete(
           { _id: order },
         )
+
+        return deleteSingleProduct;
+
       } catch (err) {
         console.error(err);
       }
     },
 
     addComment: async (parent, { productId, comment, userId }) => {
-      const productObjectId = mongoose.Types.ObjectId(productId);
-      const user = mongoose.Types.ObjectId(userId);
+      try {
+        const productObjectId = mongoose.Types.ObjectId(productId);
+        const user = mongoose.Types.ObjectId(userId);
+  
+        const addAComment = await Product.findOneAndUpdate(
+          { _id: productObjectId },
+          { $addToSet: { comments: { comment, user } } },
+          { new: true }
+        );
 
-      return Product.findOneAndUpdate(
-        { _id: productObjectId },
-        { $addToSet: { comments: { comment, user } } },
-        { new: true }
-      );
+        return addAComment;
+        
+      } catch (err) {
+        console.error(err);
+      }
     },
 
     updateComment: async (parent, { productId, commentId, userId, comment }) => {
-      const product = mongoose.Types.ObjectId(productId);
-      const comments = mongoose.Types.ObjectId(commentId);
-      const user = mongoose.Types.ObjectId(userId);
+      try {
+        const product = mongoose.Types.ObjectId(productId);
+        const comments = mongoose.Types.ObjectId(commentId);
+        const user = mongoose.Types.ObjectId(userId);
+  
+        const updateSingleComment = await Product.findOneAndUpdate(
+          { _id: product, "comments._id": comments },
+          { $set: { "comments.$.comment": comment, "comments.$.user": user } },
+          { new: true }
+        )
 
-      return Product.findOneAndUpdate(
-        { _id: product, "comments._id": comments },
-        { $set: { "comments.$.comment": comment, "comments.$.user": user } },
-        { new: true }
-      )
+        return updateSingleComment;
+        
+      } catch (err) {
+        console.error(err);
+      }
     },
 
     removeComment: async (parent, { productId, commentId }) => {
-      const productObjectId = mongoose.Types.ObjectId(productId);
-      const comment = mongoose.Types.ObjectId(commentId);
-
-      return Product.findOneAndUpdate(
-        { _id: productObjectId },
-        { $pull: { comments: { _id: comment } } },
-        { new: true }
-      );
+      try {
+        const productObjectId = mongoose.Types.ObjectId(productId);
+        const comment = mongoose.Types.ObjectId(commentId);
+  
+        const removeSingleComment = await Product.findOneAndUpdate(
+          { _id: productObjectId },
+          { $pull: { comments: { _id: comment } } },
+          { new: true }
+        );
+  
+        return removeSingleComment;
+        
+      } catch (err) {
+        console.error(err);
+      }
     },
   },
 };
