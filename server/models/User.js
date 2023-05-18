@@ -35,7 +35,12 @@ const userSchema = new Schema({
     },
   ],
 
-  order: [orderSchema],
+  order: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Order"
+    }
+  ],
 });
 
 userSchema.pre("save", async function (next) {

@@ -1,4 +1,4 @@
-const { User, Product } = require("../models");
+const { User, Product, Order } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const mongoose = require('mongoose');
 const { signToken } = require("../utils/auth");
@@ -61,36 +61,59 @@ const resolvers = {
       }
     },
 
-    addProducts: async (parent, { userId, productId }) => {
+    addProducts: async (parent, { productId }) => {
       try {
         // if (context.user) {
-          // const product = mongoose.Types.ObjectId(productId.trim());
-          const user = mongoose.Types.ObjectId(userId);
+          // const user = mongoose.Types.ObjectId(userId);
           const product = mongoose.Types.ObjectId(productId);
 
           const item = await Product.findOne({ _id: product });
-          const { name, price } = item;
+          const { _id, name, price } = item;
 
-          console.log({ item });
+          console.log(_id, name, price);
 
-          const updatedUser = await User.findOneAndUpdate(
-            { _id: user },
-            { $addToSet: { order: { name, price } } },
-            { new: true }
+          const order = await Order.create(
+            { products: [{ productId: _id, name, quantity: 1, price }] }
           );
 
-          console.log(updatedUser);
+          console.log(order);
+          return order;
 
-          return updatedUser;
         // }
       } catch (err) {
         console.error(err);
       }
     },
 
-    // deleteProducts: async (parent, { userId, productId }) => {
+    updateProducts: async (parent, { orderId, productId, quantity }) => {
+      try {
+        const order = mongoose.Types.ObjectId(orderId);
+        const product = mongoose.Types.ObjectId(productId);
 
-    // }
+        const updateOrder = await Order.findOneAndUpdate(
+          { _id: order, "products.productId": product },
+          { $set: { "products.$.quantity": quantity } },
+          { new: true }
+        )
+
+        return updateOrder;
+
+      } catch (err) {
+        console.error(err)
+      }
+    },
+
+    deleteProducts: async (parent, { orderId }) => {
+      try {
+        const order = mongoose.Types.ObjectId(orderId);
+
+        return Order.findOneAndDelete(
+          { _id: order },
+        )
+      } catch (err) {
+        console.error(err);
+      }
+    },
 
     addComment: async (parent, { productId, comment, userId }) => {
       const productObjectId = mongoose.Types.ObjectId(productId);

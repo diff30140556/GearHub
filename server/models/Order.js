@@ -1,18 +1,22 @@
-const { Schema } = require("mongoose");
+const { Schema, model } = require("mongoose");
 
 const orderSchema = new Schema(
   {
-    // products: [
-    //   {
-    //     type: Schema.Types.ObjectId,
-    //     ref: "Product",
-    //   },
-    // ],
+    products: [
+      {
+        productId: {
+          type: Schema.Types.ObjectId,
+          ref: "Product",
+        },
+        name: String,
+        quantity: Number,
+        price: Number
+      },
+    ],
 
-    total_price: {
-      type: Number,
-      required: true,
-    },
+    // total_price: {
+    //   type: Number,
+    // },
 
     // user: {
     //   type: Schema.Types.ObjectId,
@@ -34,4 +38,6 @@ const orderSchema = new Schema(
   }
 );
 
-module.exports = orderSchema;
+const Order = model('Order', orderSchema);
+
+module.exports = Order;
