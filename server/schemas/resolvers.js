@@ -61,23 +61,27 @@ const resolvers = {
       }
     },
 
-    addProducts: async (parent, { productId }) => {
+    addProducts: async (parent, { userId, productId }) => {
       try {
         // if (context.user) {
-          // const user = mongoose.Types.ObjectId(userId);
+          const user = mongoose.Types.ObjectId(userId);
           const product = mongoose.Types.ObjectId(productId);
 
           const item = await Product.findOne({ _id: product });
           const { _id, name, price } = item;
 
-          console.log(_id, name, price);
-
           const order = await Order.create(
             { products: [{ productId: _id, name, quantity: 1, price }] }
           );
+          
+          const addToUser = await User.findOneAndUpdate(
+            { _id: user },
+            { $addToSet: { order: order._id } },
+            { new: true },
+          )
 
-          console.log(order);
           return order;
+          // return addToUser;
 
         // }
       } catch (err) {
