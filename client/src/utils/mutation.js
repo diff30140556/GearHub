@@ -35,3 +35,45 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_COMMENT = gql`
+  mutation addComment(
+    $comment: String!
+    $userId: String!
+    $productId: String!
+  ) {
+    addComment(productId: $productId, comment: $comment, userId: $userId) {
+      comments {
+        comment
+      }
+    }
+  }
+`;
+
+export const UPDATE_COMMENT = gql`
+  mutation updateComment(
+    $productId: String!
+    $commentId: String!
+    $userId: String!
+    $comment: String!
+  ) {
+    updateComment(
+      productId: $productId
+      commentId: $commentId
+      userId: $userId
+      comment: $comment
+    ) {
+      comments {
+        comment
+      }
+    }
+  }
+`;
+
+export const REMOVE_COMMENT = gql`
+  mutation removeComment($productId: String!, $commentId: String!) {
+    removeComment(productId: $productId, commentId: $commentId) {
+      comments
+    }
+  }
+`;
