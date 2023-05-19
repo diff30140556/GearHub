@@ -17,7 +17,14 @@ const typeDefs = gql`
     quantity: Int
     status: String
     description: String
+    isNew: Boolean
+    InStock: Boolean
     comments: [Comment]
+  }
+
+  type Category {
+    _id: ID
+    product: [String]
   }
 
   type Order {
@@ -41,7 +48,8 @@ const typeDefs = gql`
 
   type Query {
     me: User
-    findProducts(name: String!): [Product]
+    getCategory(categoryId: ID!): [Product]
+    findProducts(productId: ID!): Product
   }
 
   type Mutation {

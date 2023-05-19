@@ -1,23 +1,92 @@
 [
   {
-    "name": "Apple",
-    "price": 10.99,
+    "name": "MacBook Air",
+    "price": 1099.99,
     "quantity": 5,
     "status": "In stock",
-    "description": "This is product 1."
+    "description": "Slim and lightweight laptop by Apple.",
+    "isNew": false,
+    "InStock": false,
+    "comment": []
   },
   {
-    "name": "Orange",
-    "price": 19.99,
+    "name": "Alienware Laptop",
+    "price": 1999.99,
     "quantity": 8,
     "status": "Out of stock",
-    "description": "This is product 2."
+    "description": "Powerful gaming laptop with high-performance specifications.",
+    "isNew": true,
+    "InStock": true,
+    "comment": []
   },
   {
-    "name": "Banana",
-    "price": 7.99,
+    "name": "Dell Laptop",
+    "price": 1299.99,
     "quantity": 12,
     "status": "In stock",
-    "description": "This is product 3."
+    "description": "Reliable and versatile laptop by Dell.",
+    "isNew": true,
+    "InStock": true,
+    "comment": []
+  },
+  {
+    "name": "ASUS Laptop",
+    "price": 1499.99,
+    "quantity": 10,
+    "status": "In stock",
+    "description": "High-performance laptop with excellent build quality.",
+    "isNew": false,
+    "InStock": false,
+    "comment": []
+  },
+  {
+    "name": "Artic Pro Series Headphones",
+    "price": 199.99,
+    "quantity": 3,
+    "status": "In stock",
+    "description": "Professional gaming headphones with superior audio quality.",
+    "isNew": false,
+    "InStock": true,
+    "comment": []
+  },
+  {
+    "name": "Logitech Headphones",
+    "price": 99.99,
+    "quantity": 10,
+    "status": "In stock",
+    "description": "Comfortable headphones suitable for gaming and music.",
+    "isNew": true,
+    "InStock": true,
+    "comment": []
+  },
+  {
+    "name": "SteelSeries Headphones",
+    "price": 149.99,
+    "quantity": 6,
+    "status": "Out of stock",
+    "description": "Premium headphones with immersive sound experience.",
+    "isNew": false,
+    "InStock": false,
+    "comment": []
+  },
+  {
+    "name": "Mechanical Keyboard",
+    "price": 79.99,
+    "quantity": 15,
+    "status": "In stock",
+    "description": "Mechanical gaming keyboard with customizable RGB lighting.",
+    "isNew": true,
+    "InStock": false,
+    "comment": []
+  },
+  {
+    "name": "Wireless Keyboard",
+    "price": 59.99,
+    "quantity": 8,
+    "status": "In stock",
+    "description": "Wireless keyboard for enhanced flexibility and convenience.",
+    "isNew": true,
+    "InStock": true,
+    "comment": []
   }
 ]

@@ -1,4 +1,4 @@
-const { User, Product, Order } = require("../models");
+const { User, Product, Order, Category } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const mongoose = require('mongoose');
 const { signToken } = require("../utils/auth");
@@ -9,12 +9,31 @@ const resolvers = {
 
     // },
 
-    findProducts: async (parent, { name }) => {
+    getCategory: async (parent, { categoryId }) => {
       try {
-        const product = await Product.find({ name });
+        const category = mongoose.Types.ObjectId(categoryId);
+        const categories = await Category.find(
+          { _id: category }
+        )
+
+        if (!categories){
+          throw new Error ('No Category found!')
+        }
+
+        return categories;
+
+      } catch (err) {
+        console.log(err)
+      }
+    },
+
+    findProducts: async (parent, { productId }) => {
+      try {
+        const productObjectId = mongoose.Types.ObjectId(productId)
+        const product = await Product.find({ _id: productObjectId });
 
         if(!product){
-          throw new Error ('No Product Name Found!');
+          throw new Error ('No Product ID Found!');
         }
 
         return product;
@@ -132,6 +151,12 @@ const resolvers = {
           { $addToSet: { comments: { comment, user } } },
           { new: true }
         );
+
+        // const userComment = await User.findOneAndUpdate(
+        //   { _id: user },
+        //   { $addToSet: { comments: { comment } } },
+        //   { new: true } 
+        // );
 
         return addAComment;
         
