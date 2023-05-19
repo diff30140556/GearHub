@@ -9,7 +9,6 @@ export const LOGIN = gql`
       }
     }
   }
-<<<<<<< HEAD
 `;
 
 export const ADD_ORDER = gql`
@@ -36,6 +35,3 @@ export const ADD_USER = gql`
     }
   }
 `;
-=======
-`;
->>>>>>> main
