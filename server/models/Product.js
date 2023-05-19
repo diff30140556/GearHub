@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const commentSchema = require('./Comment')
+const commentSchema = require("./Comment");
 
 const productSchema = new Schema({
   name: {
@@ -21,6 +21,12 @@ const productSchema = new Schema({
   description: {
     type: String,
     required: true,
+  },
+  isNew: {
+    type: Boolean,
+  },
+  InStock: {
+    type: Boolean,
   },
   comments: [commentSchema],
 });
