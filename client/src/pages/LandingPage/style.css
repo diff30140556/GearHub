@@ -1,0 +1,44 @@
+main {
+    min-height: 100vh;
+    /* padding: 80px 0 50px 0; */
+    max-width: 2560px;
+}
+
+.product-1 {
+    background: url("https://images.unsplash.com/photo-1599792215800-042be231c6cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80") center no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 600px;
+}
+
+.btn-icon {
+    font-size: 1rem;
+}
+
+.product-btn {
+    display: flex;
+}
+
+.product-btn button {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+}
+
+
+.product-1 {
+    border: 1px solid #fff;
+    display: flex;
+}
+
+.product-info {
+    border: 1px solid #fff;
+}
+
+.product-img {
+    border: 1px solid #fff;
+}
+
+.product-img  img {
+
+}
