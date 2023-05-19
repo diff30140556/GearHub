@@ -23,9 +23,9 @@ db.once("open", async () => {
 
     for (const category of createdCategories) {
       if (category.name === "Discounted") {
-        category.product = discountedProductIndices.map((index) => createdProducts[index]._id);
+        category.product = discountedProductIndices.map((index) => createdProducts[index]);
       } else if (category.name === "Normal") {
-        category.product = normalProductIndices.map((index) => createdProducts[index]._id);
+        category.product = normalProductIndices.map((index) => createdProducts[index]);
       }
       await category.save();
     }

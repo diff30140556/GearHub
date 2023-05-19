@@ -12,9 +12,12 @@ const resolvers = {
     getCategory: async (parent, { categoryId }) => {
       try {
         const category = mongoose.Types.ObjectId(categoryId);
-        const categories = await Category.find(
+        
+        const categories = await Category.findOne(
           { _id: category }
-        )
+        ).populate('product');
+
+        console.log(categories);
 
         if (!categories){
           throw new Error ('No Category found!')

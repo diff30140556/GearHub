@@ -24,7 +24,7 @@ const typeDefs = gql`
 
   type Category {
     _id: ID
-    product: [String]
+    product: [Product]
   }
 
   type Order {
@@ -48,7 +48,7 @@ const typeDefs = gql`
 
   type Query {
     me: User
-    getCategory(categoryId: ID!): [Product]
+    getCategory(categoryId: ID!): Category
     findProducts(productId: ID!): Product
   }
 
