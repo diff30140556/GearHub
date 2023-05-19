@@ -4,20 +4,19 @@ const orderSchema = new Schema(
   {
     products: [
       {
-        type: Schema.Types.ObjectId,
-        ref: "Product",
+        productId: {
+          type: Schema.Types.ObjectId,
+          ref: "Product",
+        },
+        name: String,
+        quantity: Number,
+        price: Number
       },
     ],
 
-    total_price: {
-      type: Number,
-      required: true,
-    },
-
-    user: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-    },
+    // total_price: {
+    //   type: Number,
+    // },
 
     purchasedAt: {
       type: Date,
@@ -34,6 +33,6 @@ const orderSchema = new Schema(
   }
 );
 
-const Order = model("Order", orderSchema);
+const Order = model('Order', orderSchema);
 
 module.exports = Order;

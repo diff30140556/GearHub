@@ -1,0 +1,21 @@
+footer {
+    background: rgb(33,37,41);
+    color: #fff;;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.footer-icon {
+    padding: 5px 10px;
+    margin: 0 10px;
+    border-radius: 50%;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    background: #e0d8d8;
+}
