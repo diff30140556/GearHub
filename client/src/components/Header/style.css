@@ -1,9 +1,13 @@
+header .bg-dark {
+    --bs-bg-opacity: 0.9;
+}
+
 .dropdown-item:focus, .dropdown-item:hover {
     background-color: unset;
 }
 
 .navbar-nav .dropdown-menu {
-    background: rgba(33,37,41, .5);
+    background: rgba(33,37,41, .9);
     border-top: 0;
 }
 

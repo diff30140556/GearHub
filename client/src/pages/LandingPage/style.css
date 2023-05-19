@@ -1,0 +1,48 @@
+.product-1 {
+    background: url("https://images.unsplash.com/photo-1510906594845-bc082582c8cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1144&q=80") center no-repeat;
+}
+.product-2 {
+    background: url("https://images.unsplash.com/photo-1626908013351-800ddd734b8a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80") center no-repeat;
+}
+.product-3 {
+    background: url("https://images.unsplash.com/photo-1512551980832-13df02babc9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80") center no-repeat;
+}
+.product-4 {
+    background: url("https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80") center no-repeat;
+}
+
+.product-box {
+    min-height: 100vh;
+    background-size: cover;
+    background-attachment: fixed;
+    margin-bottom: 100px;
+}
+
+.btn-icon {
+    font-size: 1rem;
+}
+
+.product-btn {
+    display: flex;
+}
+
+.product-btn button {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+}
+
+
+.product-info {
+    border: 1px solid #fff;
+}
+
+.product-img {
+    border: 1px solid #fff;
+}
+
+.product-img img {
+    max-height: 450px;
+    max-width: 100%;
+    margin: 0 auto;
+}
