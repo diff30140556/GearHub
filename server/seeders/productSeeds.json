@@ -1,92 +1,279 @@
+// [
+//   {
+//     "name": "MacBook Air",
+//     "price": 1099.99,
+//     "quantity": 5,
+//     "status": "In stock",
+//     "description": "Slim and lightweight laptop by Apple.",
+//     "isNew": false,
+//     "InStock": false,
+//     "comment": []
+//   },
+//   {
+//     "name": "Alienware Laptop",
+//     "price": 1999.99,
+//     "quantity": 8,
+//     "status": "Out of stock",
+//     "description": "Powerful gaming laptop with high-performance specifications.",
+//     "isNew": true,
+//     "InStock": true,
+//     "comment": []
+//   },
+//   {
+//     "name": "Dell Laptop",
+//     "price": 1299.99,
+//     "quantity": 12,
+//     "status": "In stock",
+//     "description": "Reliable and versatile laptop by Dell.",
+//     "isNew": true,
+//     "InStock": true,
+//     "comment": []
+//   },
+//   {
+//     "name": "ASUS Laptop",
+//     "price": 1499.99,
+//     "quantity": 10,
+//     "status": "In stock",
+//     "description": "High-performance laptop with excellent build quality.",
+//     "isNew": false,
+//     "InStock": false,
+//     "comment": []
+//   },
+//   {
+//     "name": "Artic Pro Series Headphones",
+//     "price": 199.99,
+//     "quantity": 3,
+//     "status": "In stock",
+//     "description": "Professional gaming headphones with superior audio quality.",
+//     "isNew": false,
+//     "InStock": true,
+//     "comment": []
+//   },
+//   {
+//     "name": "Logitech Headphones",
+//     "price": 99.99,
+//     "quantity": 10,
+//     "status": "In stock",
+//     "description": "Comfortable headphones suitable for gaming and music.",
+//     "isNew": true,
+//     "InStock": true,
+//     "comment": []
+//   },
+//   {
+//     "name": "SteelSeries Headphones",
+//     "price": 149.99,
+//     "quantity": 6,
+//     "status": "Out of stock",
+//     "description": "Premium headphones with immersive sound experience.",
+//     "isNew": false,
+//     "InStock": false,
+//     "comment": []
+//   },
+//   {
+//     "name": "Mechanical Keyboard",
+//     "price": 79.99,
+//     "quantity": 15,
+//     "status": "In stock",
+//     "description": "Mechanical gaming keyboard with customizable RGB lighting.",
+//     "isNew": true,
+//     "InStock": false,
+//     "comment": []
+//   },
+//   {
+//     "name": "Wireless Keyboard",
+//     "price": 59.99,
+//     "quantity": 8,
+//     "status": "In stock",
+//     "description": "Wireless keyboard for enhanced flexibility and convenience.",
+//     "isNew": true,
+//     "InStock": true,
+//     "comment": []
+//   }
+// ]
+
 [
   {
-    "name": "MacBook Air",
-    "price": 1099.99,
+    "name": "MSI - Vector 15.6 inch 165hz Gaming Laptop",
+    "price": 2069.99,
+    "quantity": 10,
+    "description": "Game like a pro with this MSI Vector GP66 gaming laptop. The Intel Core i7 HX processor and 32GB of RAM run graphic-intensive games smoothly, while the 1TB SSD offers rapid start-ups and ample storage space. This MSI gaming laptop has an NVIDIA GeForce RTX 3070ti graphics card, which produces detailed images on the 15.6-inch QHD 165hz for advanced gameplay..",
+    "isNew": true,
+    "image": ["laptop1.jpg"],
+    "specification": {
+      "brand": "MSI",
+      "processor": "Intel Core i7",
+      "memory": "32GB RAM",
+      "storage": "1TB SSD"
+    },
+    "comments": []
+  },
+  {
+    "name": "Lenovo - Yoga 7i 16 inch 2.5K Touch 2-in-1 Laptop",
+    "price": 1199.99,
     "quantity": 5,
-    "status": "In stock",
-    "description": "Slim and lightweight laptop by Apple.",
+    "description": "The Lenovo™ Yoga™ 7i combines versatile portability and enhanced productivity, thanks to the boundary-breaking performance and responsiveness of 12th generation Intel® Core™ processors and vibrant WQXGA clarity with Intel® Iris® Xe 96EU graphics. Go anywhere with a sleek 2-in-1 metal chassis featuring thoughtful details including a webcam privacy shutter.",
     "isNew": false,
-    "InStock": false,
-    "comment": []
+    "image": ["laptop2.jpg"],
+    "specification": {
+      "brand": "Lenovo",
+      "processor": "Core i7-1260P",
+      "memory": "16GB RAM",
+      "storage": "512GB SSD",
+      "color": "Arctic Grey"
+    },
+    "comments": []
   },
   {
-    "name": "Alienware Laptop",
-    "price": 1999.99,
-    "quantity": 8,
-    "status": "Out of stock",
-    "description": "Powerful gaming laptop with high-performance specifications.",
-    "isNew": true,
-    "InStock": true,
-    "comment": []
-  },
-  {
-    "name": "Dell Laptop",
-    "price": 1299.99,
-    "quantity": 12,
-    "status": "In stock",
-    "description": "Reliable and versatile laptop by Dell.",
-    "isNew": true,
-    "InStock": true,
-    "comment": []
-  },
-  {
-    "name": "ASUS Laptop",
-    "price": 1499.99,
-    "quantity": 10,
-    "status": "In stock",
-    "description": "High-performance laptop with excellent build quality.",
-    "isNew": false,
-    "InStock": false,
-    "comment": []
-  },
-  {
-    "name": "Artic Pro Series Headphones",
-    "price": 199.99,
+    "name": "Razer - Blade 15 - 15.6 inch Gaming Laptop",
+    "price": 3299.99,
     "quantity": 3,
-    "status": "In stock",
-    "description": "Professional gaming headphones with superior audio quality.",
-    "isNew": false,
-    "InStock": true,
-    "comment": []
-  },
-  {
-    "name": "Logitech Headphones",
-    "price": 99.99,
-    "quantity": 10,
-    "status": "In stock",
-    "description": "Comfortable headphones suitable for gaming and music.",
+    "description": "Featuring the latest 12th Gen Intel Core i7-12800H processor (14-Core), NVIDIA GeForce RTX 3070Ti graphics, and 16GB DDR5 4800MHz RAM, the new Razer Blade 15 provides the most immersive gaming experience with the perfectly balanced QHD (2160x1440) 240Hz display complete with NVIDIA G-Sync and Advanced Optimus.",
     "isNew": true,
-    "InStock": true,
-    "comment": []
+    "image": ["laptop3.jpg"],
+    "specification": {
+      "brand": "Razer",
+      "processor": "Intel Core i9",
+      "memory": "16GB RAM",
+      "storage": "1TB SSD",
+      "graphicsCard": "NVIDIA GeForce RTX 3070 Ti",
+      "screen": "OLED QHD 240Hz"
+    },
+    "comments": []
   },
   {
-    "name": "SteelSeries Headphones",
-    "price": 149.99,
-    "quantity": 6,
-    "status": "Out of stock",
-    "description": "Premium headphones with immersive sound experience.",
-    "isNew": false,
-    "InStock": false,
-    "comment": []
-  },
-  {
-    "name": "Mechanical Keyboard",
-    "price": 79.99,
-    "quantity": 15,
-    "status": "In stock",
-    "description": "Mechanical gaming keyboard with customizable RGB lighting.",
-    "isNew": true,
-    "InStock": false,
-    "comment": []
-  },
-  {
-    "name": "Wireless Keyboard",
-    "price": 59.99,
+    "name": "HP - ENVY x360 2-in-1 15.6 inch Touch-Screen Laptop",
+    "price": 799.99,
     "quantity": 8,
-    "status": "In stock",
-    "description": "Wireless keyboard for enhanced flexibility and convenience.",
+    "description": "Your ideas deserve the best: It packs in all of the tools you need to realize your most creative ideas. With the 15.6 inch display you get beautiful, brilliant colors. It has the latest Intel processor and graphics so it can handle what you throw at it. Create seamlessly: Quickly transfer any file almost any device to your PC without cables, clouds, thumb drives, or hassle with HP QuickDrop. While Duet for HP opens up your workspace and workflow by connecting your tablet, phone, or another PC as a second display. Show your best self: When you go live, you want to look your best. So turn it on for the 5MP camera with Auto Frame, and AI noise reduction. It also features a physical camera shutter for privacy, because when you’re on, you’re on, and when you’re not, you’re not. Because little things make a big difference: Containing ocean-bound plastic, recycled aluminum and EPEAT Gold and ENERGY STAR ratings, make a difference, along with a great choice.",
     "isNew": true,
-    "InStock": true,
-    "comment": []
+    "image": ["laptop4.jpg"],
+    "specification": {
+      "brand": "HP",
+      "processor": "Intel Core i7",
+      "memory": "16GB RAM",
+      "storage": "512GB SSD",
+      "color": "Natural Silver"
+    },
+    "comments": []
+  },
+  {
+    "name": "Logitech - G733 LIGHTSPEED Wireless DTS Headphone",
+    "price": 139.99,
+    "quantity": 15,
+    "description": "Meet G733, a gaming headset designed to suit your style. Embrace total wireless with 2.4 GHZ LIGHTSPEED wireless, featuring up to 33 ft of range and up to 29 hours of battery life. Customize how you look and sound in G HUB with dual-zone, front-facing LIGHTSYNC RGB and Blue VO!CE real-time voice filters. G733 features advanced audio technologies, including 40 mm PRO-G audio drivers, internal acoustic chambers, and DTS Headphone:X 2.0. Play your way with four colorways to choose from and play with comfort with a comfortable, reversible headband, dual-layer memory foam earcups, and a lightweight headset that weighs just 9.8 oz.",
+    "isNew": true,
+    "image": ["headphones1.jpg"],
+    "specification": {
+      "brand": "Logitech",
+      "type": "Over-Ear",
+      "wireless": true
+    },
+    "comments": []
+  },
+  {
+    "name": "Sennheiser - Momentum 4 Wireless Headphones",
+    "price": 379.99,
+    "quantity": 3,
+    "description": "The new MOMENTUM 4 Wireless once again raises the bar –delivering world class sound quality with advanced Adaptive Noise Cancellation and exceptional comfort. With smart, intuitive features that enhance every interaction and an outstanding 60-hour battery life, there’s nothing between you and an incredible listening experience.",
+    "isNew": true,
+    "image": ["headphones2.jpg"],
+    "specification": {
+      "brand": "Sennheiser",
+      "type": "Over-Ear",
+      "wireless": true,
+      "color": "black"
+    },
+    "comments": []
+  },
+  {
+    "name": "Sony - WF1000XM4 True Wireless Headphones",
+    "price": 279.99,
+    "quantity": 15,
+    "description": "Take the next step in truly wireless noise canceling performance and exceptional sound quality. The new Integrated Processor V1 delivers unmatched performance while using even less power. Adding in drastically enhanced call quality, IPX4 water resistance and up to 24 hours of battery life with wireless charging.",
+    "isNew": true,
+    "image": ["headphones3.jpg"],
+    "specification": {
+      "brand": "Sony",
+      "type": "In-Ear",
+      "wireless": true,
+      "noiseCancellation": true,
+      "color": "black"
+    },
+    "comments": []
+  },
+  {
+    "name": "Bose - QuietComfort Earbuds II",
+    "price": 299,
+    "quantity": 9,
+    "description": "Experience customized audio and acclaimed noise cancellation with Bose QuietComfort Earbuds II True Wireless Noise Cancelling In-Ear Headphones, featuring pioneering CustomTune sound calibration technology that intelligently personalizes the noise cancellation and sound performance to your ears. These true wireless earbuds represent a revolutionary advance in noise cancellation and deliver lifelike, balanced sound with nuance, clarity, and depth. The simple touch interface provides device-free control of music, calls and noise cancellation levels, including Quiet Mode for maximum noise cancellation and Aware Mode for keeping an ear to your surroundings. Find a secure fit for your ear shape with the included Bose Fit Kit, which contains three sizes of ear tips and stability bands, all made from soft silicone for continuous comfort. Own your uniqueness with the Bose QuietComfort Earbuds II. Now available in Limited-edition Eclipse Gray and Midnight Blue, as well as Triple Black and Soapstone.",
+    "isNew": false,
+    "image": ["headphones4.jpg"],
+    "specification": {
+      "brand": "Bose",
+      "type": "In-Ear",
+      "wireless": true,
+      "noiseCancellation": true,
+      "color": "Midnight Blue"
+    },
+    "comments": []
+  },
+  {
+    "name": "GIGABYTE - NVIDIA GeForce RTX 4070 Ti",
+    "price": 899.99,
+    "quantity": 0,
+    "description": "Ahead of its time, ahead of the game is the GIGABYTE GeForce RTX 4070 Ti GAMING OC 12G Graphics Cards. Powered by NVIDIA's new RTX architecture, the GIGABYTE GeForce RTX 4070Ti GAMING OC 12G brings stunning visuals, amazingly fast frame rates, and AI acceleration to games and creative applications with its enhanced RT Cores and Tensor Cores, along with a staggering 12 GB of GDDR6X memory.",
+    "isNew": true,
+    "image": ["graphiccard1.jpg"],
+    "specification": {
+      "brand": "GIGABYTE",
+      "memory": "12GB GDDR6X",
+      "coreClock": "2310MHz",
+      "boostClock": "2640MHz"
+    },
+    "comments": []
+  },
+  {
+    "name": "MSI - NVIDIA GeForce RTX 3060 Ti VENTUS3X",
+    "price": 299.99,
+    "quantity": 1,
+    "description": "The GeForce RTX 3060 Ti is powered by Ampere—NVIDIA's 2nd gen RTX architecture. Built with enhanced RT Cores and Tensor Cores, new streaming multiprocessors, and high-speed G6 memory, it gives you the power you need to rip through the most demanding games. VENTUS brings a performance-focused design that maintains the essentials to accomplish any task at hand. Rocking a trusted dual fan arrangement laid into a rigid industrial design lets this sharp looking graphics card fit into any build. TORX Fan 3.0: The award-winning MSI TORX Fan 3.0 design creates high static pressure and pushes the limits of thermal performance. Core Pipe: Precision-crafted heat pipes ensure max contact to the GPU and spread heat along the full length of the heatsink.",
+    "isNew": false,
+    "image": ["graphiccard2.jpg"],
+    "specification": {
+      "brand": "MSI",
+      "memory": "8GB GDDR6",
+      "coreClock": "1487Hz",
+      "boostClock": "1695MHz"
+    },
+    "comments": []
+  },
+  {
+    "name": "XFX - Speedster SWFT309 AMD Radeon RX 6700XT",
+    "price": 369.99,
+    "quantity": 6,
+    "description": "The AMD Radeon RX 6700 XT graphics card, powered by AMD RDNA 2 architecture, featuring 40 powerful enhanced Compute Units, the all new AMD Infinity Cache and 12GB of dedicated GDDR6 memory, is engineered to deliver ultra-high frame rates and powerhouse 1440p resolution gaming.",
+    "isNew": true,
+    "image": ["graphiccard3.jpg"],
+    "specification": {
+      "brand": "AMD",
+      "memory": "12GB GDDR6",
+      "coreClock": "2424MHz",
+      "boostClock": "2581MHz"
+    },
+    "comments": []
+  },
+  {
+    "name": "NVIDIA - GeForce RTX 4090 Graphics Card",
+    "price": 1599.99,
+    "quantity": 0,
+    "description": "The NVIDIA GeForce RTX 4090 is the ultimate GeForce GPU. It brings an enormous leap in performance, efficiency, and AI-powered graphics. Experience ultra-high performance gaming, incredibly detailed virtual worlds with ray tracing, unprecedented productivity, and new ways to create. It’s powered by the NVIDIA Ada Lovelace architecture and comes with 24 GB of G6X memory to deliver the ultimate experience for gamers and creators.",
+    "isNew": true,
+    "image": ["graphiccard4.jpg"],
+    "specification": {
+      "brand": "NVIDIA",
+      "memory": "24GB GDDR6X",
+      "boostClock": "2520MHz"
+    },
+    "comments": []
   }
 ]
