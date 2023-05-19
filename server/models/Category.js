@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const commentSchema = require('./Comment')
 
 const categorySchema = new Schema({
   name: {
@@ -9,8 +10,18 @@ const categorySchema = new Schema({
 
   product: [
     {
-      type: Schema.Types.ObjectId,
-      required: true,
+      productId:{
+        type: Schema.Types.ObjectId,
+        ref: "Product",
+      },
+      name: String,
+      price: Number,
+      quantity: Number,
+      status: String,
+      description: String,
+      isNew: Boolean,
+      InStock: Boolean,
+      comments: [commentSchema]
     },
   ],
 });

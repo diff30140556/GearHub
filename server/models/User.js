@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-const orderSchema = require("./Order");
+const commentSchema = require('./Comment')
 
 const userSchema = new Schema({
   username: {
@@ -28,12 +28,7 @@ const userSchema = new Schema({
     // match: /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/, // enforce at least 8 characters with at least one capital letter and one number
   },
 
-  comments: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Comment",
-    },
-  ],
+  comments: [commentSchema],
 
   order: [
     {

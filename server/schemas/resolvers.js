@@ -1,26 +1,47 @@
-const { User, Product, Order } = require("../models");
+const { User, Product, Order, Category } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
     // me: async (parent, args, context) => {
-
+    // User.findOne({ _id: userId }).populate('comments')?
+    // this will show up the comment
     // },
 
-    findProducts: async (parent, { name }) => {
+    getCategory: async (parent, { categoryId }) => {
       try {
-        const product = await Product.find({ name });
+        const category = mongoose.Types.ObjectId(categoryId);
 
-        if(!product){
-          throw new Error ('No Product Name Found!');
+        const categories = await Category.findOne({ _id: category }).populate(
+          "product"
+        );
+
+        if (!categories) {
+          throw new Error("No Category found!");
+        }
+
+        return categories;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+
+    findProducts: async (parent, { productId }) => {
+      try {
+        const productObjectId = mongoose.Types.ObjectId(productId);
+        const product = await Product.findOne({ _id: productObjectId });
+
+        console.log(product);
+
+        if (!product) {
+          throw new Error("No Product ID Found!");
         }
 
         return product;
-        
       } catch (err) {
-        console.error(err)
+        console.error(err);
       }
     },
   },
@@ -64,24 +85,25 @@ const resolvers = {
     addProducts: async (parent, { userId, productId }) => {
       try {
         // if (context.user) {
-          const user = mongoose.Types.ObjectId(userId);
-          const product = mongoose.Types.ObjectId(productId);
+        const user = mongoose.Types.ObjectId(userId);
+        const product = mongoose.Types.ObjectId(productId);
 
-          const item = await Product.findOne({ _id: product });
-          const { _id, name, price } = item;
+        const item = await Product.findOne({ _id: product });
+        const { _id, name, price } = item;
 
-          const order = await Order.create(
-            { products: [{ productId: _id, name, quantity: 1, price }] }
-          );
-          
-          await User.findOneAndUpdate(
-            { _id: user },
-            { $addToSet: { order: order._id } },
-            { new: true },
-          )
+        const order = await Order.create({
+          products: [{ productId: _id, name, quantity: 1, price }],
+        });
 
-          return order;
-          // return addToUser;
+        // localStorage or indexDB to build a cart object => user in the front can update the cart
+
+        await User.findOneAndUpdate(
+          { _id: user },
+          { $addToSet: { order: order._id } },
+          { new: true }
+        );
+
+        return order;
 
         // }
       } catch (err) {
@@ -111,67 +133,126 @@ const resolvers = {
       try {
         const order = mongoose.Types.ObjectId(orderId);
 
-        const deleteSingleProduct = await Order.findOneAndDelete(
-          { _id: order },
-        )
+        const deleteSingleProduct = await Order.findOneAndDelete({
+          _id: order,
+        });
 
         return deleteSingleProduct;
-
       } catch (err) {
         console.error(err);
       }
     },
 
-    addComment: async (parent, { productId, comment, userId }) => {
+    addComment: async (parent, { productId, comment, userId, categoryId }) => {
       try {
         const productObjectId = mongoose.Types.ObjectId(productId);
         const user = mongoose.Types.ObjectId(userId);
-  
+        const commentId = mongoose.Types.ObjectId();
+        const category = mongoose.Types.ObjectId(categoryId);
+
         const addAComment = await Product.findOneAndUpdate(
           { _id: productObjectId },
-          { $addToSet: { comments: { comment, user } } },
+          { $addToSet: { comments: { _id: commentId, comment, user } } },
+          { new: true }
+        );
+
+        await User.findOneAndUpdate(
+          { _id: user },
+          { $addToSet: { comments: { _id: commentId, comment, product: productObjectId } } },
+          { new: true }
+        );
+
+        await Category.findOneAndUpdate(
+          { _id: category, "product._id": productObjectId },
+          { $addToSet: { "product.$.comments": { _id: commentId, comment, user } } },
           { new: true }
         );
 
         return addAComment;
-        
       } catch (err) {
         console.error(err);
       }
     },
 
-    updateComment: async (parent, { productId, commentId, userId, comment }) => {
+    updateComment: async (parent, { productId, commentId, userId, comment, categoryId }) => {
       try {
         const product = mongoose.Types.ObjectId(productId);
         const comments = mongoose.Types.ObjectId(commentId);
         const user = mongoose.Types.ObjectId(userId);
-  
+        const category = mongoose.Types.ObjectId(categoryId)
+
         const updateSingleComment = await Product.findOneAndUpdate(
           { _id: product, "comments._id": comments },
           { $set: { "comments.$.comment": comment, "comments.$.user": user } },
           { new: true }
-        )
+        );
+
+        await User.findOneAndUpdate(
+          { _id: user, "comments._id": comments },
+          { $set: { "comments.$.comment": comment, "comments.$.product": product } },
+          { new: true }
+        );
+
+        await Category.findOneAndUpdate(
+          { 
+            _id: category,
+            "product._id": product,
+            "product.comments._id": comments
+          },
+          {
+            $set: {
+              "product.$[prod].comments.$[com].comment": comment,
+              "product.$[prod].comments.$[com].user": user
+            }
+          },
+          {
+            new: true,
+            arrayFilters: [
+              { "prod._id": product },
+              { "com._id": comments }
+            ]
+          }
+        );
 
         return updateSingleComment;
-        
       } catch (err) {
         console.error(err);
       }
     },
 
-    removeComment: async (parent, { productId, commentId }) => {
+    removeComment: async (parent, { productId, commentId, userId, categoryId }) => {
       try {
         const productObjectId = mongoose.Types.ObjectId(productId);
         const comment = mongoose.Types.ObjectId(commentId);
-  
+        const user = mongoose.Types.ObjectId(userId);
+        const category = mongoose.Types.ObjectId(categoryId);
+
         const removeSingleComment = await Product.findOneAndUpdate(
           { _id: productObjectId },
           { $pull: { comments: { _id: comment } } },
           { new: true }
         );
-  
+
+        await User.findOneAndUpdate(
+          { _id: user },
+          { $pull: { comments: { _id: comment } } },
+          { new: true }
+        );
+
+        // const test = await Category.findOneAndUpdate(
+        //   { _id: category, "product._id": productObjectId },
+        //   { $pull: { comments: { _id: comment } } },
+        //   { new: true },
+        // );
+        const test = await Category.findOneAndUpdate(
+          { _id: category, "product._id": productObjectId },
+          // { $pull: { comments: { _id: comment } } },
+          // { new: true },
+        );
+
+        console.log(test);
+
         return removeSingleComment;
-        
       } catch (err) {
         console.error(err);
       }
