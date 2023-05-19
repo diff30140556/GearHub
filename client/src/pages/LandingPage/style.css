@@ -1,7 +1,8 @@
 main {
     min-height: 100vh;
-    /* padding: 80px 0 50px 0; */
+    padding: 80px 0 50px 0;
     max-width: 2560px;
+    background: linear-gradient(108deg,#000000,#2f2f2f 90%);
 }
 
 .product-1 {
@@ -28,7 +29,6 @@ main {
 
 .product-1 {
     border: 1px solid #fff;
-    display: flex;
 }
 
 .product-info {

@@ -5,7 +5,7 @@ function Header() {
     return (
         <header className='fixed-top'>
             <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
-                <Container>
+                {/* <Container> */}
                     <Navbar.Brand href="#home">GearHub</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav navbarScroll" />
                     <Navbar.Collapse id="responsive-navbar-nav navbarScroll">
@@ -94,7 +94,7 @@ function Header() {
                         </Nav>
                     </Navbar.Collapse>
 
-                </Container>
+                {/* </Container> */}
             </Navbar>
         </header>
     )
