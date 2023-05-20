@@ -14,9 +14,18 @@ const orderSchema = new Schema(
       },
     ],
 
-    // total_price: {
-    //   type: Number,
-    // },
+    total_price: {
+      type: Number,
+      get: function() {
+        let totalPrice = 0;
+      
+        this.products.forEach(product => {
+          totalPrice += product.quantity * product.price;
+        });
+      
+        return totalPrice;
+      },
+    },
 
     purchasedAt: {
       type: Date,

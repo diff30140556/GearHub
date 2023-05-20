@@ -1,24 +1,14 @@
-// [
-//   {
-//     "name": "Discounted",
-//     "product": []
-//   },
-//   {
-//     "name": "Normal",
-//     "product": []
-//   }
-// ]
 [
   {
-    "name": "Laptop",
+    "name": "Laptops",
     "product": []
   },
   {
-    "name": "Graphic Card",
+    "name": "Headphones",
     "product": []
-  }
+  },
   {
-    "name": "Headphone",
+    "name": "Graphic Cards",
     "product": []
   }
 ]
