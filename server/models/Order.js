@@ -14,6 +14,19 @@ const orderSchema = new Schema(
       },
     ],
 
+    total_price: {
+      type: Number,
+      get: function() {
+        let totalPrice = 0;
+      
+        this.products.forEach(product => {
+          totalPrice += product.quantity * product.price;
+        });
+      
+        return totalPrice;
+      },
+    },
+
     purchasedAt: {
       type: Date,
       default: Date.now,
@@ -28,16 +41,6 @@ const orderSchema = new Schema(
     },
   }
 );
-
-orderSchema.virtual('total_price').get(function() {
-  let totalPrice = 0;
-
-  this.products.forEach(product => {
-    totalPrice += product.quantity * product.price;
-  });
-
-  return totalPrice;
-});
 
 const Order = model('Order', orderSchema);
 
