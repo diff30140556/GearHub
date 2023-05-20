@@ -32,7 +32,6 @@ const typeDefs = gql`
 
   type Order {
     _id: ID
-    total_price: Float
     products: [Product]
     purchasedAt: String
   }
