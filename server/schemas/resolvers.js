@@ -36,27 +36,18 @@ const resolvers = {
         console.log(err)
       }
     },
-
-    getAllProducts: async() => {
-      try {
-        return await Product.find();
-        
-      } catch (err) {
-        console.log(err)
-      }
-    },
-
+    
     findProducts: async (parent, { productId }) => {
       try {
         const productObjectId = mongoose.Types.ObjectId(productId);
         const product = await Product.findOne({ _id: productObjectId });
-
+        
         console.log(product);
-
+        
         if (!product) {
           throw new Error("No Product ID Found!");
         }
-
+        
         return product;
       } catch (err) {
         console.error(err);
@@ -64,6 +55,15 @@ const resolvers = {
     },
   },
 
+  getAllProducts: async() => {
+    try {
+      return await Product.find();
+      
+    } catch (err) {
+      console.log(err)
+    }
+  },
+  
   Mutation: {
     addUser: async (parent, args) => {
       try {
