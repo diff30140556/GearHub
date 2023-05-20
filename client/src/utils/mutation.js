@@ -6,21 +6,25 @@ export const LOGIN = gql`
       token
       user {
         _id
+        username
+        email
       }
     }
   }
 `;
 
-export const ADD_ORDER = gql`
-  mutation addOrder($products: [ID]!) {
-    addOrder(products: $products) {
-      purchasedAt
+export const ADD_PRODUCTS = gql`
+  mutation addProducts($userId: ID!, $productId: ID!) {
+    addProducts(userId: $userId, productId: $productId) {
+      _id
       products {
         _id
         name
         price
-        isNew
+        quantity
       }
+      total_price
+      purchasedAt
     }
   }
 `;
@@ -31,6 +35,8 @@ export const ADD_USER = gql`
       token
       user {
         _id
+        username
+        email
       }
     }
   }
@@ -38,13 +44,22 @@ export const ADD_USER = gql`
 
 export const ADD_COMMENT = gql`
   mutation addComment(
+    $productId: ID!
     $comment: String!
-    $userId: String!
-    $productId: String!
+    $userId: ID!
+    $categoryId: ID!
   ) {
-    addComment(productId: $productId, comment: $comment, userId: $userId) {
+    addComment(
+      productId: $productId
+      comment: $comment
+      userId: $userId
+      categoryId: $categoryId
+    ) {
       comments {
+        _id
         comment
+        user
+        product
       }
     }
   }
@@ -52,28 +67,48 @@ export const ADD_COMMENT = gql`
 
 export const UPDATE_COMMENT = gql`
   mutation updateComment(
-    $productId: String!
-    $commentId: String!
-    $userId: String!
+    $productId: ID!
+    $commentId: ID!
+    $userId: ID!
     $comment: String!
+    $categoryId: ID!
   ) {
     updateComment(
       productId: $productId
       commentId: $commentId
       userId: $userId
       comment: $comment
+      categoryId: $categoryId
     ) {
       comments {
+        _id
         comment
+        user
+        product
       }
     }
   }
 `;
 
 export const REMOVE_COMMENT = gql`
-  mutation removeComment($productId: String!, $commentId: String!) {
-    removeComment(productId: $productId, commentId: $commentId) {
-      comments
+  mutation removeComment(
+    $productId: ID!
+    $commentId: ID!
+    $userId: ID!
+    $categoryId: ID!
+  ) {
+    removeComment(
+      productId: $productId
+      commentId: $commentId
+      userId: $userId
+      categoryId: $categoryId
+    ) {
+      comments {
+        _id
+        comment
+        user
+        product
+      }
     }
   }
 `;
