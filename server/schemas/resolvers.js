@@ -28,6 +28,24 @@ const resolvers = {
       }
     },
 
+    getAllCategories: async () => {
+      try {
+        return await Category.find();
+        
+      } catch (err) {
+        console.log(err)
+      }
+    },
+
+    getAllProducts: async() => {
+      try {
+        return await Product.find();
+        
+      } catch (err) {
+        console.log(err)
+      }
+    },
+
     findProducts: async (parent, { productId }) => {
       try {
         const productObjectId = mongoose.Types.ObjectId(productId);

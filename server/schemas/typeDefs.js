@@ -51,7 +51,9 @@ const typeDefs = gql`
   type Query {
     me: User
     getCategory(categoryId: ID!): Category
+    getAllCategories: [Category]
     findProducts(productId: ID!): Product
+    getAllProducts: [Product]
   }
 
   type Mutation {
