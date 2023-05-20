@@ -123,23 +123,23 @@ const resolvers = {
       }
     },
 
-    // updateProducts: async (parent, { orderId, productId, quantity }) => {
-    //   try {
-    //     const order = mongoose.Types.ObjectId(orderId);
-    //     const product = mongoose.Types.ObjectId(productId);
+    updateProducts: async (parent, { userId, cartId, quantity }) => {
+      try {
+        const user = mongoose.Types.ObjectId(userId);
+        const cart = mongoose.Types.ObjectId(cartId);
 
-    //     const updateOrder = await Order.findOneAndUpdate(
-    //       { _id: order, "products.productId": product },
-    //       { $set: { "products.$.quantity": quantity } },
-    //       { new: true }
-    //     )
+        const updateCart = await User.findOneAndUpdate(
+          { _id: user, "cart._id": cart },
+          { $set: { "cart.$.quantity": quantity } },
+          { new: true }
+        )
 
-    //     return updateOrder;
+        return updateCart;
 
-    //   } catch (err) {
-    //     console.error(err)
-    //   }
-    // },
+      } catch (err) {
+        console.error(err)
+      }
+    },
 
     deleteProducts: async (parent, { userId, cartId }) => {
       try {
