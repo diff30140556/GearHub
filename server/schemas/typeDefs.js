@@ -1,6 +1,8 @@
 const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
+  scalar JSON
+
   type User {
     _id: ID
     username: String
@@ -15,11 +17,10 @@ const typeDefs = gql`
     name: String
     price: Float
     quantity: Int
-    status: String
     description: String
     isNew: Boolean
     image: [String]
-    specification: Mixed
+    specification: JSON
     comments: [Comment]
   }
 

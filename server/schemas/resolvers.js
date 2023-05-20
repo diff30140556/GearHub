@@ -239,18 +239,11 @@ const resolvers = {
           { new: true }
         );
 
-        // const test = await Category.findOneAndUpdate(
-        //   { _id: category, "product._id": productObjectId },
-        //   { $pull: { comments: { _id: comment } } },
-        //   { new: true },
-        // );
-        const test = await Category.findOneAndUpdate(
+        await Category.findOneAndUpdate(
           { _id: category, "product._id": productObjectId },
-          // { $pull: { comments: { _id: comment } } },
-          // { new: true },
+          { $pull: { "product.$.comments": { _id: comment } } },
+          { new: true },
         );
-
-        console.log(test);
 
         return removeSingleComment;
       } catch (err) {
