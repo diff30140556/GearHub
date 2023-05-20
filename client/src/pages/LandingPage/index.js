@@ -9,7 +9,7 @@ function LandingPage() {
     return (
         <main >
             <div className="wrap">
-                <div className="product-section">
+                <div className="productPage-section">
                     <div className="product-box product-1 d-flex justify-content-center">
                         <Row className='justify-content-center align-items-center flex-column-reverse flex-md-row'>
                             <Col sm={12} md={5}>

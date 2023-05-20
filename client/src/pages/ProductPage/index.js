@@ -19,7 +19,7 @@ function ProductPage() {
                         </Col>
                         <Col>
                             <div className="product-description">
-                                <div className="productPage-info">
+                                <div className="productPage-info mb-5">
                                     <p className='text-white'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto sapiente porro aut quia dolore, fuga, similique labore sed obcaecati illo explicabo ad quod rerum doloribus optio quasi repellat eaque nostrum nam! Facilis adipisci saepe quas voluptatibus dignissimos quod voluptatem, est distinctio, ducimus pariatur, perspiciatis blanditiis nesciunt iusto delectus temporibus beatae.</p>
                                 </div>
                                 <div className="productPage-btn">

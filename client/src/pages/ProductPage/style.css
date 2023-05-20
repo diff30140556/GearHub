@@ -23,19 +23,26 @@
 
 .quantity-btn {
     display: flex;
+    margin-right: 30px;
 }
 
 .primary-btn {
     border-radius: unset;
 }
 
-.productPage-img,
+.productPage-img {
+    border: 1px solid #fff;
+    display: flex;
+    justify-content: flex-end;
+}
+
 .product-description {
     border: 1px solid #fff;
 }
 
-.product-section {
+.productPage-section {
     border: 1px solid #fff;
+    padding: 30px 50px;
 }
 
 .cart-btn {
@@ -45,6 +52,14 @@
 
 .productPage-btn {
     display: flex;
+    align-items: center;
     justify-content: flex-end;
     padding: 0 30px;
+}
+
+.productPage-img img {
+    width: 100%;
+    max-width: 600px;
+    max-height: 350px;
+    object-fit: contain;
 }
