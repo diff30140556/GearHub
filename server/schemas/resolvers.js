@@ -2,7 +2,7 @@ const { User, Product, Order, Category } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const mongoose = require("mongoose");
 const { signToken } = require("../utils/auth");
-let productArray = [];
+// let productArray = [];
 
 const resolvers = {
   Query: {
@@ -99,17 +99,25 @@ const resolvers = {
       }
     },
 
-    addProducts: async (parent, { productId }) => {
+    addProducts: async (parent, { userId, productId }) => {
       try {
         // if (context.user) {
+        const user = mongoose.Types.ObjectId(userId)
         const product = mongoose.Types.ObjectId(productId);
 
         const item = await Product.findOne({ _id: product });
         const { _id, name, price } = item;
 
-        productArray.push({ productId: _id, name, quantity: 1, price });
+        const userFound = await User.findOneAndUpdate(
+          { _id: user },
+          { $addToSet: { cart: { productId: _id, name, quantity: 1, price } } },
+          { new: true },
+        );
 
-        return productArray;
+        return userFound;
+
+        // productArray.push({ productId: _id, name, quantity: 1, price });
+
       } catch (err) {
         console.error(err);
       }
@@ -133,25 +141,58 @@ const resolvers = {
     //   }
     // },
 
-    deleteProducts: async (parent, { productId }) => {
+    deleteProducts: async (parent, { userId, cartId }) => {
       try {
-        let deleted = productArray.filter(
-          (products) => String(products.productId) !== productId
+        // let deleted = productArray.filter(
+        //   (products) => String(products.productId) !== productId
+        // );
+
+        // productArray = deleted;
+        const user = mongoose.Types.ObjectId(userId);
+        const cart = mongoose.Types.ObjectId(cartId);
+
+        const userFound = await User.findOneAndUpdate(
+          { _id: user },
+          { $pull: { cart: { _id: cart } } },
+          { new: true },
         );
 
-        productArray = deleted;
+        console.log(userFound)
 
-        return productArray;
+        return userFound;
       } catch (err) {
         console.error(err);
       }
     },
 
-    checkOut: async () => {
+    checkOut: async (parent, { userId }) => {
       try {
-        if (productArray.length > 0) {
-          return await Order.create({ products: productArray });
-        }
+        // if (productArray.length > 0) {
+        //   return await Order.create({ products: productArray });
+        // }
+        const user = mongoose.Types.ObjectId(userId);
+
+        const userFound = await User.findOne({ _id: user });
+
+        const { cart } = userFound;
+
+        const createOrder = await Order.create({ products: cart });
+
+        const { _id } = createOrder;
+        
+        await User.updateOne(
+          { _id: user },
+          { $set: { cart: [] } }
+        );
+        
+        await User.findOneAndUpdate(
+          { _id: user },
+          { $addToSet: { order: { _id } } },
+          { new: true },
+        )
+
+        return createOrder;
+
       } catch (err) {
         console.error(err);
         throw new Error ('No products in your shopping cart!');
