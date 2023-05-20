@@ -12,23 +12,16 @@ db.once("open", async () => {
 
     await User.create(userSeeds);
 
-    // Create products and store the created documents
     const createdProducts = await Product.create(productSeeds);
 
-    // Create categories and assign products randomly
-    const createdCategories = await Category.create(categorySeeds);
+    categorySeeds.forEach((category, index) => {
+      const startIndex = index * 4;
+      const endIndex = startIndex + 4;
+      category.product = createdProducts.slice(startIndex, endIndex);
+    })
 
-    const discountedProductIndices = getRandomUniqueIndices(4, createdProducts.length);
-    const normalProductIndices = getRemainingIndices(discountedProductIndices, createdProducts.length);
+    await Category.create(categorySeeds);
 
-    for (const category of createdCategories) {
-      if (category.name === "Discounted") {
-        category.product = discountedProductIndices.map((index) => createdProducts[index]);
-      } else if (category.name === "Normal") {
-        category.product = normalProductIndices.map((index) => createdProducts[index]);
-      }
-      await category.save();
-    }
   } catch (err) {
     console.error(err);
     process.exit(1);
@@ -37,24 +30,3 @@ db.once("open", async () => {
   console.log("All done!");
   process.exit(0);
 });
-
-// Helper function to generate random unique indices
-function getRandomUniqueIndices(count, maxIndex) {
-  const indices = new Set();
-  while (indices.size < count) {
-    const randomIndex = Math.floor(Math.random() * maxIndex);
-    indices.add(randomIndex);
-  }
-  return Array.from(indices);
-}
-
-// Helper function to get the remaining indices not included in the given indices
-function getRemainingIndices(indices, maxIndex) {
-  const remainingIndices = [];
-  for (let i = 0; i < maxIndex; i++) {
-    if (!indices.includes(i)) {
-      remainingIndices.push(i);
-    }
-  }
-  return remainingIndices;
-}

@@ -18,7 +18,8 @@ const typeDefs = gql`
     status: String
     description: String
     isNew: Boolean
-    InStock: Boolean
+    image: [String]
+    specification: Mixed
     comments: [Comment]
   }
 
