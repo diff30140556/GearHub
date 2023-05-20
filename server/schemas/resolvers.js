@@ -178,7 +178,7 @@ const resolvers = {
 
         const createOrder = await Order.create({ products: cart });
 
-        const { _id } = createOrder;
+        const { _id, total_price } = createOrder;
         
         await User.updateOne(
           { _id: user },
@@ -187,7 +187,7 @@ const resolvers = {
         
         await User.findOneAndUpdate(
           { _id: user },
-          { $addToSet: { order: { _id } } },
+          { $addToSet: { order: { orderId: _id, total_price } } },
           { new: true },
         )
 
