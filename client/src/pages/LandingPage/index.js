@@ -7,7 +7,7 @@ import { useState } from 'react';
 function LandingPage() {
     const [size, setSize] = useState('large'); // default is 'middle'
     return (
-        <main>
+        <main >
             <div className="wrap">
                 <div className="product-section">
                     <div className="product-box product-1 d-flex justify-content-center">
