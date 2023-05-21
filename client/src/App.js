@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/index";
 import Footer from "./components/Footer/index";
-// import ProductPage from "./pages/ProductPage/index";
+import ProductPage from "./pages/ProductPage/index";
 import LandingPage from "./pages/LandingPage/index";
 import LoginPage from "./pages/LoginPage/index";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -45,7 +45,8 @@ function App() {
             <Routes>
               <Route path="/login" element={<LoginPage />} />
             </Routes>
-            <LandingPage />
+            {/* <LandingPage /> */}
+            <ProductPage />
             <Footer />
           {/* </StoreProvider> */}
         </div>

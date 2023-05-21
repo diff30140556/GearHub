@@ -1,0 +1,8 @@
+.comment-list {
+    width: 100%;
+    max-width: 500px;
+}
+
+.comment-card .ant-card {
+    width: 100%;
+}
