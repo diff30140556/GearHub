@@ -3,24 +3,21 @@ import "./style.css";
 // import { Button } from "antd";
 // import { Row, Col } from "react-bootstrap";
 import { useState } from "react";
-import { useMutation } from '@apollo/client';
-import { Link } from 'react-router-dom';
-import { LOGIN } from '../../utils/mutation'
-import Auth from '../../utils/auth';
+import { useMutation } from "@apollo/client";
+import { Link } from "react-router-dom";
+import { LOGIN } from "../../utils/mutation";
+import Auth from "../../utils/auth";
 
 function LoginPage() {
-  const [formState, setFromState] = useState({ email: '', password: ''});
+  const [formState, setFromState] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log(formState.email, formState.password);
       const response = await login({
         variables: { email: formState.email, password: formState.password },
       });
-
-      console.log(response)
 
       const token = response.data.login.token;
       Auth.login(token);
@@ -73,9 +70,7 @@ function LoginPage() {
           </form>
           <p>
             Don't have an account?
-            <Link to="/signup">
-              Sign up
-            </Link>
+            <Link to="/signup">Sign up</Link>
           </p>
         </div>
       </div>
