@@ -4,9 +4,9 @@ import { Button } from "antd";
 import { Row, Col } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import { Collapse } from "antd";
-// import { useState } from "react";
-const { Panel } = Collapse;
 import laptopImg from '../../images/MSI_Laptop_Transparent.png';
+const { Panel } = Collapse;
+// import { useState } from "react";
 
 const Products = ({ name, price, quantity, description, isNew, image, specification }) => {
   return (
