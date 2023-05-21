@@ -1,5 +1,6 @@
 import { Nav, Navbar, NavDropdown, Container } from "react-bootstrap";
 import { LinkContainer } from 'react-router-bootstrap';
+import Cart from "../Cart/index";
 import "./style.css";
 import Link from "antd/es/typography/Link";
 
@@ -103,10 +104,15 @@ function Header() {
               <Nav.Link href="#pricing">Support</Nav.Link>
             </Nav>
             <Nav>
-                <Nav.Link href="#deets">Cart</Nav.Link>
+                <Nav.Link >
+                  <Cart />
+                </Nav.Link>
               <LinkContainer to="/login">
                 <Nav.Link>My Account</Nav.Link>
               </LinkContainer>
+                <Nav.Link >
+                  Log Out
+                </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
