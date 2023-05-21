@@ -2,7 +2,6 @@ const { User, Product, Order, Category } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const mongoose = require("mongoose");
 const { signToken } = require("../utils/auth");
-let productArray = [];
 
 const resolvers = {
   Query: {
@@ -99,59 +98,90 @@ const resolvers = {
       }
     },
 
-    addProducts: async (parent, { productId }) => {
+    addProducts: async (parent, { userId, productId }) => {
       try {
         // if (context.user) {
+        const user = mongoose.Types.ObjectId(userId)
         const product = mongoose.Types.ObjectId(productId);
 
         const item = await Product.findOne({ _id: product });
         const { _id, name, price } = item;
 
-        productArray.push({ productId: _id, name, quantity: 1, price });
-
-        return productArray;
-      } catch (err) {
-        console.error(err);
-      }
-    },
-
-    // updateProducts: async (parent, { orderId, productId, quantity }) => {
-    //   try {
-    //     const order = mongoose.Types.ObjectId(orderId);
-    //     const product = mongoose.Types.ObjectId(productId);
-
-    //     const updateOrder = await Order.findOneAndUpdate(
-    //       { _id: order, "products.productId": product },
-    //       { $set: { "products.$.quantity": quantity } },
-    //       { new: true }
-    //     )
-
-    //     return updateOrder;
-
-    //   } catch (err) {
-    //     console.error(err)
-    //   }
-    // },
-
-    deleteProducts: async (parent, { productId }) => {
-      try {
-        let deleted = productArray.filter(
-          (products) => String(products.productId) !== productId
+        const userFound = await User.findOneAndUpdate(
+          { _id: user },
+          { $addToSet: { cart: { productId: _id, name, quantity: 1, price } } },
+          { new: true },
         );
 
-        productArray = deleted;
+        return userFound;
 
-        return productArray;
       } catch (err) {
         console.error(err);
       }
     },
 
-    checkOut: async () => {
+    updateProducts: async (parent, { userId, cartId, quantity }) => {
       try {
-        if (productArray.length > 0) {
-          return await Order.create({ products: productArray });
-        }
+        const user = mongoose.Types.ObjectId(userId);
+        const cart = mongoose.Types.ObjectId(cartId);
+
+        const updateCart = await User.findOneAndUpdate(
+          { _id: user, "cart._id": cart },
+          { $set: { "cart.$.quantity": quantity } },
+          { new: true }
+        )
+
+        return updateCart;
+
+      } catch (err) {
+        console.error(err)
+      }
+    },
+
+    deleteProducts: async (parent, { userId, cartId }) => {
+      try {
+        const user = mongoose.Types.ObjectId(userId);
+        const cart = mongoose.Types.ObjectId(cartId);
+
+        const userFound = await User.findOneAndUpdate(
+          { _id: user },
+          { $pull: { cart: { _id: cart } } },
+          { new: true },
+        );
+
+        console.log(userFound)
+
+        return userFound;
+      } catch (err) {
+        console.error(err);
+      }
+    },
+
+    checkOut: async (parent, { userId }) => {
+      try {
+        const user = mongoose.Types.ObjectId(userId);
+
+        const userFound = await User.findOne({ _id: user });
+
+        const { cart } = userFound;
+
+        const createOrder = await Order.create({ products: cart });
+
+        const { _id, total_price } = createOrder;
+        
+        await User.updateOne(
+          { _id: user },
+          { $set: { cart: [] } }
+        );
+        
+        await User.findOneAndUpdate(
+          { _id: user },
+          { $addToSet: { order: { orderId: _id, total_price } } },
+          { new: true },
+        )
+
+        return createOrder;
+
       } catch (err) {
         console.error(err);
         throw new Error ('No products in your shopping cart!');

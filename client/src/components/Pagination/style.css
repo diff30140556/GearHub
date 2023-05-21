@@ -1,0 +1,12 @@
+.ant-pagination-item a,
+.ant-pagination-item-link {
+    color: #fff !important;
+}
+
+.ant-pagination-item-active a {
+    color: #000 !important;
+}
+
+.ant-pagination-disabled .ant-pagination-item-link {
+    color: rgb(159, 159, 159) !important;
+}

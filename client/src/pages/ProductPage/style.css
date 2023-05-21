@@ -42,7 +42,7 @@
 
 .productPage-section {
     border: 1px solid #fff;
-    padding: 30px 50px;
+    /* padding: 30px 50px; */
 }
 
 .cart-btn {
@@ -51,9 +51,6 @@
 }
 
 .productPage-btn {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
     padding: 0 30px;
 }
 
@@ -79,7 +76,6 @@
 }
 
 .product-detail-info {
-    padding: 0 60px;
     margin: 100px 0;
 }
 
@@ -89,4 +85,8 @@
 
 .product-detail-info .table-striped>tbody>tr:nth-of-type(odd)>* {
     color: #fff;
+}
+
+:where(.css-dev-only-do-not-override-15rg2km).ant-input-textarea-show-count .ant-input-data-count {
+    bottom: -30px;
 }

@@ -1,5 +1,7 @@
 import { Avatar, Card, Skeleton, Switch } from 'antd';
 import { useState } from 'react';
+import PaginationSet from '../Pagination/index';
+import './style.css'
 const { Meta } = Card;
 
 function Comment() {
@@ -15,7 +17,6 @@ function Comment() {
                 <li className="comment-card">
                     <Card
                         style={{
-                            width: 300,
                             marginTop: 16,
                         }}
                         loading={loading}
@@ -29,7 +30,6 @@ function Comment() {
                 <li className="comment-card">
                     <Card
                         style={{
-                            width: 300,
                             marginTop: 16,
                         }}
 
@@ -43,9 +43,9 @@ function Comment() {
                     </Card>
                 </li>
             </ul>
-
-
-
+            <div className="pagination">
+                <PaginationSet />
+            </div>
         </div>
     );
 };

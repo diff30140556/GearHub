@@ -18,6 +18,7 @@ const CommentForm = () => (
             }}
             onFinish={onFinish}
             autoComplete="off"
+            className='mx-auto mt-5 mt-md-0'
         >
             <Form.Item name="comment">
                 <TextArea
@@ -31,7 +32,7 @@ const CommentForm = () => (
                     placeholder="Log in to leave comment..."
                 required/>
             </Form.Item>
-            <Form.Item>
+            <Form.Item className='d-flex justify-content-end justify-content-md-start mt-5'>
                 <Button type="primary" htmlType="submit">
                     Submit
                 </Button>
