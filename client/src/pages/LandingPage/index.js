@@ -6,12 +6,13 @@ import { useState } from "react";
 
 function LandingPage() {
     const [size, setSize] = useState("large"); // default is 'middle'
+
     return (
-        <main>
+        <main className="landing-main">
             <div className="wrap">
                 <div className="product-section">
                     <div className="product-box product-1 d-flex justify-content-center">
-                        <Row className="justify-content-center align-items-center flex-column-reverse flex-md-row">
+                        <Row className="justify-content-center align-items-center flex-column-reverse flex-md-row mx-0">
                             <Col sm={12} md={5}>
                                 <div className="product-info">
                                     <h2 className="text-white text-center fs-1">
@@ -46,7 +47,7 @@ function LandingPage() {
                         </Row>
                     </div>
                     <div className="product-box product-2 d-flex justify-content-center">
-                        <Row className="justify-content-center align-items-center flex-column-reverse flex-md-row">
+                        <Row className="justify-content-center align-items-center flex-column-reverse flex-md-row mx-0">
                             <Col sm={12} md={5}>
                                 <div className="product-info">
                                     <h2 className="text-white text-center fs-1">
@@ -81,7 +82,7 @@ function LandingPage() {
                         </Row>
                     </div>
                     <div className="product-box product-3 d-flex justify-content-center">
-                        <Row className="justify-content-center align-items-center flex-column-reverse flex-md-row">
+                        <Row className="justify-content-center align-items-center flex-column-reverse flex-md-row mx-0">
                             <Col sm={12} md={5}>
                                 <div className="product-info">
                                     <h2 className="text-white text-center fs-1">
@@ -116,7 +117,7 @@ function LandingPage() {
                         </Row>
                     </div>
                     <div className="product-box product-4 d-flex justify-content-center mb-0">
-                        <Row className="justify-content-center align-items-center flex-column-reverse flex-md-row">
+                        <Row className="justify-content-center align-items-center flex-column-reverse flex-md-row mx-0">
                             <Col sm={12} md={5}>
                                 <div className="product-info">
                                     <h2 className="text-white text-center fs-1">

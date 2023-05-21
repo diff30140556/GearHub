@@ -63,3 +63,30 @@
     max-height: 350px;
     object-fit: contain;
 }
+
+.productPage-img {
+    position: sticky;
+    top: 65px;
+}
+
+:where(.css-dev-only-do-not-override-15rg2km).ant-collapse>.ant-collapse-item >.ant-collapse-header {
+    color: #fff;
+}
+
+:where(.css-dev-only-do-not-override-15rg2km).ant-collapse .ant-collapse-content {
+    color: #fff;
+    background: transparent;
+}
+
+.product-detail-info {
+    padding: 0 60px;
+    margin: 100px 0;
+}
+
+.collapse-form {
+    max-width: 800px;
+}
+
+.product-detail-info .table-striped>tbody>tr:nth-of-type(odd)>* {
+    color: #fff;
+}
