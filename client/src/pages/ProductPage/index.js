@@ -1,14 +1,9 @@
 import "./style.css";
-// import { ShoppingCartOutlined, AppstoreOutlined } from '@ant-design/icons';
 // import { ShoppingCartOutlined, AppstoreOutlined } from "@ant-design/icons";
-// import { Button } from "antd";
 import { Row, Col } from "react-bootstrap";
-// import Table from "react-bootstrap/Table";
-// import { Collapse } from "antd";
 // import { useState } from "react";
 import Comment from "../../components/Comment/index";
 import CommentForm from "../../components/CommentForm/index";
-// const { Panel } = Collapse;
 import Products from '../../components/Product/index'
 
 const data = {
