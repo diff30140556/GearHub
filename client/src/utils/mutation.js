@@ -17,14 +17,58 @@ export const ADD_PRODUCTS = gql`
   mutation addProducts($userId: ID!, $productId: ID!) {
     addProducts(userId: $userId, productId: $productId) {
       _id
-      products {
+      cart {
         _id
         name
         price
         quantity
       }
       total_price
-      purchasedAt
+    }
+  }
+`;
+
+export const UPDATE_PRODUCTS = gql`
+  mutation updateProducts($userId: ID!, $cartId: ID!, $quantity: Int!){
+    updateProducts(userId: $userId, cartId: $cartId, quantity: $quanity){
+      _id
+      cart {
+        _id
+        name
+        price
+        quantity
+      }
+      total_price
+    }
+  }
+`;
+
+export const DELETE_PRODUCTS = gql`
+  mutation deleteProducts($userId: ID!, $cartId: ID!){
+    deleteProducts(userId: $userId, cartId: $cartId){
+      _id
+      cart {
+        _id 
+        name
+        price
+        quantity
+      }
+      total_price
+    }
+  }
+`;
+
+export const CHECKOUT = gql`
+  mutation checkOut($userId: ID!){
+    checkOut(userId: $userId){
+      _id
+      total_price
+      products {
+        _id
+        name
+        price
+        quantity
+      }
     }
   }
 `;
