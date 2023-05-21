@@ -2,7 +2,6 @@ const { User, Product, Order, Category } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const mongoose = require("mongoose");
 const { signToken } = require("../utils/auth");
-// let productArray = [];
 
 const resolvers = {
   Query: {
@@ -116,8 +115,6 @@ const resolvers = {
 
         return userFound;
 
-        // productArray.push({ productId: _id, name, quantity: 1, price });
-
       } catch (err) {
         console.error(err);
       }
@@ -143,11 +140,6 @@ const resolvers = {
 
     deleteProducts: async (parent, { userId, cartId }) => {
       try {
-        // let deleted = productArray.filter(
-        //   (products) => String(products.productId) !== productId
-        // );
-
-        // productArray = deleted;
         const user = mongoose.Types.ObjectId(userId);
         const cart = mongoose.Types.ObjectId(cartId);
 
@@ -167,9 +159,6 @@ const resolvers = {
 
     checkOut: async (parent, { userId }) => {
       try {
-        // if (productArray.length > 0) {
-        //   return await Order.create({ products: productArray });
-        // }
         const user = mongoose.Types.ObjectId(userId);
 
         const userFound = await User.findOne({ _id: user });
