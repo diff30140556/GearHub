@@ -24,9 +24,7 @@ const data = {
   },
 };
 
-const { name, price, quantity, description, isNew, image } = data;
-
-const specification = data.specification;
+const { name, price, quantity, description, isNew, image, specification } = data;
 
 function ProductPage() {
   // const [size, setSize] = useState('large'); // default is 'middle'
