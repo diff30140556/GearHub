@@ -1,4 +1,4 @@
-import './style.css'
+import "./style.css";
 // import { ShoppingCartOutlined, AppstoreOutlined } from '@ant-design/icons';
 import { ShoppingCartOutlined, AppstoreOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
