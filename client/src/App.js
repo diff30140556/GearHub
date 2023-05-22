@@ -4,6 +4,7 @@ import Header from "./components/Header/index";
 import Footer from "./components/Footer/index";
 import ProductPage from "./pages/ProductPage/index";
 import LandingPage from "./pages/LandingPage/index";
+import MyAccountPage from "./pages/MyAccountPage/index";
 import LoginPage from "./pages/LoginPage/index";
 import SignUpPage from "./pages/SignUpPage/index";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -22,7 +23,6 @@ const httpLink = createHttpLink({
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem("id_token");
-  console.log(headers, token);
   return {
     headers: {
       ...headers,
@@ -52,6 +52,17 @@ function App() {
 
           <ProductPage />
 
+          <Footer />
+          <Header />
+          <Routes>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/laptop" element={<ProductPage />} />
+            <Route path="/headphone" element={<ProductPage />} />
+            <Route path="/graphic_cards" element={<ProductPage />} />
+            <Route path="/" element={<LandingPage />} />
+            {/* <Route path="/signup" element={<SignupPage />} /> */}
+            <Route path="/profile" element={<MyAccountPage />} />
+          </Routes>
           <Footer />
           {/* </StoreProvider> */}
         </div>

@@ -6,6 +6,10 @@
     line-height: 100%;
     color: #fff;
 }
+.minus-btn span,
+.plus-btn span {
+    pointer-events: none;
+}
 .minus-btn:hover,
 .plus-btn:hover {
     color: #fff !important;
@@ -28,6 +32,7 @@
 
 .primary-btn {
     border-radius: unset;
+    width: 40%;
 }
 
 .productPage-img {
