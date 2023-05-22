@@ -40,7 +40,7 @@ const resolvers = {
       try {
         return await Product.find();
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
     },
 
