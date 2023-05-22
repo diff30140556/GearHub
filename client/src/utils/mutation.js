@@ -104,6 +104,7 @@ export const ADD_COMMENT = gql`
         comment
         user
         product
+        username
       }
     }
   }
@@ -129,6 +130,7 @@ export const UPDATE_COMMENT = gql`
         comment
         user
         product
+        username
       }
     }
   }
@@ -152,6 +154,7 @@ export const REMOVE_COMMENT = gql`
         comment
         user
         product
+        username
       }
     }
   }

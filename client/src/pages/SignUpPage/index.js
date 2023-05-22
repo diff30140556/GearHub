@@ -2,7 +2,7 @@ import "./style.css";
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
-import { ADD_USER, LOGIN } from "../../utils/mutation";
+import { ADD_USER } from "../../utils/mutation";
 import Auth from "../../utils/auth";
 import { Button, Checkbox, Form, Input } from "antd";
 
@@ -24,7 +24,7 @@ function SignUp() {
           password: formState.password,
         },
       });
-      console.log(response);
+      
       const token = response.data.addUser.token;
       Auth.login(token);
     } catch (err) {

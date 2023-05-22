@@ -20,7 +20,6 @@ function LoginPage() {
       });
 
       const token = response.data.login.token;
-      console.log(token);
       Auth.login(token);
     } catch (err) {
       console.error(err);

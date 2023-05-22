@@ -195,13 +195,8 @@ const resolvers = {
         const commentId = mongoose.Types.ObjectId();
         const category = mongoose.Types.ObjectId(categoryId);
 
-        const addAComment = await Product.findOneAndUpdate(
-          { _id: productObjectId },
-          { $addToSet: { comments: { _id: commentId, comment, user } } },
-          { new: true }
-        );
-
-        await User.findOneAndUpdate(
+        
+        const userFound = await User.findOneAndUpdate(
           { _id: user },
           {
             $addToSet: {
@@ -209,7 +204,16 @@ const resolvers = {
             },
           },
           { new: true }
-        );
+          );
+
+          const username = userFound.username;
+          
+          const addAComment = await Product.findOneAndUpdate(
+            { _id: productObjectId },
+            { $addToSet: { comments: { _id: commentId, comment, user, username } } },
+            { new: true }
+          );
+
 
         await Category.findOneAndUpdate(
           { _id: category, "product._id": productObjectId },

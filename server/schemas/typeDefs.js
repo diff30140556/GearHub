@@ -22,7 +22,7 @@ const typeDefs = gql`
     isNew: Boolean
     image: [String]
     specification: JSON
-    # features: JSON
+    features: JSON
     comments: [Comment]
   }
 
@@ -51,6 +51,7 @@ const typeDefs = gql`
     comment: String
     user: ID
     product: ID
+    username: String
   }
 
   type Auth {
