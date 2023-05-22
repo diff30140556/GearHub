@@ -1,5 +1,3 @@
-import "./style.css";
-// import { ShoppingCartOutlined, AppstoreOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
 import Products from "../../components/Product/index";
 
