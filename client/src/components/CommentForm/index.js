@@ -15,12 +15,11 @@ function CommentForm() {
         setUserComment(e.target.value);
       };
   
-    const product_id = new ObjectId("646b0f516474454b42d65831");  
-    const user_id = new ObjectId("646b0f516474454b42d6581d");  
-    const category_id = new ObjectId("646b0f516474454b42d65849");  
+    const product_id = new ObjectId("646b1c995dd8d41e0fc41805");  
+    const user_id = new ObjectId("646b1c995dd8d41e0fc417f1");  
+    const category_id = new ObjectId("646b1c995dd8d41e0fc4181d");  
 
-    const handleCreateComment = async (e) => {
-        e.preventDefault();
+    const handleCreateComment = async () => {
         try {
             const response = await addAComment(
                 { variables: { 
