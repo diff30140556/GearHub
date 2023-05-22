@@ -35,13 +35,12 @@ function Comment() {
             style={{
               marginTop: 16,
             }}
+            loading={loading}
           >
-            <Skeleton loading={loading} active>
-              <Meta
-                title="User Name"
-                description="eveniet neque quasi nostrum. Expedita facere voluptas adipisci fugit distinctio repellat harum optio"
-              />
-            </Skeleton>
+            <Meta
+              title="User Name"
+              description="eveniet neque quasi nostrum. Expedita facere voluptas adipisci fugit distinctio repellat harum optio"
+            />
           </Card>
         </li>
       </ul>

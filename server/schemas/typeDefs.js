@@ -22,6 +22,7 @@ const typeDefs = gql`
     isNew: Boolean
     image: [String]
     specification: JSON
+    # features: JSON
     comments: [Comment]
   }
 
