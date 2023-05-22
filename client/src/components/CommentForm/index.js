@@ -31,7 +31,6 @@ function CommentForm() {
                   categoryId: category_id
                 } }
             );
-            console.log(response)
         } catch (err) {
             console.error(err);
         }
