@@ -11,7 +11,6 @@ function CommentForm() {
     const [userComment, setUserComment] = useState('')
     const [addAComment, { error }] = useMutation(ADD_COMMENT);
 
-    console.log(userComment)
     const handleChange = (e) => {
         setUserComment(e.target.value);
       };
@@ -31,6 +30,8 @@ function CommentForm() {
                   categoryId: category_id
                 } }
             );
+
+          window.location.reload();
         } catch (err) {
             console.error(err);
         }
