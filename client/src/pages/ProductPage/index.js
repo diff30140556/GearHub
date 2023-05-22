@@ -14,8 +14,6 @@ function ProductPage() {
       )
     };
 
-    console.log(data.getAllProducts)
-
   return (
     <main>
       <div className="wrap">
