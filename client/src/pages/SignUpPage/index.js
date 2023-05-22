@@ -1,26 +1,31 @@
 import "./style.css";
-// import { ShoppingCartOutlined, AppstoreOutlined } from "@ant-design/icons";
-// import { Button } from "antd";
-// import { Row, Col } from "react-bootstrap";
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
-import { LOGIN } from "../../utils/mutation";
+import { ADD_USER, LOGIN } from "../../utils/mutation";
 import Auth from "../../utils/auth";
+import { Button, Checkbox, Form, Input } from "antd";
 
-function LoginPage() {
-  const [formState, setFromState] = useState({ email: "", password: "" });
-  const [login, { error }] = useMutation(LOGIN);
+function SignUp() {
+  const [formState, setFromState] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  const [addUser, { error }] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await login({
-        variables: { email: formState.email, password: formState.password },
+      const response = await addUser({
+        variables: {
+          username: formState.username,
+          email: formState.email,
+          password: formState.password,
+        },
       });
-
-      const token = response.data.login.token;
-      console.log(token);
+      console.log(response);
+      const token = response.data.addUser.token;
       Auth.login(token);
     } catch (err) {
       console.error(err);
@@ -39,21 +44,33 @@ function LoginPage() {
     <main>
       <div className="wrap">
         <div className="login-box text-center">
-          <h1>Login to GearHub</h1>
+          <h1>Sign Up to GearHub</h1>
           <form className="loginForm" onSubmit={handleFormSubmit}>
+            <label htmlFor="username">
+              <b>Username:</b>
+            </label>
+            <input
+              className="username shadow-sm"
+              type="text"
+              placeholder="username"
+              name="username"
+              id="username"
+              required
+              onChange={handleChange}
+            />
             <label htmlFor="email">
               <b>Email Address:</b>
             </label>
             <input
               className="email shadow-sm"
               type="text"
-              placeholder="youremail@test.com"
+              placeholder="youremail@gearhub.com"
               name="email"
               id="email"
               required
               onChange={handleChange}
             />
-            <label htmlFor="pwd">
+            <label htmlFor="password">
               <b>Password</b>
             </label>
             <input
@@ -65,13 +82,14 @@ function LoginPage() {
               required
               onChange={handleChange}
             />
+            <Checkbox>Remember me</Checkbox>
             <button className="shadow btn-Submit loginBtn" type="submit">
-              Login
+              Sign Up
             </button>
           </form>
           <p>
-            Don't have an account?
-            <Link to="/signup">Sign up</Link>
+            Click here to return to login page
+            <Link to="/login"> Login</Link>
           </p>
         </div>
       </div>
@@ -79,4 +97,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default SignUp;

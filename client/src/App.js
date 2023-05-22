@@ -5,6 +5,7 @@ import Footer from "./components/Footer/index";
 import ProductPage from "./pages/ProductPage/index";
 import LandingPage from "./pages/LandingPage/index";
 import LoginPage from "./pages/LoginPage/index";
+import SignUpPage from "./pages/SignUpPage/index";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import { StoreProvider } from "./utils/GlobalState";
 import {
@@ -12,8 +13,8 @@ import {
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
-} from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -21,7 +22,7 @@ const httpLink = createHttpLink({
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem("id_token");
-  console.log(headers, token)
+  console.log(headers, token);
   return {
     headers: {
       ...headers,
@@ -41,13 +42,17 @@ function App() {
       <Router>
         <div className="App">
           {/* <StoreProvider> */}
-            <Header />
-            <Routes>
-              <Route path="/login" element={<LoginPage />} />
-            </Routes>
-            {/* <LandingPage /> */}
-            <ProductPage />
-            <Footer />
+          <Header />
+          <Routes>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignUpPage />} />
+          </Routes>
+
+          {/* <LandingPage /> */}
+
+          <ProductPage />
+
+          <Footer />
           {/* </StoreProvider> */}
         </div>
       </Router>
