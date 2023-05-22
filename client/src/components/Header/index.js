@@ -1,15 +1,34 @@
+import React, { useEffect } from "react";
 import { Nav, Navbar, NavDropdown, Container } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import Cart from "../Cart/index";
 import "./style.css";
 import Link from "antd/es/typography/Link";
 import Auth from "../../utils/auth";
+import { useQuery } from "@apollo/client";
+import { QUERY_ALL_CATEGORIES } from '../../utils/queries';
+// import { useStoreContext } from "../../utils/GlobalState";
 
 function Header() {
   const handleLogOut = () => {
     Auth.logout();
   };
 
+  // const [state, dispatch] = useStoreContext();
+  const { loading, data } = useQuery(QUERY_ALL_CATEGORIES)
+
+  let laptops = []
+  useEffect(() => {
+    if (!loading) {
+      console.log(data)
+      console.log(data.getAllCategories[0].product)
+      laptops = data.getAllCategories[0].product
+      console.log(laptops)
+    }
+  }, [data, loading]);
+  
+  // const laptops = data.getAllCategories[0].product;
+  
   return (
     <header className="fixed-top">
       <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
@@ -109,9 +128,7 @@ function Header() {
               <Nav.Link href="#pricing">Support</Nav.Link>
             </Nav>
             <Nav>
-              <Nav.Link>
-                <Cart />
-              </Nav.Link>
+              <Cart />
               {Auth.loggedIn() ? (
                 <LinkContainer to="/profile">
                   <Nav.Link>My Account</Nav.Link>

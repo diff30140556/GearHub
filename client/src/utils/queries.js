@@ -14,7 +14,7 @@ export const QUERY_ONE_CATEGORY = gql`
         isNew
         image
         specification
-        # features
+        features
         comments {
           _id
           comment
@@ -37,7 +37,7 @@ export const QUERY_ALL_PRODUCTS = gql`
       isNew
       image
       specification
-      # features
+      features
       comments {
         _id
         comment
@@ -59,7 +59,7 @@ export const QUERY_ONE_PRODUCT = gql`
       isNew
       image
       specification
-      # features
+      features
       comments {
         _id
         comment
@@ -84,7 +84,7 @@ export const QUERY_ALL_CATEGORIES = gql`
         isNew
         image
         specification
-        # features
+        features
         comments {
           _id
           comment
@@ -117,7 +117,7 @@ export const QUERY_USER = gql`
           price
           quantity
           description
-          # features
+          features
           isNew
           image
           specification

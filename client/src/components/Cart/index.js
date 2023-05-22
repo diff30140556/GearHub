@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { Nav } from "react-bootstrap";
+import Link from "antd/es/typography/Link";
 // import { loadStripe } from '@stripe/stripe-js';
 // import { useLazyQuery } from '@apollo/client';
 // import { QUERY_CHECKOUT } from '../../utils/queries';
@@ -108,9 +110,9 @@ const Cart = () => {
     //   )}
     // </div>
     <>
-      <a type="primary" onClick={handleShow}>
+      <Nav.Link onClick={handleShow}>
         Cart
-      </a>
+      </Nav.Link>
       <Modal className='cart-modal p-4 p-md-0' show={show} onHide={handleClose} scrollable={true}>
         <Modal.Header closeButton>
           <Modal.Title>My Cart</Modal.Title>
