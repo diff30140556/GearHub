@@ -18,6 +18,9 @@ header {
 
 .dropdown-menu .dropdown-item {
     color: rgba(255, 255, 255, 0.55);
+    white-space: inherit;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .dropdown-menu .dropdown-item:hover,
@@ -47,8 +50,4 @@ header {
 .category-title {
     color: #fff;
     font-size: 1.3rem;
-}
-
-.drop-down-section {
-    padding: 10px 40px;
 }

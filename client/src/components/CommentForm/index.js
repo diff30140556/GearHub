@@ -1,5 +1,5 @@
 import Auth from "../../utils/auth";
-import ObjectId from 'bson-objectid';
+// import ObjectId from 'bson-objectid';
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_COMMENT } from "../../utils/mutation";
@@ -15,26 +15,26 @@ function CommentForm() {
         setUserComment(e.target.value);
       };
   
-    const product_id = new ObjectId("646b1c995dd8d41e0fc41805");  
-    const user_id = new ObjectId("646b1c995dd8d41e0fc417f1");  
-    const category_id = new ObjectId("646b1c995dd8d41e0fc4181d");  
+    // const product_id = new ObjectId("646b1c995dd8d41e0fc41805");  
+    // const user_id = new ObjectId("646b1c995dd8d41e0fc417f1");  
+    // const category_id = new ObjectId("646b1c995dd8d41e0fc4181d");  
 
-    const handleCreateComment = async () => {
-        try {
-            const response = await addAComment(
-                { variables: { 
-                  comment: userComment, 
-                  productId: product_id,
-                  userId: user_id,
-                  categoryId: category_id
-                } }
-            );
+    // const handleCreateComment = async () => {
+    //     try {
+    //         const response = await addAComment(
+    //             { variables: { 
+    //               comment: userComment, 
+    //               productId: product_id,
+    //               userId: user_id,
+    //               categoryId: category_id
+    //             } }
+    //         );
 
-          window.location.reload();
-        } catch (err) {
-            console.error(err);
-        }
-    };
+    //       window.location.reload();
+    //     } catch (err) {
+    //         console.error(err);
+    //     }
+    // };
 
     return (
     <div className="comment-form">
@@ -63,7 +63,7 @@ function CommentForm() {
             <Button
               type="primary"
               htmlType="submit"
-              onClick={handleCreateComment}
+              // onClick={handleCreateComment}
             >
               Submit
             </Button>
