@@ -135,7 +135,7 @@ const Products = ({ data }) => {
           <div className="comment-section px-3 py-5 px-lg-5">
             <Row>
               <Col sm={12} md={7} className="d-flex justify-content-end">
-                <Comment />
+                <Comment comments={item.comments} />
               </Col>
               <Col sm={12} md={5}>
                 <CommentForm />

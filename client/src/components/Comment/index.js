@@ -4,7 +4,7 @@ import PaginationSet from "../Pagination/index";
 import "./style.css";
 const { Meta } = Card;
 
-function Comment() {
+function Comment({ comments }) {
   const [loading, setLoading] = useState(true);
   const onChange = (checked) => {
     setLoading(!checked);
@@ -17,32 +17,33 @@ function Comment() {
       </p>
       <Switch checked={!loading} onChange={onChange} />
       <ul className="comment-list">
-        <li className="comment-card">
-          <Card
-            style={{
-              marginTop: 16,
-            }}
-            loading={loading}
-          >
-            <Meta
-              title="User Name"
-              description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam nulla rem, sint ad perferendis, provident architecto similique vel distinctio dolore fugiat dicta tempore"
-            />
-          </Card>
-        </li>
-        <li className="comment-card">
-          <Card
-            style={{
-              marginTop: 16,
-            }}
-            loading={loading}
-          >
-            <Meta
-              title="User Name"
-              description="eveniet neque quasi nostrum. Expedita facere voluptas adipisci fugit distinctio repellat harum optio"
-            />
-          </Card>
-        </li>
+        {comments.length !== 0 ? (
+          comments.map((comment) => (
+            <div key={comment._id}>
+              <li className="comment-card">
+                <Card
+                  style={{
+                    marginTop: 16,
+                  }}
+                  loading={loading}
+                >
+                  <Meta title={comment.username} description={comment.comment} />
+                </Card>
+              </li>
+            </div>
+          ))
+        ) : (
+          <li className="comment-card">
+            <Card
+              style={{
+                marginTop: 16,
+              }}
+              loading={loading}
+            >
+              <Meta title="testing" description="testing" />
+            </Card>
+          </li>
+        )}
       </ul>
       <div className="pagination">
         <PaginationSet />

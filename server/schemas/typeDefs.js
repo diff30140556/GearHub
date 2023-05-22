@@ -51,6 +51,7 @@ const typeDefs = gql`
     comment: String
     user: ID
     product: ID
+    username: String
   }
 
   type Auth {
