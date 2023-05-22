@@ -20,6 +20,7 @@ export const QUERY_ONE_CATEGORY = gql`
           comment
           user
           product
+          username
         }
       }
     }
@@ -43,6 +44,7 @@ export const QUERY_ALL_PRODUCTS = gql`
         comment
         user
         product
+        username
       }
     }
   }
@@ -65,6 +67,7 @@ export const QUERY_ONE_PRODUCT = gql`
         comment
         user
         product
+        username
       }
     }
   }
@@ -90,6 +93,7 @@ export const QUERY_ALL_CATEGORIES = gql`
           comment
           user
           product
+          username
         }
       }
     }

@@ -45,22 +45,11 @@ function App() {
           <Header />
           <Routes>
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/signup" element={<SignUpPage />} />
-          </Routes>
-
-          {/* <LandingPage /> */}
-
-          {/* <ProductPage /> */}
-
-          {/* <Footer /> */}
-          {/* <Header /> */}
-          <Routes>
-            <Route path="/login" element={<LoginPage />} />
             <Route path="/laptop" element={<ProductPage />} />
             <Route path="/headphone" element={<ProductPage />} />
             <Route path="/graphic_cards" element={<ProductPage />} />
             <Route path="/" element={<LandingPage />} />
-            {/* <Route path="/signup" element={<SignupPage />} /> */}
+            <Route path="/signup" element={<SignUpPage />} />
             <Route path="/profile" element={<MyAccountPage />} />
           </Routes>
 
