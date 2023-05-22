@@ -40,7 +40,7 @@ function Comment({ comments }) {
               }}
               loading={loading}
             >
-              <Meta title="testing" description="testing" />
+              <Meta title="User Name" description="Comments" />
             </Card>
           </li>
         )}
