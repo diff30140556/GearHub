@@ -1,8 +1,8 @@
 import "./style.css";
-import { Row, Col } from "react-bootstrap";
-import Comment from "../../components/Comment/index";
-import CommentForm from "../../components/CommentForm/index";
+// import { ShoppingCartOutlined, AppstoreOutlined } from '@ant-design/icons';
+import React, { useState } from 'react';
 import Products from "../../components/Product/index";
+
 // import { QUERY_ALL_PRODUCTS } from "../../utils/queries";
 // import { useQuery } from "@apollo/client";
 
@@ -26,16 +26,17 @@ const { name, price, quantity, description, isNew, image, specification } = data
 
 function ProductPage() {
   // const [size, setSize] = useState('large'); // default is 'middle'
-//   const { loading, data } = useQuery(QUERY_ALL_PRODUCTS);
-//   console.log(loading, data);
-//   if (loading){
-//     return (
-//         <div>Loading...</div>
-//     )
-//   };
-    // const { name, price, quantity, description, isNew, image, specification } =
-    //   data.getAllProducts;
-//   console.log(data.getAllProducts);
+  // const [size, setSize] = useState('large'); // default is 'middle'
+  //   const { loading, data } = useQuery(QUERY_ALL_PRODUCTS);
+  //   console.log(loading, data);
+  //   if (loading){
+  //     return (
+  //         <div>Loading...</div>
+  //     )
+  //   };
+  // const { name, price, quantity, description, isNew, image, specification } =
+  //   data.getAllProducts;
+  //   console.log(data.getAllProducts);
 
   return (
     <main>
@@ -49,16 +50,6 @@ function ProductPage() {
           image={image}
           specification={specification}
         />
-        <div className="comment-section px-3 py-5 px-lg-5">
-          <Row>
-            <Col sm={12} md={7} className="d-flex justify-content-end">
-              <Comment />
-            </Col>
-            <Col sm={12} md={5}>
-              <CommentForm />
-            </Col>
-          </Row>
-        </div>
       </div>
     </main>
   );

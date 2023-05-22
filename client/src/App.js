@@ -4,6 +4,7 @@ import Header from "./components/Header/index";
 import Footer from "./components/Footer/index";
 import ProductPage from "./pages/ProductPage/index";
 import LandingPage from "./pages/LandingPage/index";
+import MyAccountPage from "./pages/MyAccountPage/index";
 import LoginPage from "./pages/LoginPage/index";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import { StoreProvider } from "./utils/GlobalState";
@@ -48,7 +49,7 @@ function App() {
             <Route path="/graphic_cards" element={<ProductPage />} />
             <Route path="/" element={<LandingPage />} />
             {/* <Route path="/signup" element={<SignupPage />} /> */}
-            {/* <Route path="/profile" element={<ProfilePage />} /> */}
+            <Route path="/profile" element={<MyAccountPage />} />
           </Routes>
           <Footer />
           {/* </StoreProvider> */}

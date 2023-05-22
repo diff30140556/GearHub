@@ -1,22 +1,40 @@
 import "./style.css";
 import { ShoppingCartOutlined, AppstoreOutlined } from "@ant-design/icons";
-import { Button } from "antd";
+import { Button, InputNumber } from "antd";
 import { Row, Col } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import { Collapse } from "antd";
 import laptopImg from '../../images/MSI_Laptop_Transparent.png';
+import Comment from "../Comment/index";
+import CommentForm from "../CommentForm/index";
+import React, { useState } from "react";
 const { Panel } = Collapse;
-// import { useState } from "react";
 
-const Products = ({ name, price, quantity, description, isNew, image, specification }) => {
+const Products = ({ name, price, description, isNew, image, specification }) => {
+
+  const [quantity, setQuantity] = useState(1);
+  const handleClick = (e) => {
+    const targetName = e.target.name;
+
+    if (quantity === 0 && targetName === 'minus') {
+      return
+    } else if (targetName === 'plus') {
+      setQuantity(quantity + 1);
+    } else {
+      setQuantity(quantity - 1);
+    }
+  }
+
+  const handleChange = (value) => {
+    setQuantity(value)
+  }
   return (
     <>
+
       <div className="productPage-section py-5 px-md-5">
         <Row>
           <Col sm={12} lg={7}>
-            <h4 className="text-white mb-5 d-flex justify-content-end">
-              {name}
-            </h4>
+            <h4 className='text-white mb-5 d-flex justify-content-end'>{name}</h4>
             <div className="productPage-img">
               <img src={laptopImg} alt="product" />
             </div>
@@ -24,26 +42,16 @@ const Products = ({ name, price, quantity, description, isNew, image, specificat
           <Col sm={12} lg={5}>
             <div className="product-description">
               <div className="productPage-info mb-5">
-                <p className="text-white">
-                  {description}
-                </p>
+                <p className="text-white">{description}</p>
               </div>
               <div className="productPage-btn  flex-md-row d-flex align-items-center justify-content-center">
                 <div className="quantity-btn">
-                  <Button className="minus-btn">-</Button>
-                  <Button className="primary-btn" type="primary">
-                    100
-                  </Button>
-                  <Button className="plus-btn">+</Button>
+                  <Button className='minus-btn' name="minus" onClick={handleClick}>-</Button>
+                  <InputNumber value={quantity} min={0} onChange={handleChange} className="text-center primary-btn" />
+                  <Button name="plus" onClick={handleClick} className='plus-btn'>+</Button>
                 </div>
                 <div className="cart-btn-box">
-                  <Button
-                    className="cart-btn"
-                    type="primary"
-                    shape="round"
-                    icon={<ShoppingCartOutlined className="btn-icon" />}
-                    size={"large"}
-                  >
+                  <Button className='cart-btn' type="primary" shape="round" icon={<ShoppingCartOutlined className='btn-icon' />} size={'large'}>
                     add to cart
                   </Button>
                 </div>
@@ -94,6 +102,17 @@ const Products = ({ name, price, quantity, description, isNew, image, specificat
             </p>
           </Panel>
         </Collapse>
+      </div>
+
+      <div className="comment-section px-3 py-5 px-lg-5">
+        <Row>
+          <Col sm={12} md={7} className="d-flex justify-content-end">
+            <Comment />
+          </Col>
+          <Col sm={12} md={5}>
+            <CommentForm />
+          </Col>
+        </Row>
       </div>
     </>
   );
