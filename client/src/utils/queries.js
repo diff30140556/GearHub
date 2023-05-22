@@ -26,7 +26,7 @@ export const QUERY_ONE_CATEGORY = gql`
 `;
 
 export const QUERY_ALL_PRODUCTS = gql`
-  query getAllProducts(){
+  query getAllProducts{
     getAllProducts{
       _id
       name
@@ -68,7 +68,7 @@ export const QUERY_ONE_PRODUCT = gql`
 `;
 
 export const QUERY_ALL_CATEGORIES = gql`
-  query getAllCategories(){
+  query getAllCategories{
     getAllCategories {
       _id
       name
@@ -93,7 +93,7 @@ export const QUERY_ALL_CATEGORIES = gql`
 `;
 //this is to query one user and to get all the orders
 export const QUERY_USER = gql`
-  query me(){
+  query me{
     me {
       _id
       username
