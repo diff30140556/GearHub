@@ -1,4 +1,5 @@
 import Auth from "../../utils/auth";
+import ObjectId from 'bson-objectid';
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_COMMENT } from "../../utils/mutation";
@@ -6,34 +7,30 @@ import { Form, Button, Input } from "antd";
 import "./style.css";
 const { TextArea } = Input;
 
-const onChange = (e) => {
-  console.log("Change:", e.target.value);
-};
-
-const onFinish = (values) => {
-  console.log("Success:", values);
-};
-
-
 function CommentForm() {
     const [userComment, setUserComment] = useState('')
     const [addAComment, { error }] = useMutation(ADD_COMMENT);
 
+    console.log(userComment)
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setUserComment({
-          ...userComment,
-          [name]: value,
-        });
+        setUserComment(e.target.value);
       };
+  
+    const product_id = new ObjectId("646b0f516474454b42d65831");  
+    const user_id = new ObjectId("646b0f516474454b42d6581d");  
+    const category_id = new ObjectId("646b0f516474454b42d65849");  
 
     const handleCreateComment = async (e) => {
         e.preventDefault();
         try {
             const response = await addAComment(
-                { variables: { comment: userComment, productId: "646afd0d97d142d3ae4ff68b", userId: "646afd0d97d142d3ae4ff677", categoryId: "646afd0d97d142d3ae4ff6a3" } }
-            )
-
+                { variables: { 
+                  comment: userComment, 
+                  productId: product_id,
+                  userId: user_id,
+                  categoryId: category_id
+                } }
+            );
             console.log(response)
         } catch (err) {
             console.error(err);
@@ -46,7 +43,6 @@ function CommentForm() {
         style={{
           maxWidth: 600,
         }}
-        onFinish={onFinish}
         autoComplete="off"
         className="mx-auto mt-5 mt-md-0"
       >
