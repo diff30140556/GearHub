@@ -38,7 +38,7 @@ const resolvers = {
 
     getAllProducts: async () => {
       try {
-        return Product.find();
+        return await Product.find();
       } catch (err) {
         console.error(err);
       }

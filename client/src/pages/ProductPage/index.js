@@ -1,12 +1,10 @@
 import "./style.css";
-// import { ShoppingCartOutlined, AppstoreOutlined } from "@ant-design/icons";
 import { Row, Col } from "react-bootstrap";
-// import { Collapse } from "antd";
-// import { useState } from "react";
 import Comment from "../../components/Comment/index";
 import CommentForm from "../../components/CommentForm/index";
-// const { Panel } = Collapse;
-import Products from '../../components/Product/index'
+import Products from "../../components/Product/index";
+// import { QUERY_ALL_PRODUCTS } from "../../utils/queries";
+// import { useQuery } from "@apollo/client";
 
 const data = {
   name: "MSI - Vector 15.6 inch 165hz Gaming Laptop",
@@ -28,17 +26,28 @@ const { name, price, quantity, description, isNew, image, specification } = data
 
 function ProductPage() {
   // const [size, setSize] = useState('large'); // default is 'middle'
+//   const { loading, data } = useQuery(QUERY_ALL_PRODUCTS);
+//   console.log(loading, data);
+//   if (loading){
+//     return (
+//         <div>Loading...</div>
+//     )
+//   };
+    // const { name, price, quantity, description, isNew, image, specification } =
+    //   data.getAllProducts;
+//   console.log(data.getAllProducts);
+
   return (
     <main>
       <div className="wrap">
-        <Products 
-            name = {name}
-            price = {price}
-            quantity = {quantity}
-            description = {description}
-            isNew = {isNew}
-            image = {image}
-            specification = {specification}
+        <Products
+          name={name}
+          price={price}
+          quantity={quantity}
+          description={description}
+          isNew={isNew}
+          image={image}
+          specification={specification}
         />
         <div className="comment-section px-3 py-5 px-lg-5">
           <Row>

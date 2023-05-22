@@ -32,7 +32,7 @@ const Products = ({ name, price, quantity, description, isNew, image, specificat
                 <div className="quantity-btn">
                   <Button className="minus-btn">-</Button>
                   <Button className="primary-btn" type="primary">
-                    {quantity}
+                    100
                   </Button>
                   <Button className="plus-btn">+</Button>
                 </div>
