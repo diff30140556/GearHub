@@ -1,11 +1,11 @@
 import "./style.css";
 // import { ShoppingCartOutlined, AppstoreOutlined } from '@ant-design/icons';
 import { ShoppingCartOutlined, AppstoreOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
+import { Button, InputNumber  } from 'antd';
 import { Row, Col } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import { Collapse } from 'antd';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Comment from '../../components/Comment/index'
 import CommentForm from '../../components/CommentForm/index'
 const { Panel } = Collapse;
@@ -30,6 +30,23 @@ const specification = data.specification
 
 function ProductPage() {
     // const [size, setSize] = useState('large'); // default is 'middle'
+    const [quantity, setQuantity] = useState(1);
+    const handleClick = (e) => {
+      const targetName = e.target.name;
+
+      if ( quantity === 0 && targetName === 'minus') {
+        return
+      } else if (targetName === 'plus') {
+        setQuantity( quantity + 1 );
+      } else {
+        setQuantity( quantity - 1 );
+      }
+    }
+
+    const handleChange = (value) => {
+      setQuantity(value)
+    }
+
     return (
         <main>
             <div className="wrap">
@@ -48,9 +65,9 @@ function ProductPage() {
                                 </div>
                                 <div className="productPage-btn  flex-md-row d-flex align-items-center justify-content-center">
                                     <div className="quantity-btn">
-                                        <Button className='minus-btn'>-</Button>
-                                        <Button className='primary-btn' type="primary">100</Button>
-                                        <Button className='plus-btn'>+</Button>
+                                        <Button className='minus-btn' name="minus" onClick={handleClick}>-</Button>
+                                        <InputNumber  value={quantity} min={0} onChange={handleChange} className="text-center primary-btn" />
+                                        <Button name="plus" onClick={handleClick} className='plus-btn'>+</Button>
                                     </div>
                                     <div className="cart-btn-box">
                                         <Button className='cart-btn' type="primary" shape="round" icon={<ShoppingCartOutlined className='btn-icon' />} size={'large'}>

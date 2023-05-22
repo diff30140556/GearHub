@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 // import { useLazyQuery } from '@apollo/client';
 // import { QUERY_CHECKOUT } from '../../utils/queries';
 // import { idbPromise } from '../../utils/helpers';
-import CartItem from '../CartItem';
+import CartItem from '../CartItem/index';
 import Auth from '../../utils/auth';
 import { useStoreContext } from '../../utils/GlobalState';
 // import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
@@ -111,17 +111,20 @@ const Cart = () => {
       <a type="primary" onClick={handleShow}>
         Cart
       </a>
-      <Modal show={show} onHide={handleClose}>
+      <Modal className='cart-modal p-4 p-md-0' show={show} onHide={handleClose} scrollable={true}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>My Cart</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
+        <Modal.Body>
+          <CartItem />
+        </Modal.Body>
+        <Modal.Footer className='d-flex justify-content-md-end justify-content-center'>
+          <p>Total: <span>$4999</span></p>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
           <Button variant="primary" onClick={handleClose}>
-            Save Changes
+            Purchase
           </Button>
         </Modal.Footer>
       </Modal>
