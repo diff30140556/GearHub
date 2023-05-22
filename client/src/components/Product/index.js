@@ -1,5 +1,8 @@
 import "./style.css";
 import { ShoppingCartOutlined, AppstoreOutlined } from "@ant-design/icons";
+import { useMutation } from '@apollo/client';
+import { ADD_PRODUCTS } from "../../utils/mutation";
+import ObjectId from 'bson-objectid';
 import { Button, InputNumber } from "antd";
 import { Row, Col } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
@@ -12,6 +15,8 @@ const { Panel } = Collapse;
 
 const Products = ({ data }) => {
   const [quantity, setQuantity] = useState(1);
+  const [addProducts, { error }] = useMutation(ADD_PRODUCTS);
+
   const handleClick = (e) => {
     const targetName = e.target.name;
 
@@ -27,6 +32,25 @@ const Products = ({ data }) => {
   const handleChange = (value) => {
     setQuantity(value);
   };
+
+  const user_id = new ObjectId("646b1c995dd8d41e0fc417f1");
+  const product_id = new ObjectId("646b1c995dd8d41e0fc41805");
+
+  const handleAddCart = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await addProducts(
+        { variables: {
+          userId: user_id,
+          productId: product_id,
+        }}
+      )
+      console.log(response);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <>
       {data.map((item) => (
@@ -76,6 +100,7 @@ const Products = ({ data }) => {
                         shape="round"
                         icon={<ShoppingCartOutlined className="btn-icon" />}
                         size={"large"}
+                        onClick={handleAddCart}
                       >
                         add to cart
                       </Button>
