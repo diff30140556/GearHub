@@ -50,10 +50,10 @@ function App() {
 
           {/* <LandingPage /> */}
 
-          <ProductPage />
+          {/* <ProductPage /> */}
 
-          <Footer />
-          <Header />
+          {/* <Footer /> */}
+          {/* <Header /> */}
           <Routes>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/laptop" element={<ProductPage />} />
@@ -63,6 +63,7 @@ function App() {
             {/* <Route path="/signup" element={<SignupPage />} /> */}
             <Route path="/profile" element={<MyAccountPage />} />
           </Routes>
+
           <Footer />
           {/* </StoreProvider> */}
         </div>

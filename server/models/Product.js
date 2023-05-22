@@ -19,6 +19,9 @@ const productSchema = new Schema(
       type: String,
       required: true,
     },
+    // features: {
+    //   type: Schema.Types.Mixed,
+    // },
     isNew: {
       type: Boolean,
     },
@@ -27,7 +30,6 @@ const productSchema = new Schema(
         type: String,
       },
     ],
-
     specification: {
       type: Schema.Types.Mixed,
     },
