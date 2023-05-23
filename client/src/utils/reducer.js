@@ -4,7 +4,7 @@ import {
   ADD_TO_CART,
   UPDATE_CART_QUANTITY,
   DELETE_FROM_CART,
-  // ADD_MULTIPLE_TO_CART,
+  ADD_MULTIPLE_TO_CART,
   // UPDATE_CATEGORIES,
   // UPDATE_CURRENT_CATEGORY,
   CLEAR_CART,
@@ -20,25 +20,29 @@ export const reducer = (state, action) => {
     //   };
 
     case ADD_TO_CART:
+      console.log(action)
+      console.log(state.cart)
       return {
         ...state,
-        // cartOpen: true,
         cart: [...state.cart, action.product],
+        // cartOpen: true,
       };
 
-    // case ADD_MULTIPLE_TO_CART:
-    //   return {
-    //     ...state,
-    //     cart: [...state.cart, ...action.products],
-    //   };
+    case ADD_MULTIPLE_TO_CART:
+      return {
+        ...state,
+        cart: [...state.cart, ...action.products],
+      };
 
     case UPDATE_CART_QUANTITY:
+      console.log(action)
+      console.log(state.cart)
       return {
         ...state,
         // cartOpen: true,
         cart: state.cart.map(product => {
           if (action._id === product._id) {
-            product.quantity = action.quantity
+            product.purchaseQuantity = action.purchaseQuantity
           }
           return product
         })

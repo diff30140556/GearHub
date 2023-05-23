@@ -9,7 +9,7 @@ import LoginPage from "./pages/LoginPage/index";
 import SignUpPage from "./pages/SignUpPage/index";
 import AboutPage from "./pages/AboutPage/index";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import { StoreProvider } from "./utils/GlobalState";
+import { StoreProvider } from "./utils/GlobalState";
 import {
   ApolloClient,
   InMemoryCache,
@@ -42,7 +42,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="App">
-          {/* <StoreProvider> */}
+          <StoreProvider>
           <Header />
           <Routes>
             <Route path="/login" element={<LoginPage />} />
@@ -54,7 +54,7 @@ function App() {
           </Routes>
 
           <Footer />
-          {/* </StoreProvider> */}
+          </StoreProvider>
         </div>
       </Router>
     </ApolloProvider>

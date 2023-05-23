@@ -27,6 +27,14 @@ export const QUERY_ONE_CATEGORY = gql`
   }
 `;
 
+export const QUERY_CHECKOUT = gql`
+  query getCheckout($products: [ID]!) {
+    checkout(products: $products) {
+      session
+    }
+  }
+`;
+
 export const QUERY_ALL_PRODUCTS = gql`
   query getAllProducts{
     getAllProducts{

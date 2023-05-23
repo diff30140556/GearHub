@@ -10,10 +10,17 @@ import laptopImg from "../../images/MSI_Laptop_Transparent.png";
 import Comment from "../Comment/index";
 import CommentForm from "../CommentForm/index";
 import React, { useState } from "react";
+import { useStoreContext } from "../../utils/GlobalState";
+import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/action";
+import { idbPromise } from '../../utils/helpers'
 import "./style.css";
 const { Panel } = Collapse;
 
 const Products = ({ data }) => {
+  const [state, dispatch] = useStoreContext();
+
+  const { cart } = state;
+
   const [quantity, setQuantity] = useState(1);
   const [addProducts, { error }] = useMutation(ADD_PRODUCTS);
   const { itemId } = useParams();
@@ -34,19 +41,55 @@ const Products = ({ data }) => {
     setQuantity(value);
   };
 
-  const handleAddCart = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await addProducts(
-        { variables: {
-          productId: itemId,
-        }}
-      )
-      console.log(response);
-    } catch (err) {
-      console.error(err);
+  const addToCart = async () => {
+    // e.preventDefault();
+    const itemInCart = cart.find( (cartItem) => cartItem._id === data._id )
+    if (itemInCart) {
+      dispatch({
+        type: UPDATE_CART_QUANTITY,
+        _id: data._id,
+        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+      });
+      idbPromise('cart', 'put', {
+        ...itemInCart,
+        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+      });
+      console.log(1,cart)
+    } else {
+      dispatch({
+        type: ADD_TO_CART,
+        product: { ...data, purchaseQuantity: 1 }
+      });
+      idbPromise('cart', 'put', { ...data, purchaseQuantity: 1 });
+      console.log(2,cart)
     }
+
+    // try {
+    //   const response = await addProducts(
+    //     { variables: {
+    //       userId: user_id,
+    //       productId: itemId,
+    //     }}
+    //   )
+    //   console.log(response);
+    // } catch (err) {
+    //   console.error(err);
+    // }
   };
+  // const handleAddCart = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await addProducts(
+  //       { variables: {
+  //         userId: user_id,
+  //         productId: itemId,
+  //       }}
+  //     )
+  //     console.log(response);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
 
   return (
     <>
@@ -95,7 +138,8 @@ const Products = ({ data }) => {
                     shape="round"
                     icon={<ShoppingCartOutlined className="btn-icon" />}
                     size={"large"}
-                    onClick={handleAddCart}
+                    // onClick={handleAddCart}
+                    onClick={addToCart}
                   >
                     add to cart
                   </Button>
