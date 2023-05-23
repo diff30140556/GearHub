@@ -18,12 +18,24 @@ function AboutPage() {
     }
   }, []);
 
-  const handleInteration = () => {
+  const handleInteraction = () => {
     setShowWelcome(true);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      handleInteraction();
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <main className="about-main">
+    <main className="about-main" onClick={handleInteraction}>
       <div className="wrap">
         <div className="greating bgBox d-flex justify-content-center">
           <Container className="d-flex justify-content-center align-items-center flex-column">
@@ -32,8 +44,6 @@ function AboutPage() {
                 <div
                   className="greatingBx fade-in d-flex justify-content-center align-items-center"
                   ref={animationRef}
-                  onClick={handleInteration}
-                  onScroll={handleInteration}
                 >
                   <div>
                     <h1 className="text-center fs-1 fw-bold title">
@@ -45,13 +55,6 @@ function AboutPage() {
                 </div>
               </Col>
             </Row>
-            {/* <Row className="mt-3">
-              <Col>
-                <div className="d-flex justify-content-center align-items-center">
-                  <h1 className="text-white">Hi</h1>
-                </div>
-              </Col>
-            </Row> */}
           </Container>
         </div>
 
