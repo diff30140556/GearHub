@@ -6,7 +6,7 @@ import "./style.css";
 import Link from "antd/es/typography/Link";
 import Auth from "../../utils/auth";
 import { useQuery } from "@apollo/client";
-import { QUERY_ALL_CATEGORIES } from '../../utils/queries';
+import { QUERY_ALL_CATEGORIES } from "../../utils/queries";
 // import { useStoreContext } from "../../utils/GlobalState";
 
 function Header() {
@@ -15,8 +15,7 @@ function Header() {
   };
 
   // const [state, dispatch] = useStoreContext();
-  const { loading, data } = useQuery(QUERY_ALL_CATEGORIES)
-
+  const { loading, data } = useQuery(QUERY_ALL_CATEGORIES);
 
   // useEffect(() => {
   //   if (!loading) {
@@ -60,45 +59,45 @@ function Header() {
                       <div className="category-box">
                         <h3 className="category-title">Laptop</h3>
                         <ul className="category-list">
-                          {
-                            getLaptops().map((laptop) => (
-                              <li key={laptop._id}>
-                                <LinkContainer  to={`/product/${laptop._id}`}>
-                                  <NavDropdown.Item>{laptop.name}</NavDropdown.Item>
-                                </LinkContainer>
-                              </li>
-                            ))
-                          }
+                          {getLaptops().map((laptop) => (
+                            <li key={laptop._id}>
+                              <LinkContainer to={`/product/${laptop._id}`}>
+                                <NavDropdown.Item>
+                                  {laptop.name}
+                                </NavDropdown.Item>
+                              </LinkContainer>
+                            </li>
+                          ))}
                         </ul>
                       </div>
 
                       <div className="category-box">
                         <h3 className="category-title">Headphone</h3>
                         <ul className="category-list">
-                          {
-                            getHeadsets().map((headset) => (
-                              <li key={headset._id}>
-                                <LinkContainer to={`/product/${headset._id}`}>
-                                  <NavDropdown.Item>{headset.name}</NavDropdown.Item>
-                                </LinkContainer>
-                              </li>
-                            ))
-                          }
+                          {getHeadsets().map((headset) => (
+                            <li key={headset._id}>
+                              <LinkContainer to={`/product/${headset._id}`}>
+                                <NavDropdown.Item>
+                                  {headset.name}
+                                </NavDropdown.Item>
+                              </LinkContainer>
+                            </li>
+                          ))}
                         </ul>
                       </div>
 
                       <div className="category-box">
                         <h3 className="category-title">Graphics Card</h3>
                         <ul className="category-list">
-                          {
-                            getGraphics().map((graphics) => (
-                              <li key={graphics._id}>
-                                <LinkContainer to={`/product/${graphics._id}`}>
-                                  <NavDropdown.Item>{graphics.name}</NavDropdown.Item>
-                                </LinkContainer>
-                              </li>
-                            ))
-                          }
+                          {getGraphics().map((graphics) => (
+                            <li key={graphics._id}>
+                              <LinkContainer to={`/product/${graphics._id}`}>
+                                <NavDropdown.Item>
+                                  {graphics.name}
+                                </NavDropdown.Item>
+                              </LinkContainer>
+                            </li>
+                          ))}
                         </ul>
                       </div>
                     </div>
@@ -106,7 +105,7 @@ function Header() {
                 </Container>
               </NavDropdown>
 
-              <Nav.Link href="#features">About</Nav.Link>
+              <Nav.Link href="/about_us">About</Nav.Link>
               <Nav.Link href="#pricing">Support</Nav.Link>
             </Nav>
             <Nav>

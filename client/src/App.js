@@ -7,6 +7,7 @@ import LandingPage from "./pages/LandingPage/index";
 import MyAccountPage from "./pages/MyAccountPage/index";
 import LoginPage from "./pages/LoginPage/index";
 import SignUpPage from "./pages/SignUpPage/index";
+import AboutPage from "./pages/AboutPage/index";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import { StoreProvider } from "./utils/GlobalState";
 import {
@@ -51,6 +52,7 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/profile" element={<MyAccountPage />} />
+            <Route path="/about_us" element={<AboutPage />} />
           </Routes>
 
           <Footer />
