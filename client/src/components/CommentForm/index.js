@@ -1,6 +1,7 @@
 import Auth from "../../utils/auth";
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
+import { useParams } from "react-router-dom";
 import { ADD_COMMENT } from "../../utils/mutation";
 import { Form, Button, Input } from "antd";
 import "./style.css";
@@ -9,6 +10,10 @@ const { TextArea } = Input;
 function CommentForm() {
     const [userComment, setUserComment] = useState('')
     const [addAComment, { error }] = useMutation(ADD_COMMENT);
+    const { itemId } = useParams();
+
+    const user_id = "646b40b7e085136eb2e65155";
+    const category_id = "646b40b7e085136eb2e65181"
 
     const handleChange = (e) => {
         setUserComment(e.target.value);
@@ -17,15 +22,15 @@ function CommentForm() {
 
     const handleCreateComment = async () => {
         try {
-            // const response = await addAComment(
-            //     { variables: { 
-            //       comment: userComment, 
-            //       productId: product_id,
-            //       userId: user_id,
-            //       categoryId: category_id
-            //     } }
-            // );
-
+            const response = await addAComment(
+                { variables: { 
+                  comment: userComment, 
+                  productId: itemId,
+                  userId: user_id,
+                  categoryId: category_id
+                } }
+            );
+            console.log(response);
           window.location.reload();
         } catch (err) {
             console.error(err);

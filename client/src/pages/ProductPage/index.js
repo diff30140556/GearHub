@@ -16,8 +16,6 @@ function ProductPage() {
     return <div>Loading...</div>;
   }
 
-  console.log(data.findProducts);
-
   return (
     <main>
       <div className="wrap">

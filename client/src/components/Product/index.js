@@ -1,6 +1,7 @@
 import { ShoppingCartOutlined, AppstoreOutlined } from "@ant-design/icons";
-// import { useMutation } from "@apollo/client";
-// import { ADD_PRODUCTS } from "../../utils/mutation";
+import { useMutation } from "@apollo/client";
+import { ADD_PRODUCTS } from "../../utils/mutation";
+import { useParams } from "react-router-dom";
 import { Button, InputNumber } from "antd";
 import { Row, Col } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
@@ -14,7 +15,10 @@ const { Panel } = Collapse;
 
 const Products = ({ data }) => {
   const [quantity, setQuantity] = useState(1);
-  // const [addProducts, { error }] = useMutation(ADD_PRODUCTS);
+  const [addProducts, { error }] = useMutation(ADD_PRODUCTS);
+  const { itemId } = useParams();
+
+  const user_id = "646b40b7e085136eb2e65155";
 
   const handleClick = (e) => {
     const targetName = e.target.name;
@@ -32,20 +36,20 @@ const Products = ({ data }) => {
     setQuantity(value);
   };
 
-  // const handleAddCart = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await addProducts(
-  //       { variables: {
-  //         userId: user_id,
-  //         productId: product_id,
-  //       }}
-  //     )
-  //     console.log(response);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
+  const handleAddCart = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await addProducts(
+        { variables: {
+          userId: user_id,
+          productId: itemId,
+        }}
+      )
+      console.log(response);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <>
@@ -94,7 +98,7 @@ const Products = ({ data }) => {
                     shape="round"
                     icon={<ShoppingCartOutlined className="btn-icon" />}
                     size={"large"}
-                    // onClick={handleAddCart}
+                    onClick={handleAddCart}
                   >
                     add to cart
                   </Button>
