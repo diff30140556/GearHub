@@ -2,23 +2,24 @@ const { User, Product, Order, Category } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const mongoose = require("mongoose");
 const { signToken } = require("../utils/auth");
+const stripe = require('stripe')('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 const resolvers = {
   Query: {
-    // me: async (parent, args, context) => {
-    //   console.log("context.user stuff", context.user)
-    //   console.log("context stuff", context)
-    //   try {
-    //     if (context.user) {
-    //       const user = await User.findById({ _id: context.user._id })
-    //         .populate("comments")
-    //         .populate("cart");
-    //       return user;
-    //     }
-    //   } catch (err) {
-    //     console.error(err);
-    //   }
-    // },
+    me: async (parent, args, context) => {
+      console.log("context.user stuff", context.user)
+      console.log("context stuff", context)
+      try {
+        if (context.user) {
+          const user = await User.findById({ _id: context.user._id })
+            .populate("comments")
+            .populate("cart");
+          return user;
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    },
 
     getCategory: async (parent, { categoryId }) => {
       try {
@@ -70,6 +71,43 @@ const resolvers = {
         console.error(err);
       }
     },
+
+    checkout: async (parent, args, context) => {
+      const url = new URL(context.headers.referer).origin;
+      const order = new Order({ products: args.products });
+      const line_items = [];
+
+      const { products } = await order.populate('products');
+
+      for (let i = 0; i < products.length; i++) {
+        const product = await stripe.products.create({
+          name: products[i].name,
+          description: products[i].description,
+          images: [`${url}/images/${products[i].image[0]}`]
+        });
+
+        const price = await stripe.prices.create({
+          product: product.id,
+          unit_amount: products[i].price * 100,
+          currency: 'usd',
+        });
+
+        line_items.push({
+          price: price.id,
+          quantity: 1
+        });
+      }
+
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        line_items,
+        mode: 'payment',
+        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${url}/`
+      });
+
+      return { session: session.id };
+    }
   },
 
   Mutation: {
@@ -164,32 +202,32 @@ const resolvers = {
       }
     },
 
-    checkOut: async (parent, { userId }) => {
-      try {
-        const user = mongoose.Types.ObjectId(userId);
+    // checkOut: async (parent, { userId }) => {
+    //   try {
+    //     const user = mongoose.Types.ObjectId(userId);
 
-        const userFound = await User.findOne({ _id: user });
+    //     const userFound = await User.findOne({ _id: user });
 
-        const { cart } = userFound;
+    //     const { cart } = userFound;
 
-        const createOrder = await Order.create({ products: cart });
+    //     const createOrder = await Order.create({ products: cart });
 
-        const { _id, total_price } = createOrder;
+    //     const { _id, total_price } = createOrder;
 
-        await User.updateOne({ _id: user }, { $set: { cart: [] } });
+    //     await User.updateOne({ _id: user }, { $set: { cart: [] } });
 
-        await User.findOneAndUpdate(
-          { _id: user },
-          { $addToSet: { order: { orderId: _id, total_price } } },
-          { new: true }
-        );
+    //     await User.findOneAndUpdate(
+    //       { _id: user },
+    //       { $addToSet: { order: { orderId: _id, total_price } } },
+    //       { new: true }
+    //     );
 
-        return createOrder;
-      } catch (err) {
-        console.error(err);
-        throw new Error("No products in your shopping cart!");
-      }
-    },
+    //     return createOrder;
+    //   } catch (err) {
+    //     console.error(err);
+    //     throw new Error("No products in your shopping cart!");
+    //   }
+    // },
 
     addComment: async (parent, { productId, comment, userId, categoryId }) => {
       try {

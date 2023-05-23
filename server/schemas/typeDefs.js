@@ -59,12 +59,17 @@ const typeDefs = gql`
     user: User
   }
 
+  type Checkout {
+    session: ID
+  }
+
   type Query {
     me: User
     getCategory(categoryId: ID!): Category
     getAllCategories: [Category]
     findProducts(productId: ID!): Product
     getAllProducts: [Product]
+    checkout(products: [ID]!): Checkout
   }
 
   type Mutation {
@@ -73,7 +78,7 @@ const typeDefs = gql`
     addProducts(userId: ID!, productId: ID!): User
     updateProducts(userId: ID!, cartId: ID!, quantity: Int!): User
     deleteProducts(userId: ID!, cartId: ID!): User
-    checkOut(userId: ID!): Order
+    # checkOut(userId: ID!): Order
     addComment(productId: ID!, comment: String!, userId: ID!, categoryId: ID!): Product
     updateComment(productId: ID!, commentId: ID!, userId: ID!, comment: String!, categoryId: ID!): Product
     removeComment(productId: ID!, commentId: ID!, userId: ID!, categoryId: ID!): Product
