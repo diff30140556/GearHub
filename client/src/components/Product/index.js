@@ -25,8 +25,6 @@ const Products = ({ data }) => {
   const [addProducts, { error }] = useMutation(ADD_PRODUCTS);
   const { itemId } = useParams();
 
-  const user_id = "646b40b7e085136eb2e65155";
-
   const handleClick = (e) => {
     const targetName = e.target.name;
 

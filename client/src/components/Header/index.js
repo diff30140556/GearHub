@@ -61,7 +61,7 @@ function Header() {
                         <ul className="category-list">
                           {getLaptops().product.map((laptop) => (
                             <li key={laptop._id}>
-                              <LinkContainer to={`/product/${laptop._id}`}>
+                              <LinkContainer to={`/product/${laptop._id}/${getLaptops()._id}`}>
                                 <NavDropdown.Item>
                                   {laptop.name}
                                 </NavDropdown.Item>
@@ -76,7 +76,7 @@ function Header() {
                         <ul className="category-list">
                           {getHeadsets().product.map((headset) => (
                             <li key={headset._id}>
-                              <LinkContainer to={`/product/${headset._id}`}>
+                              <LinkContainer to={`/product/${headset._id}/${getHeadsets()._id}`}>
                                 <NavDropdown.Item>
                                   {headset.name}
                                 </NavDropdown.Item>
@@ -91,7 +91,7 @@ function Header() {
                         <ul className="category-list">
                           {getGraphics().product.map((graphics) => (
                             <li key={graphics._id}>
-                              <LinkContainer to={`/product/${graphics._id}`}>
+                              <LinkContainer to={`/product/${graphics._id}/${getGraphics()._id}`}>
                                 <NavDropdown.Item>
                                   {graphics.name}
                                 </NavDropdown.Item>
