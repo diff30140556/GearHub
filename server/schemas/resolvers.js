@@ -5,20 +5,25 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-    // me: async (parent, args, context) => {
-    //   console.log("context.user stuff", context.user)
-    //   console.log("context stuff", context)
-    //   try {
-    //     if (context.user) {
-    //       const user = await User.findById({ _id: context.user._id })
-    //         .populate("comments")
-    //         .populate("cart");
-    //       return user;
-    //     }
-    //   } catch (err) {
-    //     console.error(err);
-    //   }
-    // },
+    me: async (parent, args, context) => {
+      try {
+        if (context.user) {
+          const userId = context.user._id;
+          const user = await User.findById({ _id: userId })
+            .populate({
+              path: "order",
+              populate: {
+                path: "products.productId",
+                model: "Product",
+              },
+            });
+
+          return user;
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    },
 
     getCategory: async (parent, { categoryId }) => {
       try {
@@ -165,27 +170,57 @@ const resolvers = {
       }
     },
 
-    checkOut: async (parent, args, context) => {
+    // checkOut: async (parent, args, context) => {
+    //   try {
+    //     if (context.user){
+    //       const user = context.user._id;
+    //       const userFound = await User.findOne({ _id: user });
+  
+    //       const { cart } = userFound;
+  
+    //       const createOrder = await Order.create({ products: cart });
+  
+    //       const { _id, total_price } = createOrder;
+  
+    //       await User.updateOne({ _id: user }, { $set: { cart: [] } });
+  
+    //       await User.findOneAndUpdate(
+    //         { _id: user },
+    //         { $addToSet: { order: { orderId: _id, total_price } } },
+    //         { new: true }
+    //       );
+  
+    //       return createOrder;
+    //     }
+    //   } catch (err) {
+    //     console.error(err);
+    //     throw new Error("No products in your shopping cart!");
+    //   }
+    // },
+    checkOut: async (parent, { userId }) => {
       try {
-        if (context.user){
-          const userFound = await User.findOne({ _id: context.user._id });
+        // if (context.user){
+          const user = mongoose.Types.ObjectId(userId)
+          const userFound = await User.findOne({ _id: user });
   
           const { cart } = userFound;
-  
+
+          const productIds = cart.map((item) => item.productId);
+
           const createOrder = await Order.create({ products: cart });
   
-          const { _id, total_price } = createOrder;
+          const { _id, total_price, purchasedAt } = createOrder;
   
-          await User.updateOne({ _id: context.user._id }, { $set: { cart: [] } });
+          await User.updateOne({ _id: user }, { $set: { cart: [] } });
   
           await User.findOneAndUpdate(
-            { _id: context.user._id },
-            { $addToSet: { order: { orderId: _id, total_price } } },
+            { _id: user },
+            { $addToSet: { order: { orderId: _id, total_price, products: productIds, purchasedAt } } },
             { new: true }
           );
   
           return createOrder;
-        }
+        // }
       } catch (err) {
         console.error(err);
         throw new Error("No products in your shopping cart!");

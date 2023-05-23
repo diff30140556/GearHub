@@ -103,34 +103,14 @@ export const QUERY_ALL_CATEGORIES = gql`
 export const QUERY_USER = gql`
   query me{
     me {
-      _id
-      username
-      email
-      comments {
-        _id
-        comment
-        user
-        product
-      }
       order {
         _id
         total_price
         products {
           _id
           name
-          price
           quantity
-          description
-          features
-          isNew
-          image
-          specification
-          comments {
-            _id
-            comment
-            user
-            product
-          }
+          price
         }
         purchasedAt
       }

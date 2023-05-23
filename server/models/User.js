@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-const commentSchema = require('./Comment')
-const cartSchema = require('./Cart')
+const commentSchema = require("./Comment");
+const cartSchema = require("./Cart");
 
 const userSchema = new Schema({
   username: {
@@ -35,10 +35,12 @@ const userSchema = new Schema({
     {
       orderId: {
         type: Schema.Types.ObjectId,
-        ref: "Order"
+        ref: "Order",
       },
       total_price: Number,
-    }
+      purchasedAt: String,
+      products: [],
+    },
   ],
 
   cart: [cartSchema],

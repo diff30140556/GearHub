@@ -66,6 +66,7 @@ export const CHECKOUT = gql`
         price
         quantity
       }
+      purchasedAt
     }
   }
 `;
