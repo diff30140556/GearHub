@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage/index";
 import SignUpPage from "./pages/SignUpPage/index";
 import AboutPage from "./pages/AboutPage/index";
 import "bootstrap/dist/css/bootstrap.min.css";
+import './style.css'
 import { StoreProvider } from "./utils/GlobalState";
 import {
   ApolloClient,

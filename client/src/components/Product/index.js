@@ -17,8 +17,10 @@ import "./style.css";
 const { Panel } = Collapse;
 
 const Products = ({ data }) => {
-  const [state, dispatch] = useStoreContext();
+  const features = Object.entries(data.features)
+  const specifications = Object.entries(data.specification)
 
+  const [state, dispatch] = useStoreContext();
   const { cart } = state;
 
   const [quantity, setQuantity] = useState(1);
@@ -43,7 +45,7 @@ const Products = ({ data }) => {
 
   const addToCart = async () => {
     // e.preventDefault();
-    const itemInCart = cart.find( (cartItem) => cartItem._id === data._id )
+    const itemInCart = cart.find((cartItem) => cartItem._id === data._id)
     if (itemInCart) {
       dispatch({
         type: UPDATE_CART_QUANTITY,
@@ -54,14 +56,14 @@ const Products = ({ data }) => {
         ...itemInCart,
         purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
       });
-      console.log(1,cart)
+      console.log(1, cart)
     } else {
       dispatch({
         type: ADD_TO_CART,
         product: { ...data, purchaseQuantity: 1 }
       });
       idbPromise('cart', 'put', { ...data, purchaseQuantity: 1 });
-      console.log(2,cart)
+      console.log(2, cart)
     }
 
     // try {
@@ -99,14 +101,23 @@ const Products = ({ data }) => {
             <h4 className="text-white mb-5 d-flex justify-content-end">
               {data.name}
             </h4>
+            {/* need to insert swiper.js and run for loop to show each img */}
             <div className="productPage-img">
-              <img src={laptopImg} alt="product" />
+              <img src={data.image[0]} alt="product" />
             </div>
           </Col>
           <Col sm={12} lg={5}>
             <div className="product-description">
               <div className="productPage-info mb-5">
                 <p className="text-white">{data.description}</p>
+                <ul className="feature-info">
+                  {features.map((feature) => (
+                    <li key={feature[0]}>
+                      <h5 className="fw-bold text-white">{feature[0]}</h5>
+                      <p className="text-white">{feature[1]}</p>
+                    </li>
+                  ))}
+                </ul>
               </div>
               <div className="productPage-btn  flex-md-row d-flex align-items-center justify-content-center">
                 <div className="quantity-btn">
@@ -154,84 +165,25 @@ const Products = ({ data }) => {
         <Collapse accordion className="collapse-form w-sm-100 w-md-75 mx-auto">
           <Panel header="Overview" key="1">
             <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum,
-              non blanditiis adipisci provident animi, voluptatem accusantium
-              tenetur vero nesciunt obcaecati numquam, iste at quasi asperiores
-              nobis delectus quos vitae distinctio!
+              {data.description}
             </p>
           </Panel>
-          <Panel header="specification" key="2">
+          <Panel header="Specification" key="2">
             <Table striped className="text-white" responsive>
               <tbody>
-                <tr>
-                  <td>Brand</td>
-                  <td>{data.specification.Brand}</td>
-                </tr>
-                <tr>
-                  <td>Color</td>
-                  <td>{data.specification.Color}</td>
-                </tr>
-                <tr>
-                  <td>Memory</td>
-                  <td>{data.specification.Memory}</td>
-                </tr>
-                <tr>
-                  <td>Model Number</td>
-                  <td>{data.specification["Model Number"]}</td>
-                </tr>
-                <tr>
-                  <td>Operating System</td>
-                  <td>{data.specification["Operating System"]}</td>
-                </tr>
-                <tr>
-                  <td>Processor Model</td>
-                  <td>{data.specification["Processor Model"]}</td>
-                </tr>
-                <tr>
-                  <td>Processor Speed</td>
-                  <td>{data.specification["Processor Speed"]}</td>
-                </tr>
-                <tr>
-                  <td>Screen Resolution</td>
-                  <td>{data.specification["Screen Resolution"]}</td>
-                </tr>
-                <tr>
-                  <td>Screen Size</td>
-                  <td>{data.specification["Screen Size"]}</td>
-                </tr>
-                <tr>
-                  <td>Solid State Drive Capacity</td>
-                  <td>{data.specification["Solid State Drive Capacity"]}</td>
-                </tr>
-                <tr>
-                  <td>Storage Type</td>
-                  <td>{data.specification["Storage Type"]}</td>
-                </tr>
-                <tr>
-                  <td>System Memory (RAM)</td>
-                  <td>{data.specification["System Memory (RAM)"]}</td>
-                </tr>
-                <tr>
-                  <td>Total Storage Capacity</td>
-                  <td>{data.specification["Total Storage Capacity"]}</td>
-                </tr>
-                <tr>
-                  <td>Touch Screen</td>
-                  <td>{data.specification["Touch Screen"]}</td>
-                </tr>
-                <tr>
-                  <td>Year of Release</td>
-                  <td>{data.specification["Year of Release"]}</td>
-                </tr>
+                {specifications.map((specification) => (
+                  <tr key={specification[0]}>
+                    <td>{specification[0]}</td>
+                    <td>{specification[1]}</td>
+                  </tr>
+                ))}
               </tbody>
             </Table>
           </Panel>
-          <Panel header="This is panel header 3" key="3">
+          <Panel header="Features" key="3">
             <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia
-              eius repellat unde delectus minima consequatur, earum nostrum
-              dolorum culpa sit, officiis, repellendus at natus! Odio magni
-              eaque corporis quas perspiciatis.
+              Sorry but we don't have the data for this panel yet..
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima, quis commodi corrupti dolorem vel aliquam blanditiis saepe quam obcaecati alias possimus quos quae modi fugiat quaerat omnis esse maiores dolore?
             </p>
           </Panel>
         </Collapse>
