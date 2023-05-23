@@ -25,17 +25,17 @@ function Header() {
 
   function getLaptops() {
     if (!loading) {
-      return data.getAllCategories[0].product;
+      return data.getAllCategories[0];
     }
   }
   function getHeadsets() {
     if (!loading) {
-      return data.getAllCategories[1].product;
+      return data.getAllCategories[1];
     }
   }
   function getGraphics() {
     if (!loading) {
-      return data.getAllCategories[2].product;
+      return data.getAllCategories[2];
     }
   }
 
@@ -57,9 +57,9 @@ function Header() {
                   {!loading ? (
                     <div className="drop-down-section d-md-flex py-2 px-3">
                       <div className="category-box">
-                        <h3 className="category-title">Laptop</h3>
+                        <h3 className="category-title">{getLaptops().name}</h3>
                         <ul className="category-list">
-                          {getLaptops().map((laptop) => (
+                          {getLaptops().product.map((laptop) => (
                             <li key={laptop._id}>
                               <LinkContainer to={`/product/${laptop._id}`}>
                                 <NavDropdown.Item>
@@ -72,9 +72,9 @@ function Header() {
                       </div>
 
                       <div className="category-box">
-                        <h3 className="category-title">Headphone</h3>
+                        <h3 className="category-title">{getHeadsets().name}</h3>
                         <ul className="category-list">
-                          {getHeadsets().map((headset) => (
+                          {getHeadsets().product.map((headset) => (
                             <li key={headset._id}>
                               <LinkContainer to={`/product/${headset._id}`}>
                                 <NavDropdown.Item>
@@ -87,9 +87,9 @@ function Header() {
                       </div>
 
                       <div className="category-box">
-                        <h3 className="category-title">Graphics Card</h3>
+                        <h3 className="category-title">{getGraphics().name}</h3>
                         <ul className="category-list">
-                          {getGraphics().map((graphics) => (
+                          {getGraphics().product.map((graphics) => (
                             <li key={graphics._id}>
                               <LinkContainer to={`/product/${graphics._id}`}>
                                 <NavDropdown.Item>
