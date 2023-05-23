@@ -46,7 +46,7 @@ function App() {
           <Header />
           <Routes>
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/product/:itemId" element={<ProductPage />} />
+            <Route path="/product/:itemId/:idCategory" element={<ProductPage />} />
             <Route path="/" element={<LandingPage />} />
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/profile" element={<MyAccountPage />} />

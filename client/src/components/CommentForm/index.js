@@ -10,10 +10,7 @@ const { TextArea } = Input;
 function CommentForm() {
     const [userComment, setUserComment] = useState('')
     const [addAComment, { error }] = useMutation(ADD_COMMENT);
-    const { itemId } = useParams();
-
-    const user_id = "646b40b7e085136eb2e65155";
-    const category_id = "646b40b7e085136eb2e65181"
+    const { itemId, idCategory } = useParams();
 
     const handleChange = (e) => {
         setUserComment(e.target.value);
@@ -26,11 +23,10 @@ function CommentForm() {
                 { variables: { 
                   comment: userComment, 
                   productId: itemId,
-                  userId: user_id,
-                  categoryId: category_id
+                  categoryId: idCategory
                 } }
             );
-            console.log(response);
+            
           window.location.reload();
         } catch (err) {
             console.error(err);

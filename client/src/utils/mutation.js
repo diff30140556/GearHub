@@ -14,8 +14,8 @@ export const LOGIN = gql`
 `;
 
 export const ADD_PRODUCTS = gql`
-  mutation addProducts($userId: ID!, $productId: ID!) {
-    addProducts(userId: $userId, productId: $productId) {
+  mutation addProducts($productId: ID!) {
+    addProducts(productId: $productId) {
       _id
       cart {
         _id
@@ -28,8 +28,8 @@ export const ADD_PRODUCTS = gql`
 `;
 
 export const UPDATE_PRODUCTS = gql`
-  mutation updateProducts($userId: ID!, $cartId: ID!, $quantity: Int!){
-    updateProducts(userId: $userId, cartId: $cartId, quantity: $quanity){
+  mutation updateProducts($cartId: ID!, $quantity: Int!){
+    updateProducts(cartId: $cartId, quantity: $quanity){
       _id
       cart {
         _id
@@ -42,8 +42,8 @@ export const UPDATE_PRODUCTS = gql`
 `;
 
 export const DELETE_PRODUCTS = gql`
-  mutation deleteProducts($userId: ID!, $cartId: ID!){
-    deleteProducts(userId: $userId, cartId: $cartId){
+  mutation deleteProducts($cartId: ID!){
+    deleteProducts(cartId: $cartId){
       _id
       cart {
         _id 
@@ -56,8 +56,8 @@ export const DELETE_PRODUCTS = gql`
 `;
 
 export const CHECKOUT = gql`
-  mutation checkOut($userId: ID!){
-    checkOut(userId: $userId){
+  mutation checkOut{
+    checkOut{
       _id
       total_price
       products {
@@ -87,13 +87,11 @@ export const ADD_COMMENT = gql`
   mutation addComment(
     $productId: ID!
     $comment: String!
-    $userId: ID!
     $categoryId: ID!
   ) {
     addComment(
       productId: $productId
       comment: $comment
-      userId: $userId
       categoryId: $categoryId
     ) {
       comments {
@@ -111,14 +109,12 @@ export const UPDATE_COMMENT = gql`
   mutation updateComment(
     $productId: ID!
     $commentId: ID!
-    $userId: ID!
     $comment: String!
     $categoryId: ID!
   ) {
     updateComment(
       productId: $productId
       commentId: $commentId
-      userId: $userId
       comment: $comment
       categoryId: $categoryId
     ) {
@@ -137,13 +133,11 @@ export const REMOVE_COMMENT = gql`
   mutation removeComment(
     $productId: ID!
     $commentId: ID!
-    $userId: ID!
     $categoryId: ID!
   ) {
     removeComment(
       productId: $productId
       commentId: $commentId
-      userId: $userId
       categoryId: $categoryId
     ) {
       comments {

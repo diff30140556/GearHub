@@ -70,13 +70,13 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addProducts(userId: ID!, productId: ID!): User
-    updateProducts(userId: ID!, cartId: ID!, quantity: Int!): User
-    deleteProducts(userId: ID!, cartId: ID!): User
-    checkOut(userId: ID!): Order
-    addComment(productId: ID!, comment: String!, userId: ID!, categoryId: ID!): Product
-    updateComment(productId: ID!, commentId: ID!, userId: ID!, comment: String!, categoryId: ID!): Product
-    removeComment(productId: ID!, commentId: ID!, userId: ID!, categoryId: ID!): Product
+    addProducts(productId: ID!): User
+    updateProducts(cartId: ID!, quantity: Int!): User
+    deleteProducts(cartId: ID!): User
+    checkOut: Order
+    addComment(productId: ID!, comment: String!, categoryId: ID!): Product
+    updateComment(productId: ID!, commentId: ID!, comment: String!, categoryId: ID!): Product
+    removeComment(productId: ID!, commentId: ID!, categoryId: ID!): Product
   }
 `;
 
