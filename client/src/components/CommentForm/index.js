@@ -1,7 +1,7 @@
 import Auth from "../../utils/auth";
-// import ObjectId from 'bson-objectid';
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
+import { useParams } from "react-router-dom";
 import { ADD_COMMENT } from "../../utils/mutation";
 import { Form, Button, Input } from "antd";
 import "./style.css";
@@ -10,31 +10,32 @@ const { TextArea } = Input;
 function CommentForm() {
     const [userComment, setUserComment] = useState('')
     const [addAComment, { error }] = useMutation(ADD_COMMENT);
+    const { itemId } = useParams();
+
+    const user_id = "646b40b7e085136eb2e65155";
+    const category_id = "646b40b7e085136eb2e65181"
 
     const handleChange = (e) => {
         setUserComment(e.target.value);
       };
   
-    // const product_id = new ObjectId("646b1c995dd8d41e0fc41805");  
-    // const user_id = new ObjectId("646b1c995dd8d41e0fc417f1");  
-    // const category_id = new ObjectId("646b1c995dd8d41e0fc4181d");  
 
-    // const handleCreateComment = async () => {
-    //     try {
-    //         const response = await addAComment(
-    //             { variables: { 
-    //               comment: userComment, 
-    //               productId: product_id,
-    //               userId: user_id,
-    //               categoryId: category_id
-    //             } }
-    //         );
-
-    //       window.location.reload();
-    //     } catch (err) {
-    //         console.error(err);
-    //     }
-    // };
+    const handleCreateComment = async () => {
+        try {
+            const response = await addAComment(
+                { variables: { 
+                  comment: userComment, 
+                  productId: itemId,
+                  userId: user_id,
+                  categoryId: category_id
+                } }
+            );
+            console.log(response);
+          window.location.reload();
+        } catch (err) {
+            console.error(err);
+        }
+    };
 
     return (
     <div className="comment-form">
@@ -63,7 +64,7 @@ function CommentForm() {
             <Button
               type="primary"
               htmlType="submit"
-              // onClick={handleCreateComment}
+              onClick={handleCreateComment}
             >
               Submit
             </Button>
