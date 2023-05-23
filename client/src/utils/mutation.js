@@ -23,7 +23,6 @@ export const ADD_PRODUCTS = gql`
         price
         quantity
       }
-      total_price
     }
   }
 `;
@@ -38,7 +37,6 @@ export const UPDATE_PRODUCTS = gql`
         price
         quantity
       }
-      total_price
     }
   }
 `;
@@ -53,7 +51,6 @@ export const DELETE_PRODUCTS = gql`
         price
         quantity
       }
-      total_price
     }
   }
 `;

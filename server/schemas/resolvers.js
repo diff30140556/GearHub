@@ -6,8 +6,18 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     // me: async (parent, args, context) => {
-    // User.findOne({ _id: userId }).populate('comments')?
-    // this will show up the comment
+    //   console.log("context.user stuff", context.user)
+    //   console.log("context stuff", context)
+    //   try {
+    //     if (context.user) {
+    //       const user = await User.findById({ _id: context.user._id })
+    //         .populate("comments")
+    //         .populate("cart");
+    //       return user;
+    //     }
+    //   } catch (err) {
+    //     console.error(err);
+    //   }
     // },
 
     getCategory: async (parent, { categoryId }) => {
@@ -100,8 +110,7 @@ const resolvers = {
 
     addProducts: async (parent, { userId, productId }) => {
       try {
-        // if (context.user) {
-        const user = mongoose.Types.ObjectId(userId)
+        const user = mongoose.Types.ObjectId(userId);
         const product = mongoose.Types.ObjectId(productId);
 
         const item = await Product.findOne({ _id: product });
@@ -110,11 +119,10 @@ const resolvers = {
         const userFound = await User.findOneAndUpdate(
           { _id: user },
           { $addToSet: { cart: { productId: _id, name, quantity: 1, price } } },
-          { new: true },
+          { new: true }
         );
 
         return userFound;
-
       } catch (err) {
         console.error(err);
       }
@@ -129,12 +137,11 @@ const resolvers = {
           { _id: user, "cart._id": cart },
           { $set: { "cart.$.quantity": quantity } },
           { new: true }
-        )
+        );
 
         return updateCart;
-
       } catch (err) {
-        console.error(err)
+        console.error(err);
       }
     },
 
@@ -146,10 +153,10 @@ const resolvers = {
         const userFound = await User.findOneAndUpdate(
           { _id: user },
           { $pull: { cart: { _id: cart } } },
-          { new: true },
+          { new: true }
         );
 
-        console.log(userFound)
+        console.log(userFound);
 
         return userFound;
       } catch (err) {
@@ -168,23 +175,19 @@ const resolvers = {
         const createOrder = await Order.create({ products: cart });
 
         const { _id, total_price } = createOrder;
-        
-        await User.updateOne(
-          { _id: user },
-          { $set: { cart: [] } }
-        );
-        
+
+        await User.updateOne({ _id: user }, { $set: { cart: [] } });
+
         await User.findOneAndUpdate(
           { _id: user },
           { $addToSet: { order: { orderId: _id, total_price } } },
-          { new: true },
-        )
+          { new: true }
+        );
 
         return createOrder;
-
       } catch (err) {
         console.error(err);
-        throw new Error ('No products in your shopping cart!');
+        throw new Error("No products in your shopping cart!");
       }
     },
 
@@ -195,7 +198,6 @@ const resolvers = {
         const commentId = mongoose.Types.ObjectId();
         const category = mongoose.Types.ObjectId(categoryId);
 
-        
         const userFound = await User.findOneAndUpdate(
           { _id: user },
           {
@@ -204,16 +206,19 @@ const resolvers = {
             },
           },
           { new: true }
-          );
+        );
 
-          const username = userFound.username;
-          
-          const addAComment = await Product.findOneAndUpdate(
-            { _id: productObjectId },
-            { $addToSet: { comments: { _id: commentId, comment, user, username } } },
-            { new: true }
-          );
+        const username = userFound.username;
 
+        const addAComment = await Product.findOneAndUpdate(
+          { _id: productObjectId },
+          {
+            $addToSet: {
+              comments: { _id: commentId, comment, user, username },
+            },
+          },
+          { new: true }
+        );
 
         await Category.findOneAndUpdate(
           { _id: category, "product._id": productObjectId },

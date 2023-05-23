@@ -52,7 +52,7 @@ export const QUERY_ALL_PRODUCTS = gql`
 
 export const QUERY_ONE_PRODUCT = gql`
   query findProducts($productId: ID!) {
-    findProducts(id: $productId) {
+    findProducts(productId: $productId) {
       _id
       name
       price
