@@ -18,6 +18,7 @@ function Comment({ comments }) {
   const onChange = (checked) => {
     setLoading(!checked);
   };
+  
   return (
     <div className="comment-box d-flex flex-column justify-content-center align-items-center">
       <p className="text-white">

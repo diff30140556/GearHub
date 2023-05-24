@@ -9,10 +9,14 @@ function PaginationSet({
   pageSize,
   showQuickJumper,
 }) {
+  const handlePageChange = (page) => {
+    onChange(page);
+  };
+
   return (
     <Pagination
       current={current}
-      onChange={onChange}
+      onChange={handlePageChange}
       total={total}
       pageSize={pageSize}
       showQuickJumper={showQuickJumper}
