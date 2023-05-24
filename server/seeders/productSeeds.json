@@ -13,7 +13,7 @@
       "State of the Art Cooling": "Alienware Cryo-tech features a large vapor chamber, quad fans, seven heat pipes, and the exclusive Element 31 thermal interface material to regulate internal temperature."
     },
     "isNew": true,
-    "image": [],
+    "image": ["https://i.imgur.com/Wncg4vl.png","https://i.imgur.com/pRIvF4Q.png","https://i.imgur.com/yGymWpp.png","https://i.imgur.com/EBu6xlv.png"],
     "specification": {
       "Brand": "Alienware",
       "Model Number": "AWM16-9272BLK-PUS",
@@ -48,7 +48,7 @@
       "State of the Art Cooling": "The MSI GE76 Raider features state-of-the-art cooling technology with multiple fans and advanced heat dissipation solutions to keep the laptop cool during intense gaming sessions, ensuring optimal performance."
     },
     "isNew": true,
-    "image": [],
+    "image": ["https://i.imgur.com/P4ZCnvY.png","https://i.imgur.com/bBU5QyE.png","https://i.imgur.com/LYlLsDT.png","https://i.imgur.com/UWU0SEc.png"],
     "specification": {
       "Brand": "MSI",
       "Model Number": "GE76 Raider",
@@ -83,7 +83,7 @@
       "Advanced Cooling System": "The Razer Blade Pro features an advanced cooling system with vapor chamber technology and multiple heat pipes, ensuring optimal performance and temperature management during intense gaming sessions."
     },
     "isNew": true,
-    "image": [],
+    "image": ["https://i.imgur.com/wZ6TkDs.png","https://i.imgur.com/4DT7AYv.png","https://i.imgur.com/yh3OGSF.png","https://i.imgur.com/7px4U3o.png"],
     "specification": {
       "Brand": "Razer",
       "Model Number": "Blade Pro",
@@ -119,7 +119,7 @@
       "AlienFX Lighting": "Customize the lighting effects of your laptop with AlienFX, creating a personalized and immersive gaming atmosphere."
     },
     "isNew": true,
-    "image": [],
+    "image": ["https://i.imgur.com/epcKq1S.png","https://i.imgur.com/gTyQDZU.png","https://i.imgur.com/GuKOWjk.png","https://i.imgur.com/3HqpMBD.png"],
     "specification": {
       "Brand": "Alienware",
       "Model Number": "m17 R5",
@@ -154,7 +154,7 @@
       "Soft dual-layer memory foam": "Conforms to your head and reduces stress points for long-lasting comfort."
     },
     "isNew": true,
-    "image": [],
+    "image": ["https://i.imgur.com/3HqpMBD.png","https://i.imgur.com/yVu6mpk.png","https://i.imgur.com/H0eFS6a.png"],
     "specification": {
       "Brand": "Logitech",
       "Color": "Black",
@@ -186,7 +186,7 @@
       "Plush Memory Foam Ear Cushions": "Experience superior comfort with plush memory foam ear cushions that conform to the shape of your ears."
     },
     "isNew": true,
-    "image": [],
+    "image": ["https://i.imgur.com/QSJpinj.png","https://i.imgur.com/WHt8z9T.png","https://i.imgur.com/QIdYyI9.png"],
     "specification": {
       "Brand": "Sennheiser",
       "Color": "Black",
@@ -218,7 +218,7 @@
       "Customizable RGB Lighting": "Personalize your headset with Razer Chroma RGB lighting, offering a wide range of colors and effects."
     },
     "isNew": true,
-    "image": [],
+    "image": ["https://i.imgur.com/Gc4Szn5.png","https://i.imgur.com/8fHmXHc.png","https://i.imgur.com/PHakOls.png"],
     "specification": {
       "Brand": "Sony",
       "Color": "Black",
@@ -251,7 +251,7 @@
       "RGB Illumination": "Customize the headset with dynamic RGB lighting effects for a personalized gaming setup."
     },
     "isNew": false,
-    "image": [],
+    "image": ["https://i.imgur.com/TRv0Sye.png","https://i.imgur.com/wdioTNV.png"],
     "specification": {
       "Brand": "Bose",
       "Color": "Black",
@@ -281,7 +281,7 @@
       "NVIDIA GeForce Experience": "Capture and share videos, screenshots, and livestreams with friends. Keep your drivers up to date and optimize your game settings. It's the essential companion to your GeForce graphics card."
     },
     "isNew": true,
-    "image": [],
+    "image": ["https://i.imgur.com/uAS63lo.png","https://i.imgur.com/Zyb7auL.png","https://i.imgur.com/SR75twT.png","https://i.imgur.com/7u64dAd.png"],
     "specification": {
       "Brand": "GIGABYTE",
       "Color": "Black",
@@ -309,7 +309,7 @@
       "Premium Build Quality": "The ROG Strix graphics card features a reinforced frame and high-quality components for durability and reliability."
     },
     "isNew": true,
-    "image": [],
+    "image": ["https://i.imgur.com/kQDkYvj.png","https://i.imgur.com/uwiqSqj.png","https://i.imgur.com/9jbSabT.png","https://i.imgur.com/duz23Zp.png"],
     "specification": {
       "Brand": "ASUS",
       "Color": "Black",
@@ -337,7 +337,7 @@
       "Virtual Reality Ready": "Experience virtual reality games and applications with smooth and immersive visuals thanks to the powerful GPU."
     },
     "isNew": true,
-    "image": [],
+    "image": ["https://i.imgur.com/E8twkYK.png","https://i.imgur.com/bbZoxjR.png","https://i.imgur.com/zOpSPlp.png","https://i.imgur.com/VKUcjIX.png"],
     "specification": {
       "Brand": "EVGA",
       "Color": "Black",
@@ -365,7 +365,7 @@
       "Supports Multiple Monitors": "Connect multiple monitors for an immersive gaming or productivity setup with HDMI 2.1 and DisplayPort 1.4a outputs."
     },
     "isNew": true,
-    "image": [],
+    "image": ["https://i.imgur.com/pzPp5ws.png","https://i.imgur.com/VNPYxdS.png","https://i.imgur.com/pVdOqOR.png","https://i.imgur.com/D9eWlLl.png"],
     "specification": {
       "Brand": "NVIDIA",
       "Color": "Black",
