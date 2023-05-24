@@ -2,7 +2,7 @@ const { User, Product, Order, Category } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const mongoose = require("mongoose");
 const { signToken } = require("../utils/auth");
-const stripe = require('stripe')('pk_test_TYooMQauvdEDq54NiTphI7jx');
+const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
   Query: {
@@ -65,7 +65,6 @@ const resolvers = {
         const productObjectId = mongoose.Types.ObjectId(productId);
         const product = await Product.findOne({ _id: productObjectId });
 
-        console.log(product);
 
         if (!product) {
           throw new Error("No Product ID Found!");
@@ -78,14 +77,14 @@ const resolvers = {
     },
 
     checkout: async (parent, args, context) => {
-      console.log('test');
+      // console.log('test');
       const url = new URL(context.headers.referer).origin;
       const order = new Order({ products: args.products });
       const line_items = [];
-      console.log(args)
-      console.log(url)
-      console.log(order)
-      console.log(line_items)
+      // console.log(args)
+      // console.log(url)
+      // console.log(order)
+      // console.log(line_items)
 
       const { products } = await order.populate('products');
 
@@ -93,20 +92,23 @@ const resolvers = {
         const product = await stripe.products.create({
           name: products[i].name,
           description: products[i].description,
-          images: [`${url}/images/${products[i].image[0]}`]
+          images: [`${products[i].image[0]}`]
         });
-
+        console.log('product:', product)
         const price = await stripe.prices.create({
           product: product.id,
           unit_amount: products[i].price * 100,
           currency: 'usd',
         });
+        console.log('hey')
+        console.log(price)
 
         line_items.push({
           price: price.id,
           quantity: 1
         });
       }
+      console.log('hey', line_items)
 
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
