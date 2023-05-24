@@ -6,7 +6,6 @@ import { Button, InputNumber } from "antd";
 import { Row, Col } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import { Collapse } from "antd";
-import laptopImg from "../../images/MSI_Laptop_Transparent.png";
 import Comment from "../Comment/index";
 import CommentForm from "../CommentForm/index";
 import React, { useEffect, useState } from "react";

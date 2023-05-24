@@ -36,19 +36,18 @@
 }
 
 .productPage-img {
-    border: 1px solid #fff;
+    /* border: 1px solid #fff; */
     display: flex;
     justify-content: flex-end;
 }
 
-.product-description {
+/* .product-description {
     border: 1px solid #fff;
 }
 
 .productPage-section {
     border: 1px solid #fff;
-    /* padding: 30px 50px; */
-}
+} */
 
 .cart-btn {
     display: flex;

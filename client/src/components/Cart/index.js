@@ -68,7 +68,7 @@ const Cart = () => {
     });
 
     getCheckout({
-      variables: { products: productIds },
+      variables: { products: productIds, total_price: calculateTotal() },
     });
   }
 

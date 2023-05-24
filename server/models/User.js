@@ -33,13 +33,13 @@ const userSchema = new Schema({
 
   order: [
     {
-      orderId: {
+      // orderId: {
         type: Schema.Types.ObjectId,
         ref: "Order",
-      },
-      total_price: Number,
-      purchasedAt: String,
-      products: [],
+      // },
+      // total_price: Number,
+      // purchasedAt: String,
+      // products: [],
     },
   ],
 

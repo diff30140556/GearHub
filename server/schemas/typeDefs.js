@@ -69,7 +69,7 @@ const typeDefs = gql`
     getAllCategories: [Category]
     findProducts(productId: ID!): Product
     getAllProducts: [Product]
-    checkout(products: [ID]!): Checkout
+    checkout(products: [ID]!, total_price: String!): Checkout
   }
 
   type Mutation {

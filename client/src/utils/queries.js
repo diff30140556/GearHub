@@ -28,8 +28,8 @@ export const QUERY_ONE_CATEGORY = gql`
 `;
 
 export const QUERY_CHECKOUT = gql`
-  query getCheckout($products: [ID]!) {
-    checkout(products: $products) {
+  query getCheckout($products: [ID]!, $total_price: String!) {
+    checkout(products: $products, total_price: $total_price) {
       session
     }
   }
