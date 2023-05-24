@@ -79,9 +79,9 @@ const typeDefs = gql`
     updateProducts(userId: ID!, cartId: ID!, quantity: Int!): User
     deleteProducts(userId: ID!, cartId: ID!): User
     # checkOut(userId: ID!): Order
-    addComment(productId: ID!, comment: String!, userId: ID!, categoryId: ID!): Product
-    updateComment(productId: ID!, commentId: ID!, userId: ID!, comment: String!, categoryId: ID!): Product
-    removeComment(productId: ID!, commentId: ID!, userId: ID!, categoryId: ID!): Product
+    addComment(productId: ID!, comment: String!, categoryId: ID!): Product
+    updateComment(productId: ID!, commentId: ID!, comment: String!, categoryId: ID!): Product
+    removeComment(productId: ID!, commentId: ID!, categoryId: ID!): Product
   }
 `;
 

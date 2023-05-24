@@ -1,13 +1,23 @@
-import { Pagination } from 'antd';
-import { useState } from 'react';
-import './style.css'
+import { Pagination } from "antd";
+import { useState } from "react";
+import "./style.css";
 
-function PaginationSet() {
-    const [current, setCurrent] = useState(1);
-    const onChange = (page) => {
-        setCurrent(page);
-    };
-    return <Pagination current={current} onChange={onChange} total={30} pageSize={3} showQuickJumper={false} />;
-};
+function PaginationSet({
+  current,
+  onChange,
+  total,
+  pageSize,
+  showQuickJumper,
+}) {
+  return (
+    <Pagination
+      current={current}
+      onChange={onChange}
+      total={total}
+      pageSize={pageSize}
+      showQuickJumper={showQuickJumper}
+    />
+  );
+}
 
 export default PaginationSet;
