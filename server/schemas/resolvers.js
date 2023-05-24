@@ -78,9 +78,14 @@ const resolvers = {
     },
 
     checkout: async (parent, args, context) => {
+      console.log('test');
       const url = new URL(context.headers.referer).origin;
       const order = new Order({ products: args.products });
       const line_items = [];
+      console.log(args)
+      console.log(url)
+      console.log(order)
+      console.log(line_items)
 
       const { products } = await order.populate('products');
 

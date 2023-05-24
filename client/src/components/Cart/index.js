@@ -6,11 +6,11 @@ import Link from "antd/es/typography/Link";
 import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/client';
 import { QUERY_CHECKOUT } from '../../utils/queries';
-// import { idbPromise } from '../../utils/helpers';
+import { idbPromise } from '../../utils/helpers';
 import CartItem from '../CartItem/index';
-// import Auth from '../../utils/auth';
+import Auth from '../../utils/auth';
 import { useStoreContext } from '../../utils/GlobalState';
-// import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
+import { ADD_MULTIPLE_TO_CART } from '../../utils/action';
 import './style.css';
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
@@ -20,16 +20,16 @@ const Cart = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  // const [state, dispatch] = useStoreContext();
-  // const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
+  const [state, dispatch] = useStoreContext();
+  const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
-  // useEffect(() => {
-  //   if (data) {
-  //     stripePromise.then((res) => {
-  //       res.redirectToCheckout({ sessionId: data.checkout.session });
-  //     });
-  //   }
-  // }, [data]);
+  useEffect(() => {
+    if (data) {
+      stripePromise.then((res) => {
+        res.redirectToCheckout({ sessionId: data.checkout.session });
+      });
+    }
+  }, [data]);
 
   // useEffect(() => {
   //   async function getCart() {
@@ -46,27 +46,31 @@ const Cart = () => {
   //   dispatch({ type: TOGGLE_CART });
   // }
 
-  // function calculateTotal() {
-  //   let sum = 0;
-  //   state.cart.forEach((item) => {
-  //     sum += item.price * item.purchaseQuantity;
-  //   });
-  //   return sum.toFixed(2);
-  // }
+  function calculateTotal() {
+    let sum = 0;
+    state.cart.forEach((item) => {
+      sum += item.price * item.purchaseQuantity;
+    });
+    return sum.toFixed(2);
+  }
 
-  // function submitCheckout() {
-  //   const productIds = [];
+  function handleClickDirect() {
+    window.location.href = '/login'
+  }
 
-  //   state.cart.forEach((item) => {
-  //     for (let i = 0; i < item.purchaseQuantity; i++) {
-  //       productIds.push(item._id);
-  //     }
-  //   });
+  function handleCheckout() {
+    const productIds = [];
 
-  //   getCheckout({
-  //     variables: { products: productIds },
-  //   });
-  // }
+    state.cart.forEach((item) => {
+      for (let i = 0; i < item.purchaseQuantity; i++) {
+        productIds.push(item._id);
+      }
+    });
+
+    getCheckout({
+      variables: { products: productIds },
+    });
+  }
 
   // if (!state.cartOpen) {
   //   return (
@@ -109,6 +113,8 @@ const Cart = () => {
     //     </h3>
     //   )}
     // </div>
+
+
     <>
       <Nav.Link onClick={handleShow}>
         Cart
@@ -117,18 +123,37 @@ const Cart = () => {
         <Modal.Header closeButton>
           <Modal.Title>My Cart</Modal.Title>
         </Modal.Header>
+
         <Modal.Body>
-          <CartItem />
+          {state.cart.length ? (
+            <ul className="cartItem-list">
+              {state.cart.map((item) => (
+                <CartItem key={item._id} item={item} />
+              ))}
+            </ul>
+          ) : (
+            <h3>
+              You haven't added anything to your cart yet!
+            </h3>
+          )}
         </Modal.Body>
+
         <Modal.Footer className='d-flex justify-content-md-end justify-content-center'>
-          <p>Total: <span>$4999</span></p>
+          <p>Total: <span>${calculateTotal()}</span></p>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Purchase
+          {Auth.loggedIn() ? (
+            <Button variant="primary" onClick={handleCheckout}>
+              Purchase
+            </Button>
+          ) : (
+            <Button variant="success" onClick={handleClickDirect}>
+            Click to log in
           </Button>
+          )}
         </Modal.Footer>
+
       </Modal>
     </>
   );

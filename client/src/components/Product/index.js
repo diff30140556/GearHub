@@ -9,7 +9,7 @@ import { Collapse } from "antd";
 import laptopImg from "../../images/MSI_Laptop_Transparent.png";
 import Comment from "../Comment/index";
 import CommentForm from "../CommentForm/index";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/action";
 import { idbPromise } from '../../utils/helpers'
@@ -43,6 +43,11 @@ const Products = ({ data }) => {
     setQuantity(value);
   };
 
+  // for debugging
+  useEffect( ()=> {
+    console.log(state)
+  },[state])
+
   const addToCart = async () => {
     // e.preventDefault();
     const itemInCart = cart.find((cartItem) => cartItem._id === data._id)
@@ -50,20 +55,18 @@ const Products = ({ data }) => {
       dispatch({
         type: UPDATE_CART_QUANTITY,
         _id: data._id,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + quantity
       });
       idbPromise('cart', 'put', {
         ...itemInCart,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + quantity
       });
-      console.log(1, cart)
     } else {
       dispatch({
         type: ADD_TO_CART,
-        product: { ...data, purchaseQuantity: 1 }
+        product: { ...data, purchaseQuantity: quantity }
       });
-      idbPromise('cart', 'put', { ...data, purchaseQuantity: 1 });
-      console.log(2, cart)
+      idbPromise('cart', 'put', { ...data, purchaseQuantity: quantity });
     }
 
     // try {
