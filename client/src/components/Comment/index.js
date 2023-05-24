@@ -7,7 +7,7 @@ const { Meta } = Card;
 function Comment({ comments }) {
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const commentsPerPage = 1;
+  const commentsPerPage = 2;
   const indexOfLastComment = currentPage * commentsPerPage;
   const indexOfFirstComment = indexOfLastComment - commentsPerPage;
   const currentComments = comments.slice(
