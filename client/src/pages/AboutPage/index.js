@@ -6,6 +6,7 @@ import React, { useEffect, useRef, useState } from "react";
 function AboutPage() {
   // This is to declare a ref object - inner box here - with an initial value of null.
   const [showWelcome, setShowWelcome] = useState(false);
+
   const animationRef = useRef(null);
 
   useEffect(() => {
@@ -37,7 +38,11 @@ function AboutPage() {
   return (
     <main className="about-main" onClick={handleInteraction}>
       <div className="wrap">
-        <div className="greating bgBox d-flex justify-content-center">
+        <div
+          className={`${
+            showWelcome ? "greating" : null
+          } bgBox d-flex justify-content-center`}
+        >
           <Container className="d-flex justify-content-center align-items-center flex-column">
             <Row className="d-flex justify-content-center align-items-center">
               <Col>
@@ -46,9 +51,13 @@ function AboutPage() {
                   ref={animationRef}
                 >
                   <div>
-                    <h1 className="text-center fs-1 fw-bold title">
+                    <h1
+                      className={`text-center fs-1 fw-bold ${
+                        showWelcome ? `title_active` : `title`
+                      }`}
+                    >
                       {showWelcome
-                        ? "Welcome to GearHub."
+                        ? "Welcome to GearHub！"
                         : "Nice to Meet You!"}
                     </h1>
                   </div>
