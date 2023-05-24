@@ -4,10 +4,10 @@ const orderSchema = new Schema(
   {
     products: [
       {
-        
+        // productId: {
           type: Schema.Types.ObjectId,
           ref: "Product",
-        // ,
+        // },
         // name: String,
         // quantity: Number,
         // price: Number

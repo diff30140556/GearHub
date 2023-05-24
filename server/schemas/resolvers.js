@@ -95,6 +95,7 @@ const resolvers = {
           images: [`${products[i].image[0]}`]
         });
         console.log('product:', product)
+        console.log('productsssssss:', products[i])
         const price = await stripe.prices.create({
           product: product.id,
           unit_amount: products[i].price * 100,
