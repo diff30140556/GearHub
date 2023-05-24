@@ -1,5 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=BioRhyme:wght@200;300;400;700;800&display=swap');
 
+.greating{
+    background: url('../../images/greating.jpg') center no-repeat;
+    opacity: 0;
+    transition: opacity 1s ease; 
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+    opacity: 0;
+    }
+    100% {
+     opacity: 1;
+    }
+}
 .taipei {
     background: url('../../images/taipei.jpg') center no-repeat;
 }
@@ -17,6 +32,8 @@
 
 .active{
     opacity: 1;
+    
+
 }
 
 .bgBox {
@@ -50,12 +67,23 @@ html {
 
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: 900;
-    background-image: linear-gradient(to right, rgb(248, 247, 247), rgb(173, 175, 173), rgb(109, 109, 109)); /* 用你想要的渐变色替换这里的颜色 */
+    background-image: linear-gradient(to right, rgb(248, 247, 247), rgb(173, 175, 173), rgb(109, 109, 109)); 
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
     color: transparent;
 
+}
+
+.title_active
+{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 900;
+    background-image: linear-gradient(to right,  rgb(248, 247, 247), rgb(195, 196, 195), rgb(149, 149, 149)); 
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 
