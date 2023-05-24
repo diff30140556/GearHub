@@ -55,21 +55,21 @@ export const DELETE_PRODUCTS = gql`
   }
 `;
 
-export const CHECKOUT = gql`
-  mutation checkOut{
-    checkOut{
-      _id
-      total_price
-      products {
-        _id
-        name
-        price
-        quantity
-      }
-      purchasedAt
-    }
-  }
-`;
+// export const CHECKOUT = gql`
+//   mutation checkOut{
+//     checkOut{
+//       _id
+//       total_price
+//       products {
+//         _id
+//         name
+//         price
+//         quantity
+//       }
+//       purchasedAt
+//     }
+//   }
+// `;
 
 export const ADD_USER = gql`
   mutation addUser($username: String!, $email: String!, $password: String!) {

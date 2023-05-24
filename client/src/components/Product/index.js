@@ -83,7 +83,6 @@ const Products = ({ data }) => {
   //   try {
   //     const response = await addProducts(
   //       { variables: {
-  //         userId: user_id,
   //         productId: itemId,
   //       }}
   //     )

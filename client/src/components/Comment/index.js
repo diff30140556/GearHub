@@ -6,9 +6,19 @@ const { Meta } = Card;
 
 function Comment({ comments }) {
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const commentsPerPage = 2;
+  const indexOfLastComment = currentPage * commentsPerPage;
+  const indexOfFirstComment = indexOfLastComment - commentsPerPage;
+  const currentComments = comments.slice(
+    indexOfFirstComment,
+    indexOfLastComment
+  );
+
   const onChange = (checked) => {
     setLoading(!checked);
   };
+  
   return (
     <div className="comment-box d-flex flex-column justify-content-center align-items-center">
       <p className="text-white">
@@ -17,8 +27,8 @@ function Comment({ comments }) {
       </p>
       <Switch checked={!loading} onChange={onChange} />
       <ul className="comment-list">
-        {comments.length !== 0 ? (
-          comments.map((comment) => (
+        {currentComments.length !== 0 ? (
+          currentComments.map((comment) => (
             <div key={comment._id}>
               <li className="comment-card">
                 <Card
@@ -27,7 +37,10 @@ function Comment({ comments }) {
                   }}
                   loading={loading}
                 >
-                  <Meta title={comment.username} description={comment.comment} />
+                  <Meta
+                    title={comment.username}
+                    description={comment.comment}
+                  />
                 </Card>
               </li>
             </div>
@@ -46,7 +59,13 @@ function Comment({ comments }) {
         )}
       </ul>
       <div className="pagination">
-        <PaginationSet />
+        <PaginationSet
+          current={currentPage}
+          onChange={setCurrentPage}
+          total={comments.length}
+          pageSize={commentsPerPage}
+          showQuickJumper={false}
+        />
       </div>
     </div>
   );
