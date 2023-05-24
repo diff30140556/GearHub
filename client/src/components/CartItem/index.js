@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-// import { useStoreContext } from "../../utils/GlobalState";
-// import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
-// import { idbPromise } from "../../utils/helpers";
+import { useStoreContext } from "../../utils/GlobalState";
+import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from "../../utils/action";
+import { idbPromise } from "../../utils/helpers";
 import { InputNumber } from 'antd';
 import Link from "antd/es/typography/Link";
 import { Row, Col } from 'react-bootstrap';
@@ -72,80 +72,24 @@ const CartItem = ({ item }) => {
     //     </div>
     //   </div>
     // </div>
-    <ul className="cartItem-list">
-      <li className="single-item mb-5">
-        <Row>
-          <Col sm={6} md={4} className='mx-auto'>
-            <div className="cartItem-pic">
-              <img src="https://i.imgur.com/3ICVUYL.png" alt="" />
+    <li className="single-item mb-5">
+      <Row>
+        <Col sm={6} md={4} className='mx-auto'>
+          <div className="cartItem-pic">
+            <img src={item.image[0]} alt="item-pic" />
+          </div>
+        </Col>
+        <Col sm={12} md={8} className='mt-4 mt-md-0'>
+          <div className="cartItem-info">
+            <p className='text-center text-md-start'>{item.name} $<span className='fw-bold'>{item.price}</span></p>
+            <div className="cartItem-input d-flex align-items-center justify-content-center justify-content-md-start">
+              <InputNumber value={item.purchaseQuantity} min={0} onChange={handleChange} />
+              <Link href="" className='ms-4'>Remove Item</Link>
             </div>
-          </Col>
-          <Col sm={12} md={8} className='mt-4 mt-md-0'>
-            <div className="cartItem-info">
-              <p className='text-center text-md-start'>Laptop name is so longgggg so many, $<span className='fw-bold'>2999</span></p>
-              <div className="cartItem-input d-flex align-items-center justify-content-center justify-content-md-start">
-                <InputNumber value={cartQuantity} min={0} onChange={handleChange} />
-                <Link href="" className='ms-4'>Remove Item</Link>
-              </div>
-            </div>
-          </Col>
-        </Row>
-      </li>
-      <li className="single-item mb-5">
-        <Row>
-          <Col sm={6} md={4} className='mx-auto'>
-            <div className="cartItem-pic">
-              <img src="https://i.imgur.com/3ICVUYL.png" alt="" />
-            </div>
-          </Col>
-          <Col sm={12} md={8} className='mt-4 mt-md-0'>
-            <div className="cartItem-info">
-              <p className='text-center text-md-start'>Laptop name is so longgggg so many, $<span className='fw-bold'>2999</span></p>
-              <div className="cartItem-input d-flex align-items-center justify-content-center justify-content-md-start">
-                <InputNumber value={cartQuantity} min={0} onChange={handleChange} />
-                <Link href="" className='ms-4'>Remove Item</Link>
-              </div>
-            </div>
-          </Col>
-        </Row>
-      </li>
-      <li className="single-item mb-5">
-        <Row>
-          <Col sm={6} md={4} className='mx-auto'>
-            <div className="cartItem-pic">
-              <img className='' src="https://i.imgur.com/3ICVUYL.png" alt="" />
-            </div>
-          </Col>
-          <Col sm={12} md={8} className='mt-4 mt-md-0'>
-            <div className="cartItem-info">
-              <p className='text-center text-md-start'>Laptop name is so longgggg so many, $<span className='fw-bold'>2999</span></p>
-              <div className="cartItem-input d-flex align-items-center justify-content-center justify-content-md-start">
-                <InputNumber value={cartQuantity} min={0} onChange={handleChange} />
-                <Link href="" className='ms-4'>Remove Item</Link>
-              </div>
-            </div>
-          </Col>
-        </Row>
-      </li>
-      <li className="single-item mb-5">
-        <Row>
-          <Col sm={6} md={4} className='mx-auto'>
-            <div className="cartItem-pic">
-              <img src="https://i.imgur.com/3ICVUYL.png" alt="" />
-            </div>
-          </Col>
-          <Col sm={12} md={8} className='mt-4 mt-md-0'>
-            <div className="cartItem-info">
-              <p className='text-center text-md-start'>Laptop name is so longgggg so many, $<span className='fw-bold'>2999</span></p>
-              <div className="cartItem-input d-flex align-items-center justify-content-center justify-content-md-start">
-                <InputNumber value={cartQuantity} min={0} onChange={handleChange} />
-                <Link href="" className='ms-4'>Remove Item</Link>
-              </div>
-            </div>
-          </Col>
-        </Row>
-      </li>
-    </ul>
+          </div>
+        </Col>
+      </Row>
+    </li>
 
   );
 }
