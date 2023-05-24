@@ -37,9 +37,8 @@ const userSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Order",
       },
-      total_price: Number,
+      total_price: String,
       purchasedAt: String,
-      products: [],
     },
   ],
 

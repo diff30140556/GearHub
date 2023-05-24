@@ -13,7 +13,7 @@ import { useStoreContext } from '../../utils/GlobalState';
 import { ADD_MULTIPLE_TO_CART } from '../../utils/action';
 import './style.css';
 
-const stripePromise = loadStripe('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 const Cart = () => {
   const [show, setShow] = useState(false);
@@ -68,7 +68,7 @@ const Cart = () => {
     });
 
     getCheckout({
-      variables: { products: productIds },
+      variables: { products: productIds, total_price: calculateTotal() },
     });
   }
 

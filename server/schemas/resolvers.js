@@ -78,13 +78,23 @@ const resolvers = {
 
     checkout: async (parent, args, context) => {
       // console.log('test');
+      console.log(context.user._id);
+      console.log("these are the args", args);
       const url = new URL(context.headers.referer).origin;
-      const order = new Order({ products: args.products });
+      const order = new Order({ products: args.products, total_price: args.total_price });
       const line_items = [];
       // console.log(args)
       // console.log(url)
-      // console.log(order)
-      // console.log(line_items)
+      console.log("this is the order model", order)
+      // console.log("this is the line items", line_items)
+
+      const user = await User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $push: { order: order } },
+        { new: true },
+      );
+
+      console.log('this is the user model with the order created', user);
 
       const { products } = await order.populate('products');
 

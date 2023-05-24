@@ -41,7 +41,7 @@ const typeDefs = gql`
 
   type Order {
     _id: ID
-    total_price: Float
+    total_price: String
     products: [Product]
     purchasedAt: String
   }
@@ -69,7 +69,7 @@ const typeDefs = gql`
     getAllCategories: [Category]
     findProducts(productId: ID!): Product
     getAllProducts: [Product]
-    checkout(products: [ID]!): Checkout
+    checkout(products: [ID]!, total_price: String!): Checkout
   }
 
   type Mutation {
