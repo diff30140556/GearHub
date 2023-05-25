@@ -5,6 +5,7 @@
 
 .order-info {
     height: 500px;
+    position: relative;
 }
 
 .order-record .purchase-date-text {
@@ -17,6 +18,27 @@
     border-radius: 8px;
 }
 
-.order-id{
+.order-id {
     text-decoration: none;
+}
+
+@media only screen and (max-width:768px) {
+    .order-info {
+        background: url(https://images.unsplash.com/photo-1510519138101-570d1dca3d66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1147&q=80) no-repeat center;
+        background-size: cover;
+        position: relative;
+        z-index: 10;
+        background-attachment: fixed;
+    }
+
+    .order-info::after {
+        position: absolute;
+        content: '';
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, .3);
+        z-index: -1;
+    }
 }
