@@ -42,7 +42,7 @@ function Footer() {
               <h6 className="text-uppercase">Quick Links</h6>
               <ul>
                 <li>
-                  <Link href="#">About Us</Link>
+                  <Link to="/about_us">About Us</Link>
                 </li>
                 <li>
                   <Link href="#">Contact Us</Link>

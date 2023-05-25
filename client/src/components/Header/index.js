@@ -106,7 +106,7 @@ function Header() {
               </NavDropdown>
 
               <Nav.Link href="/about_us">About</Nav.Link>
-              <Nav.Link href="#pricing">Support</Nav.Link>
+              <Nav.Link href="/support">Support</Nav.Link>
             </Nav>
             <Nav>
               <Cart />
