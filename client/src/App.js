@@ -45,8 +45,8 @@ function App() {
       <Router>
         <div className="App">
           <StoreProvider>
-          <Header />
           <Routes>
+          <Header />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/product/:itemId/:idCategory" element={<ProductPage />} />
             <Route path="/" element={<LandingPage />} />
