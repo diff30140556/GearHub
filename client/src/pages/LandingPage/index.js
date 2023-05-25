@@ -13,6 +13,12 @@ function LandingPage() {
     Aos.init();
   }, []);
 
+  const handleButtonClick = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "instant",
+    });
+  };
   return (
     <main className="landing-main">
       <div className="wrap">
@@ -37,6 +43,7 @@ function LandingPage() {
                       shape="round"
                       icon={<ShoppingCartOutlined className="btn-icon" />}
                       size={size}
+                      onClick={handleButtonClick}
                     >
                       <Link
                         className="linkBtn"
@@ -89,6 +96,7 @@ function LandingPage() {
                       shape="round"
                       icon={<ShoppingCartOutlined className="btn-icon" />}
                       size={size}
+                      onClick={handleButtonClick}
                     >
                       <Link
                         className="linkBtn"
@@ -141,6 +149,7 @@ function LandingPage() {
                       shape="round"
                       icon={<ShoppingCartOutlined className="btn-icon" />}
                       size={size}
+                      onClick={handleButtonClick}
                     >
                       <Link
                         className="linkBtn"
@@ -195,6 +204,7 @@ function LandingPage() {
                       shape="round"
                       icon={<ShoppingCartOutlined className="btn-icon" />}
                       size={size}
+                      onClick={handleButtonClick}
                     >
                       <Link
                         className="linkBtn"
