@@ -5,7 +5,7 @@ import { Row, Col } from "react-bootstrap";
 import { useState } from "react";
 
 function LandingPage() {
-    const [size, setSize] = useState("large"); // default is 'middle'
+    const [size, setSize] = useState("large");
 
     return (
         <main className="landing-main">
@@ -16,7 +16,7 @@ function LandingPage() {
                             <Col sm={12} md={5}>
                                 <div className="product-info">
                                     <h2 className="text-white text-center">
-                                    Alienware M17<br />
+                                        Alienware M17<br />
                                         <span> Gaming Laptop</span>
                                     </h2>
                                     <div className="product-btn d-flex justify-content-center">
@@ -86,7 +86,7 @@ function LandingPage() {
                             <Col sm={12} md={5}>
                                 <div className="product-info">
                                     <h2 className="text-white text-center fs-1">
-                                    NVIDIA<br />
+                                        NVIDIA<br />
                                         <span>GeForce RTX 4090</span>
                                     </h2>
                                     <div className="product-btn d-flex justify-content-center">

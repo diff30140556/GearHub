@@ -12,6 +12,7 @@ import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/action";
 import { idbPromise } from '../../utils/helpers'
 import "./style.css";
+
 const { Panel } = Collapse;
 
 const Products = ({ data }) => {
@@ -41,7 +42,7 @@ const Products = ({ data }) => {
   };
 
 
-  
+
   const addToCart = async () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === data._id)
     if (itemInCart) {
@@ -71,7 +72,6 @@ const Products = ({ data }) => {
             <h4 className="product-title text-white mb-5 d-flex justify-content-center fw-bold">
               {data.name}
             </h4>
-            {/* need to insert swiper.js and run for loop to show each img */}
             <div className="productPage-img">
               <img src={data.image[0]} alt="product" />
             </div>
@@ -89,40 +89,45 @@ const Products = ({ data }) => {
                   ))}
                 </ul>
               </div>
-              <div className="productPage-btn  flex-md-row d-flex align-items-center justify-content-center">
-                <div className="quantity-btn">
-                  <Button
-                    className="minus-btn"
-                    name="minus"
-                    onClick={handleClick}
-                  >
-                    -
-                  </Button>
-                  <InputNumber
-                    value={quantity}
-                    min={1}
-                    onChange={handleChange}
-                    className="text-center primary-btn"
-                  />
-                  <Button
-                    name="plus"
-                    onClick={handleClick}
-                    className="plus-btn"
-                  >
-                    +
-                  </Button>
+              <div className="productPage-btn">
+                <div className="price">
+                    <h6>$ {data.price}</h6>
                 </div>
-                <div className="cart-btn-box">
-                  <Button
-                    className="cart-btn"
-                    type="primary"
-                    shape="round"
-                    icon={<ShoppingCartOutlined className="btn-icon" />}
-                    size={"large"}
-                    onClick={addToCart}
-                  >
-                    add to cart
-                  </Button>
+                <div className="btn-group flex-md-row d-flex align-items-center justify-content-center">
+                  <div className="quantity-btn">
+                    <Button
+                      className="minus-btn"
+                      name="minus"
+                      onClick={handleClick}
+                    >
+                      -
+                    </Button>
+                    <InputNumber
+                      value={quantity}
+                      min={1}
+                      onChange={handleChange}
+                      className="text-center primary-btn"
+                    />
+                    <Button
+                      name="plus"
+                      onClick={handleClick}
+                      className="plus-btn"
+                    >
+                      +
+                    </Button>
+                  </div>
+                  <div className="cart-btn-box">
+                    <Button
+                      className="cart-btn"
+                      type="primary"
+                      shape="round"
+                      icon={<ShoppingCartOutlined className="btn-icon" />}
+                      size={"large"}
+                      onClick={addToCart}
+                    >
+                      add to cart
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>

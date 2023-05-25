@@ -1,12 +1,11 @@
 import "./style.css";
-// import { ShoppingCartOutlined, AppstoreOutlined } from "@ant-design/icons";
-// import { Button } from "antd";
-// import { Row, Col } from "react-bootstrap";
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
 import { LOGIN } from "../../utils/mutation";
 import Auth from "../../utils/auth";
+import { Checkbox } from "antd";
+
 
 function LoginPage() {
   const [formState, setFromState] = useState({ email: "", password: "" });
@@ -36,9 +35,9 @@ function LoginPage() {
 
   return (
     <main>
-      <div className="wrap">
+      <div className="sign-wrap">
+          <h1 className="text-center text-white">Login to GearHub</h1>
         <div className="login-box text-center">
-          <h1>Login to GearHub</h1>
           <form className="loginForm" onSubmit={handleFormSubmit}>
             <label htmlFor="email">
               <b>Email Address:</b>
@@ -67,8 +66,9 @@ function LoginPage() {
             <button className="shadow btn-Submit loginBtn" type="submit">
               Login
             </button>
+            <Checkbox className="remember-me">Remember me</Checkbox>
           </form>
-          <p>
+          <p className="signInBtn-text">
             Don't have an account?
             <Link to="/signup">Sign up</Link>
           </p>

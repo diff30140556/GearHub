@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Nav } from "react-bootstrap";
-import Link from "antd/es/typography/Link";
 import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/client';
 import { QUERY_CHECKOUT } from '../../utils/queries';
@@ -69,49 +68,7 @@ const Cart = () => {
     });
   }
 
-  // if (!state.cartOpen) {
-  //   return (
-  //     <div className="cart-closed" onClick={toggleCart}>
-  //       <span role="img" aria-label="trash">
-  //         🛒
-  //       </span>
-  //     </div>
-  //   );
-  // }
-
   return (
-    // <div className="cart">
-    //   <div className="close" onClick={toggleCart}>
-    //     [close]
-    //   </div>
-    //   <h2>Shopping Cart</h2>
-    //   {state.cart.length ? (
-    //     <div>
-    //       {state.cart.map((item) => (
-    //         <CartItem key={item._id} item={item} />
-    //       ))}
-
-    //       <div className="flex-row space-between">
-    //         <strong>Total: ${calculateTotal()}</strong>
-
-    //         {Auth.loggedIn() ? (
-    //           <button onClick={submitCheckout}>Checkout</button>
-    //         ) : (
-    //           <span>(log in to check out)</span>
-    //         )}
-    //       </div>
-    //     </div>
-    //   ) : (
-    //     <h3>
-    //       <span role="img" aria-label="shocked">
-    //         😱
-    //       </span>
-    //       You haven't added anything to your cart yet!
-    //     </h3>
-    //   )}
-    // </div>
-
-
     <>
       <Nav.Link onClick={handleShow}>
         Cart
@@ -130,7 +87,7 @@ const Cart = () => {
             </ul>
           ) : (
             <h3>
-              You haven't added anything to your cart yet!
+              You deserve a gift for yourself
             </h3>
           )}
         </Modal.Body>
@@ -146,7 +103,7 @@ const Cart = () => {
             </Button>
           ) : (
             <Button variant="success" onClick={handleClickDirect}>
-            Click to log in
+            Log in to have these
           </Button>
           )}
         </Modal.Footer>

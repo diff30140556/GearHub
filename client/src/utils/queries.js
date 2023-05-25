@@ -108,7 +108,6 @@ export const QUERY_ALL_CATEGORIES = gql`
   }
 `;
 
-//this is to query one user and to get all the orders
 export const QUERY_USER = gql`
   query me{
     me {
