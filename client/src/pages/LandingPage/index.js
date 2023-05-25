@@ -41,7 +41,7 @@ function LandingPage() {
                             </Col>
                             <Col sm={12} md={7}>
                                 <div className="product-img">
-                                    <img src="https://i.imgur.com/PhdXXkn.png" alt="laptop" />
+                                    <img src="https://i.imgur.com/epcKq1S.png" alt="laptop" />
                                 </div>
                             </Col>
                         </Row>
@@ -76,7 +76,7 @@ function LandingPage() {
                             </Col>
                             <Col sm={12} md={7}>
                                 <div className="product-img">
-                                    <img src="https://i.imgur.com/NTIF9DD.png" alt="laptop" />
+                                    <img src="https://i.imgur.com/65vh6pQ.png" alt="headset" />
                                 </div>
                             </Col>
                         </Row>
@@ -111,7 +111,7 @@ function LandingPage() {
                             </Col>
                             <Col sm={12} md={7}>
                                 <div className="product-img">
-                                    <img src="https://i.imgur.com/jX4lLhx.png" alt="laptop" />
+                                    <img src="https://i.imgur.com/pzPp5ws.png" alt="graphics card" />
                                 </div>
                             </Col>
                         </Row>
@@ -146,7 +146,7 @@ function LandingPage() {
                             </Col>
                             <Col sm={12} md={7}>
                                 <div className="product-img">
-                                    <img src="https://i.imgur.com/3ICVUYL.png" alt="laptop" />
+                                    <img src="https://i.imgur.com/P4ZCnvY.png" alt="laptop" />
                                 </div>
                             </Col>
                         </Row>

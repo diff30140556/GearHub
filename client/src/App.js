@@ -1,5 +1,4 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/index";
 import Footer from "./components/Footer/index";
 import ProductPage from "./pages/ProductPage/index";
@@ -9,9 +8,10 @@ import LoginPage from "./pages/LoginPage/index";
 import SignUpPage from "./pages/SignUpPage/index";
 import AboutPage from "./pages/AboutPage/index";
 import SupportPage from './pages/SupportPage/index'
+import { StoreProvider } from "./utils/GlobalState";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import './style.css'
-import { StoreProvider } from "./utils/GlobalState";
 import {
   ApolloClient,
   InMemoryCache,
@@ -55,7 +55,6 @@ function App() {
             <Route path="/about_us" element={<AboutPage />} />
             <Route path="/support" element={<SupportPage />} />
           </Routes>
-
           <Footer />
           </StoreProvider>
         </div>
