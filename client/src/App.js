@@ -54,8 +54,8 @@ function App() {
             <Route path="/profile" element={<MyAccountPage />} />
             <Route path="/about_us" element={<AboutPage />} />
             <Route path="/support" element={<SupportPage />} />
-          </Routes>
           <Footer />
+          </Routes>
           </StoreProvider>
         </div>
       </Router>
