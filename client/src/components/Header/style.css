@@ -51,3 +51,11 @@ header {
     color: #fff;
     font-size: 1.3rem;
 }
+
+.category-list li .dropdown-item.active, .dropdown-item:active {
+    background-color: unset;
+}
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus {
+    color: #fff;
+}

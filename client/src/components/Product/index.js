@@ -1,14 +1,13 @@
-import { ShoppingCartOutlined, AppstoreOutlined } from "@ant-design/icons";
+import React, { useState } from "react";
+import { ShoppingCartOutlined } from "@ant-design/icons";
 import { useMutation } from "@apollo/client";
 import { ADD_PRODUCTS } from "../../utils/mutation";
-import { useParams } from "react-router-dom";
 import { Button, InputNumber } from "antd";
 import { Row, Col } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import { Collapse } from "antd";
 import Comment from "../Comment/index";
 import CommentForm from "../CommentForm/index";
-import React, { useEffect, useState } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/action";
 import { idbPromise } from '../../utils/helpers'
@@ -24,7 +23,6 @@ const Products = ({ data }) => {
 
   const [quantity, setQuantity] = useState(1);
   const [addProducts, { error }] = useMutation(ADD_PRODUCTS);
-  const { itemId } = useParams();
 
   const handleClick = (e) => {
     const targetName = e.target.name;
@@ -42,12 +40,9 @@ const Products = ({ data }) => {
     setQuantity(value);
   };
 
-  // for debugging
-
 
   
   const addToCart = async () => {
-    // e.preventDefault();
     const itemInCart = cart.find((cartItem) => cartItem._id === data._id)
     if (itemInCart) {
       dispatch({
@@ -66,40 +61,14 @@ const Products = ({ data }) => {
       });
       idbPromise('cart', 'put', { ...data, purchaseQuantity: quantity });
     }
-
-
-    // try {
-    //   const response = await addProducts(
-    //     { variables: {
-    //       userId: user_id,
-    //       productId: itemId,
-    //     }}
-    //   )
-    //   console.log(response);
-    // } catch (err) {
-    //   console.error(err);
-    // }
   };
-  // const handleAddCart = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await addProducts(
-  //       { variables: {
-  //         productId: itemId,
-  //       }}
-  //     )
-  //     console.log(response);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
 
   return (
     <>
       <div className="productPage-section py-5 px-md-5">
         <Row>
-          <Col sm={12} lg={7}>
-            <h4 className="text-white mb-5 d-flex justify-content-end">
+          <Col sm={12} lg={7} className="mb-5 mb-lg-0">
+            <h4 className="product-title text-white mb-5 d-flex justify-content-center fw-bold">
               {data.name}
             </h4>
             {/* need to insert swiper.js and run for loop to show each img */}
@@ -114,7 +83,7 @@ const Products = ({ data }) => {
                 <ul className="feature-info">
                   {features.map((feature) => (
                     <li key={feature[0]}>
-                      <h5 className="fw-bold text-white">{feature[0]}</h5>
+                      <h5 className="fw-bold">{feature[0]}</h5>
                       <p className="text-white">{feature[1]}</p>
                     </li>
                   ))}
@@ -150,7 +119,6 @@ const Products = ({ data }) => {
                     shape="round"
                     icon={<ShoppingCartOutlined className="btn-icon" />}
                     size={"large"}
-                    // onClick={handleAddCart}
                     onClick={addToCart}
                   >
                     add to cart
@@ -184,7 +152,6 @@ const Products = ({ data }) => {
           <Panel className="text-white" header="Features" key="3">
             <p>
               Sorry but we don't have the data for this panel yet..
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima, quis commodi corrupti dolorem vel aliquam blanditiis saepe quam obcaecati alias possimus quos quae modi fugiat quaerat omnis esse maiores dolore?
             </p>
           </Panel>
         </Collapse>

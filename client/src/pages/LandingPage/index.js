@@ -15,9 +15,9 @@ function LandingPage() {
                         <Row className="justify-content-center align-items-center flex-column-reverse flex-md-row mx-0">
                             <Col sm={12} md={5}>
                                 <div className="product-info">
-                                    <h2 className="text-white text-center fs-1">
-                                        The Westmire <br />
-                                        <span>A56 Headset</span>
+                                    <h2 className="text-white text-center">
+                                    Alienware M17<br />
+                                        <span> Gaming Laptop</span>
                                     </h2>
                                     <div className="product-btn d-flex justify-content-center">
                                         <Button
@@ -51,8 +51,8 @@ function LandingPage() {
                             <Col sm={12} md={5}>
                                 <div className="product-info">
                                     <h2 className="text-white text-center fs-1">
-                                        The Westmire <br />
-                                        <span>A56 Headset</span>
+                                        Logitech G733 <br />
+                                        <span>DTS Headset</span>
                                     </h2>
                                     <div className="product-btn d-flex justify-content-center">
                                         <Button
@@ -86,8 +86,8 @@ function LandingPage() {
                             <Col sm={12} md={5}>
                                 <div className="product-info">
                                     <h2 className="text-white text-center fs-1">
-                                        The Westmire <br />
-                                        <span>A56 Headset</span>
+                                    NVIDIA<br />
+                                        <span>GeForce RTX 4090</span>
                                     </h2>
                                     <div className="product-btn d-flex justify-content-center">
                                         <Button
@@ -121,8 +121,8 @@ function LandingPage() {
                             <Col sm={12} md={5}>
                                 <div className="product-info">
                                     <h2 className="text-white text-center fs-1">
-                                        The Westmire <br />
-                                        <span>A56 Headset</span>
+                                        MSI GE76 Raider <br />
+                                        <span>Gaming Laptop</span>
                                     </h2>
                                     <div className="product-btn d-flex justify-content-center">
                                         <Button

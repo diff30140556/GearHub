@@ -27,7 +27,7 @@
 
 .quantity-btn {
     display: flex;
-    margin-right: 30px;
+    justify-content: center
 }
 
 .primary-btn {
@@ -36,18 +36,13 @@
 }
 
 .productPage-img {
-    /* border: 1px solid #fff; */
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
-/* .product-description {
-    border: 1px solid #fff;
+.product-title {
+    font-size: 1.7rem;
 }
-
-.productPage-section {
-    border: 1px solid #fff;
-} */
 
 .cart-btn {
     display: flex;
@@ -70,18 +65,38 @@
     top: 65px;
 }
 
-:where(.css-dev-only-do-not-override-15rg2km).ant-collapse>.ant-collapse-item >.ant-collapse-header {
-    color: #fff !important;
+.productPage-info p {
+    font-size: 1.1rem;
+    line-height: 160%;
 }
 
-/* :where(.css-dev-only-do-not-override-15rg2km).ant-collapse .ant-collapse-content {
-    color: #fff !important;
-    background: transparent !important;
-} */
+.feature-info h5 {
+    font-size: 1.4rem;
+    color: #9a7ad6;
+}
+
+.ant-collapse-header {
+    color: #9e78e6 !important;
+    font-size: 1.3rem;
+}
+
+.ant-collapse-expand-icon {
+    height: 36px !important;
+}
 
 .ant-collapse-content {
     color: #fff !important;
     background: transparent !important;
+    font-size: 1.1rem;
+}
+
+.ant-card-meta-title {
+    font-size: 0.9rem !important;
+}
+
+.ant-card-meta-description {
+    color: #000 !important;
+    font-size: 1rem;
 }
 
 .product-detail-info {
