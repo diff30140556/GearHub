@@ -5,6 +5,7 @@ import {
   UPDATE_CART_QUANTITY,
   DELETE_FROM_CART,
   ADD_MULTIPLE_TO_CART,
+  ADD_COMMENTS,
   // UPDATE_CATEGORIES,
   // UPDATE_CURRENT_CATEGORY,
   CLEAR_CART,
@@ -23,6 +24,17 @@ export const reducer = (state, action) => {
       return {
         ...state,
         cart: [...state.cart, action.product],
+        // cartOpen: true,
+      };
+
+    case ADD_COMMENTS:
+      console.log('state:',state)
+      console.log('action:',action)
+      console.log('action:',action.comment)
+      console.log('action:',action.comment.userComment)
+      return {
+        ...state,
+        comments: [...state.comments, action.comment.userComment],
         // cartOpen: true,
       };
 

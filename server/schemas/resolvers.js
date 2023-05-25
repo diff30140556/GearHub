@@ -77,24 +77,9 @@ const resolvers = {
     },
 
     checkout: async (parent, args, context) => {
-      // console.log('test');
-      console.log(context.user._id);
-      console.log("these are the args", args);
-      const url = new URL(context.headers.referer).origin;
-      const order = new Order({ products: args.products, total_price: args.total_price });
+      const url = new URL(context.headers.referer).href;
+      const order = await new Order({ products: args.products, total_price: args.total_price })
       const line_items = [];
-      // console.log(args)
-      // console.log(url)
-      console.log("this is the order model", order)
-      // console.log("this is the line items", line_items)
-
-      const user = await User.findOneAndUpdate(
-        { _id: context.user._id },
-        { $push: { order: order } },
-        { new: true },
-      );
-
-      console.log('this is the user model with the order created', user);
 
       const { products } = await order.populate('products');
 
@@ -104,22 +89,17 @@ const resolvers = {
           description: products[i].description,
           images: [`${products[i].image[0]}`]
         });
-        console.log('product:', product)
-        console.log('productsssssss:', products[i])
         const price = await stripe.prices.create({
           product: product.id,
           unit_amount: products[i].price * 100,
           currency: 'usd',
         });
-        console.log('hey')
-        console.log(price)
 
         line_items.push({
           price: price.id,
           quantity: 1
         });
       }
-      console.log('hey', line_items)
 
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
@@ -128,7 +108,12 @@ const resolvers = {
         success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${url}/`
       });
-
+      order.save()
+      const user = await User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $push: { order: order } },
+        { new: true },
+      );
       return { session: session.id };
     }
   },

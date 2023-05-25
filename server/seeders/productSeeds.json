@@ -36,7 +36,7 @@
   },
   {
     "name": "MSI GE76 Raider 17.3 inch Gaming Laptop",
-    "price": 2499.99,
+    "price": 2699.99,
     "quantity": 10,
     "description": "Experience ultimate gaming performance with the MSI GE76 Raider Gaming Laptop. Powered by the latest Intel Core i9 processor and equipped with 32GB of RAM, this laptop delivers exceptional speed and multitasking capabilities. The 1TB NVMe SSD provides lightning-fast storage and quick game load times. Immerse yourself in stunning visuals with the NVIDIA GeForce RTX 3080 graphics card and the 17.3-inch FHD 300hz display.",
     "features": {
@@ -154,7 +154,7 @@
       "Soft dual-layer memory foam": "Conforms to your head and reduces stress points for long-lasting comfort."
     },
     "isNew": true,
-    "image": ["https://i.imgur.com/3HqpMBD.png","https://i.imgur.com/yVu6mpk.png","https://i.imgur.com/H0eFS6a.png"],
+    "image": ["https://i.imgur.com/65vh6pQ.png","https://i.imgur.com/yVu6mpk.png","https://i.imgur.com/H0eFS6a.png"],
     "specification": {
       "Brand": "Logitech",
       "Color": "Black",

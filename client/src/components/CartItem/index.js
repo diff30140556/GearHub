@@ -1,48 +1,67 @@
 import React, { useState } from 'react';
 import { useStoreContext } from "../../utils/GlobalState";
-import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from "../../utils/action";
+import { DELETE_FROM_CART, UPDATE_CART_QUANTITY } from "../../utils/action";
 import { idbPromise } from "../../utils/helpers";
 import { InputNumber } from 'antd';
 import Link from "antd/es/typography/Link";
 import { Row, Col } from 'react-bootstrap';
 
 const CartItem = ({ item }) => {
-  const [cartQuantity, setCartQuantity] = useState(1);
+  const [cartQuantity, setCartQuantity] = useState(item.purchaseQuantity);
 
   const handleChange = (value) => {
     setCartQuantity(value)
+
+    if (value === 0) {
+      dispatch({
+        type: DELETE_FROM_CART,
+        _id: item._id
+      });
+      idbPromise('cart', 'delete', { ...item });
+
+    } else {
+      dispatch({
+        type: UPDATE_CART_QUANTITY,
+        _id: item._id,
+        purchaseQuantity: parseInt(value)
+      });
+      idbPromise('cart', 'put', { ...item, purchaseQuantity: parseInt(value) });
+
+    }
   }
 
-  //   const [, dispatch] = useStoreContext();
+  const [, dispatch] = useStoreContext();
 
-  //   const removeFromCart = item => {
+  const handleClickDelItem = (e, item) => {
+    e.preventDefault();
+
+    dispatch({
+      type: DELETE_FROM_CART,
+      _id: item._id
+    });
+    idbPromise('cart', 'delete', { ...item });
+
+  };
+
+  // const onChange = (e) => {
+  //   const value = e.target.value;
+  //   if (value === '0') {
   //     dispatch({
-  //       type: REMOVE_FROM_CART,
+  //       type: DELETE_FROM_CART,
   //       _id: item._id
   //     });
   //     idbPromise('cart', 'delete', { ...item });
 
-  //   };
+  //   } else {
+  //     dispatch({
+  //       type: UPDATE_CART_QUANTITY,
+  //       _id: item._id,
+  //       purchaseQuantity: parseInt(value)
+  //     });
+  //     idbPromise('cart', 'put', { ...item, purchaseQuantity: parseInt(value) });
 
-  //   const onChange = (e) => {
-  //     const value = e.target.value;
-  //     if (value === '0') {
-  //       dispatch({
-  //         type: REMOVE_FROM_CART,
-  //         _id: item._id
-  //       });
-  //       idbPromise('cart', 'delete', { ...item });
-
-  //     } else {
-  //       dispatch({
-  //         type: UPDATE_CART_QUANTITY,
-  //         _id: item._id,
-  //         purchaseQuantity: parseInt(value)
-  //       });
-  //       idbPromise('cart', 'put', { ...item, purchaseQuantity: parseInt(value) });
-
-  //     }
   //   }
+  // }
 
   return (
     // <div className="flex-row">
@@ -84,7 +103,7 @@ const CartItem = ({ item }) => {
             <p className='text-center text-md-start'>{item.name} $<span className='fw-bold'>{item.price}</span></p>
             <div className="cartItem-input d-flex align-items-center justify-content-center justify-content-md-start">
               <InputNumber value={item.purchaseQuantity} min={0} onChange={handleChange} />
-              <Link href="" className='ms-4'>Remove Item</Link>
+              <Link href="#" className='ms-4' onClick={(e) => handleClickDelItem(e, item)}>Remove Item</Link>
             </div>
           </div>
         </Col>
