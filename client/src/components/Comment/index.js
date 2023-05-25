@@ -1,5 +1,5 @@
 import { Avatar, Card, Skeleton, Switch } from "antd";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PaginationSet from "../Pagination/index";
 import "./style.css";
 const { Meta } = Card;
@@ -18,6 +18,12 @@ function Comment({ comments }) {
   const onChange = (checked) => {
     setLoading(!checked);
   };
+
+  useEffect( ()=> {
+    if (comments) {
+      setLoading(!loading)
+    }
+  }, [comments])
   
   return (
     <div className="comment-box d-flex flex-column justify-content-center align-items-center">
@@ -25,7 +31,7 @@ function Comment({ comments }) {
         Click the btn to switch the status for now, need to implement loading
         status using Reducer or useState after
       </p>
-      <Switch checked={!loading} onChange={onChange} />
+      {/* <Switch checked={!loading} onChange={onChange} /> */}
       <ul className="comment-list">
         {currentComments.length !== 0 ? (
           currentComments.map((comment) => (
@@ -53,7 +59,7 @@ function Comment({ comments }) {
               }}
               loading={loading}
             >
-              <Meta title="User Name" description="Comments" />
+              <Meta title="There's no comment yet" description="Leave the first one.." />
             </Card>
           </li>
         )}

@@ -11,9 +11,14 @@ function ProductPage() {
   const { loading, data } = useQuery(QUERY_ONE_PRODUCT, {
     variables: { productId: itemId },
   });
-
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <main>
+        <div className="wrap">
+          <div className="text-white fs-1 text-center">Loading...</div>;
+        </div>
+      </main>
+    )
   }
 
   return (

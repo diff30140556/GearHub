@@ -29,7 +29,7 @@ const Products = ({ data }) => {
   const handleClick = (e) => {
     const targetName = e.target.name;
 
-    if (quantity === 0 && targetName === "minus") {
+    if (quantity === 1 && targetName === "minus") {
       return;
     } else if (targetName === "plus") {
       setQuantity(quantity + 1);
@@ -43,10 +43,9 @@ const Products = ({ data }) => {
   };
 
   // for debugging
-  useEffect( ()=> {
-    console.log(state)
-  },[state])
 
+
+  
   const addToCart = async () => {
     // e.preventDefault();
     const itemInCart = cart.find((cartItem) => cartItem._id === data._id)
@@ -67,6 +66,7 @@ const Products = ({ data }) => {
       });
       idbPromise('cart', 'put', { ...data, purchaseQuantity: quantity });
     }
+
 
     // try {
     //   const response = await addProducts(
@@ -131,7 +131,7 @@ const Products = ({ data }) => {
                   </Button>
                   <InputNumber
                     value={quantity}
-                    min={0}
+                    min={1}
                     onChange={handleChange}
                     className="text-center primary-btn"
                   />
