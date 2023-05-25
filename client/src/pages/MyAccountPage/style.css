@@ -6,3 +6,13 @@
 .order-info {
     height: 500px;
 }
+
+.order-record .purchase-date-text {
+    font-size: 0.8rem;
+}
+
+.order-record-item {
+    background: rgba(126, 126, 126, 0.7);
+    padding: 10px 20px;
+    border-radius: 8px;
+}

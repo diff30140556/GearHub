@@ -34,11 +34,11 @@ function MyAccountPage() {
               {currentOrders.map((order) => (
                 <div key={order._id}>
                   <li className="order-record-item mb-3">
-                    <Link className="fs-5">{order._id}</Link>
-                    <p className="text-white">
+                    <Link className="fs-4">{order._id}</Link>
+                    <p className="text-white fs-5">
                       Total Price: ${order.total_price}
                     </p>
-                    <p className="text-white">
+                    <p className="text-white purchase-date-text">
                       Purchased At: {order.purchasedAt}
                     </p>
                   </li>

@@ -1,8 +1,13 @@
 import "./style.css";
 import { Container, Row, Col } from "react-bootstrap";
 import React, { useEffect, useRef, useState } from "react";
+import Aos from 'aos';
+import 'aos/dist/aos.css'
 
 function AboutPage() {
+  useEffect(() => {
+    Aos.init();
+  }, [])
   const [showWelcome, setShowWelcome] = useState(false);
 
   const animationRef = useRef(null);
@@ -37,9 +42,8 @@ function AboutPage() {
     <main className="about-main" onClick={handleInteraction}>
       <div className="wrap">
         <div
-          className={`${
-            showWelcome ? "greating" : null
-          } bgBox d-flex justify-content-center`}
+          className={`${showWelcome ? "greating" : null
+            } bgBox d-flex justify-content-center`}
         >
           <Container className="d-flex justify-content-center align-items-center flex-column">
             <Row className="d-flex justify-content-center align-items-center">
@@ -50,9 +54,8 @@ function AboutPage() {
                 >
                   <div>
                     <h1
-                      className={`text-center fs-1 fw-bold ${
-                        showWelcome ? `title_active` : `title`
-                      }`}
+                      className={`text-center fs-1 fw-bold ${showWelcome ? `title_active` : `title`
+                        }`}
                     >
                       {showWelcome
                         ? "Welcome to GearHub！"
@@ -69,7 +72,7 @@ function AboutPage() {
           <Container className="d-flex justify-content-center">
             <Row className="justify-content-center align-items-center">
               <Col>
-                <div className="innerBox shadow-lg justify-content-center align-items-center">
+                <div className="innerBox shadow-lg justify-content-center align-items-center" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" data-aos-delay="400">
                   <h2 className="text-center fs-1 fw-bold">
                     Shunwei Hu
                     <br />
@@ -94,7 +97,7 @@ function AboutPage() {
           <Container className="d-flex justify-content-center">
             <Row className="justify-content-center align-items-center">
               <Col>
-                <div className="innerBox shadow-lg justify-content-center align-items-center">
+                <div className="innerBox shadow-lg justify-content-center align-items-center" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" data-aos-delay="400">
                   <h2 className="text-center fs-1 fw-bold">
                     Michael Lin <br />
                     <span>Co-Founder</span>
@@ -117,7 +120,7 @@ function AboutPage() {
           <Container className="d-flex justify-content-center">
             <Row className="justify-content-center align-items-center">
               <Col>
-                <div className="innerBox shadow-lg justify-content-center align-items-center">
+                <div className="innerBox shadow-lg justify-content-center align-items-center" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" data-aos-delay="400">
                   <h2 className="text-center fs-1 fw-bold">
                     Wenbing li <br />
                     <span>Co-Founder</span>
