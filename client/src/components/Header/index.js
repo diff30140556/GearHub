@@ -3,8 +3,7 @@ import { Nav, Navbar, NavDropdown, Container } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import Cart from "../Cart/index";
 import "./style.css";
-// import Link from "antd/es/typography/Link";
-import { Link } from 'react-router-dom';
+import Link from "antd/es/typography/Link";
 import Auth from "../../utils/auth";
 import { useQuery } from "@apollo/client";
 import { QUERY_ALL_CATEGORIES } from "../../utils/queries";
@@ -44,9 +43,9 @@ function Header() {
     <header className="fixed-top">
       <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
         <Container>
-          <Link to="/">
-            <Navbar.Brand>GearHub</Navbar.Brand>
-          </Link>
+          {/* <LinkContainer to="/"> */}
+            <Navbar.Brand href="/">GearHub</Navbar.Brand>
+          {/* </LinkContainer> */}
           <Navbar.Toggle aria-controls="responsive-navbar-nav navbarScroll" />
           <Navbar.Collapse id="responsive-navbar-nav navbarScroll">
             <Nav className="ms-md-5" navbarScroll>
@@ -62,15 +61,11 @@ function Header() {
                         <ul className="category-list">
                           {getLaptops().product.map((laptop) => (
                             <li key={laptop._id}>
-                              <Link
-                                to={`/product/${laptop._id}/${
-                                  getLaptops()._id
-                                }`}
-                              >
-                                <NavDropdown.Item>
+                              {/* <LinkContainer to={`/product/${laptop._id}/${getLaptops()._id}`}> */}
+                                <NavDropdown.Item href="{`/product/${laptop._id}">
                                   {laptop.name}
                                 </NavDropdown.Item>
-                              </Link>
+                              {/* </LinkContainer> */}
                             </li>
                           ))}
                         </ul>
@@ -81,15 +76,11 @@ function Header() {
                         <ul className="category-list">
                           {getHeadsets().product.map((headset) => (
                             <li key={headset._id}>
-                              <Link
-                                to={`/product/${headset._id}/${
-                                  getHeadsets()._id
-                                }`}
-                              >
-                                <NavDropdown.Item>
+                              {/* <LinkContainer to={`/product/${headset._id}/${getHeadsets()._id}`}> */}
+                                <NavDropdown.Item href="{`/product/${headset._id}/${getHeadsets()._id}`}">
                                   {headset.name}
                                 </NavDropdown.Item>
-                              </Link>
+                              {/* </LinkContainer> */}
                             </li>
                           ))}
                         </ul>
@@ -100,15 +91,11 @@ function Header() {
                         <ul className="category-list">
                           {getGraphics().product.map((graphics) => (
                             <li key={graphics._id}>
-                              <Link
-                                to={`/product/${graphics._id}/${
-                                  getGraphics()._id
-                                }`}
-                              >
-                                <NavDropdown.Item>
+                              {/* <LinkContainer to={`/product/${graphics._id}/${getGraphics()._id}`}> */}
+                                <NavDropdown.Item href="{`/product/${graphics._id}/${getGraphics()._id}`}">
                                   {graphics.name}
                                 </NavDropdown.Item>
-                              </Link>
+                              {/* </LinkContainer> */}
                             </li>
                           ))}
                         </ul>
@@ -118,23 +105,19 @@ function Header() {
                 </Container>
               </NavDropdown>
 
-              <Link to="/about_us">
-                <Nav.Link>About</Nav.Link>
-              </Link>
-              <Link to="/support">
-                <Nav.Link>Support</Nav.Link>
-              </Link>
+              <Nav.Link href="/about_us">About</Nav.Link>
+              <Nav.Link href="/support">Support</Nav.Link>
             </Nav>
             <Nav>
               <Cart />
               {Auth.loggedIn() ? (
-                <Link to="/profile">
-                  <Nav.Link>My Account</Nav.Link>
-                </Link>
+                // <LinkContainer to="/profile">
+                  <Nav.Link href="/profile">My Account</Nav.Link>
+                // </LinkContainer>
               ) : (
-                <Link to="/login">
-                  <Nav.Link>Login</Nav.Link>
-                </Link>
+                // <LinkContainer to="/login">
+                  <Nav.Link href="/login">Login</Nav.Link>
+                // </LinkContainer>
               )}
               {Auth.loggedIn() ? (
                 <Nav.Link onClick={handleLogOut}>Log Out</Nav.Link>
