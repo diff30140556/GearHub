@@ -3,7 +3,8 @@ import { Nav, Navbar, NavDropdown, Container } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import Cart from "../Cart/index";
 import "./style.css";
-import Link from "antd/es/typography/Link";
+// import Link from "antd/es/typography/Link";
+import { Link } from 'react-router-dom';
 import Auth from "../../utils/auth";
 import { useQuery } from "@apollo/client";
 import { QUERY_ALL_CATEGORIES } from "../../utils/queries";
@@ -43,9 +44,9 @@ function Header() {
     <header className="fixed-top">
       <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
         <Container>
-          <LinkContainer to="/">
+          <Link to="/">
             <Navbar.Brand>GearHub</Navbar.Brand>
-          </LinkContainer>
+          </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav navbarScroll" />
           <Navbar.Collapse id="responsive-navbar-nav navbarScroll">
             <Nav className="ms-md-5" navbarScroll>
@@ -61,7 +62,7 @@ function Header() {
                         <ul className="category-list">
                           {getLaptops().product.map((laptop) => (
                             <li key={laptop._id}>
-                              <LinkContainer
+                              <Link
                                 to={`/product/${laptop._id}/${
                                   getLaptops()._id
                                 }`}
@@ -69,7 +70,7 @@ function Header() {
                                 <NavDropdown.Item>
                                   {laptop.name}
                                 </NavDropdown.Item>
-                              </LinkContainer>
+                              </Link>
                             </li>
                           ))}
                         </ul>
@@ -80,7 +81,7 @@ function Header() {
                         <ul className="category-list">
                           {getHeadsets().product.map((headset) => (
                             <li key={headset._id}>
-                              <LinkContainer
+                              <Link
                                 to={`/product/${headset._id}/${
                                   getHeadsets()._id
                                 }`}
@@ -88,7 +89,7 @@ function Header() {
                                 <NavDropdown.Item>
                                   {headset.name}
                                 </NavDropdown.Item>
-                              </LinkContainer>
+                              </Link>
                             </li>
                           ))}
                         </ul>
@@ -99,7 +100,7 @@ function Header() {
                         <ul className="category-list">
                           {getGraphics().product.map((graphics) => (
                             <li key={graphics._id}>
-                              <LinkContainer
+                              <Link
                                 to={`/product/${graphics._id}/${
                                   getGraphics()._id
                                 }`}
@@ -107,7 +108,7 @@ function Header() {
                                 <NavDropdown.Item>
                                   {graphics.name}
                                 </NavDropdown.Item>
-                              </LinkContainer>
+                              </Link>
                             </li>
                           ))}
                         </ul>
@@ -117,23 +118,23 @@ function Header() {
                 </Container>
               </NavDropdown>
 
-              <LinkContainer to="/about_us">
+              <Link to="/about_us">
                 <Nav.Link>About</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="/support">
+              </Link>
+              <Link to="/support">
                 <Nav.Link>Support</Nav.Link>
-              </LinkContainer>
+              </Link>
             </Nav>
             <Nav>
               <Cart />
               {Auth.loggedIn() ? (
-                <LinkContainer to="/profile">
+                <Link to="/profile">
                   <Nav.Link>My Account</Nav.Link>
-                </LinkContainer>
+                </Link>
               ) : (
-                <LinkContainer to="/login">
+                <Link to="/login">
                   <Nav.Link>Login</Nav.Link>
-                </LinkContainer>
+                </Link>
               )}
               {Auth.loggedIn() ? (
                 <Nav.Link onClick={handleLogOut}>Log Out</Nav.Link>
