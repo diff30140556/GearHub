@@ -49,9 +49,9 @@ function App() {
           <Routes>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/product/:itemId/:idCategory" element={<ProductPage />} />
-            <Route path="/" element={<LandingPage />} />
+            <Route path="/" element={<MyAccountPage />} />
             <Route path="/signup" element={<SignUpPage />} />
-            <Route path="/profile" element={<MyAccountPage />} />
+            <Route path="/profile" element={<LandingPage />} />
             <Route path="/about_us" element={<AboutPage />} />
             <Route path="/support" element={<SupportPage />} />
           </Routes>
