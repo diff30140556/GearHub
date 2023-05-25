@@ -67,3 +67,7 @@ html {
 .landing-main ~ footer {
     scroll-snap-align: start;
 }
+
+.linkBtn{
+    text-decoration: none;
+}
