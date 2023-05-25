@@ -1,27 +1,18 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Nav, Navbar, NavDropdown, Container } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import Cart from "../Cart/index";
 import "./style.css";
-import Link from "antd/es/typography/Link";
 import Auth from "../../utils/auth";
 import { useQuery } from "@apollo/client";
 import { QUERY_ALL_CATEGORIES } from "../../utils/queries";
-// import { useStoreContext } from "../../utils/GlobalState";
 
 function Header() {
   const handleLogOut = () => {
     Auth.logout();
   };
 
-  // const [state, dispatch] = useStoreContext();
   const { loading, data } = useQuery(QUERY_ALL_CATEGORIES);
-
-  // useEffect(() => {
-  //   if (!loading) {
-  //     console.log(data.getAllCategories[0].product)
-  //   }
-  // }, [data, loading]);
 
   function getLaptops() {
     if (!loading) {
@@ -106,7 +97,7 @@ function Header() {
               </NavDropdown>
 
               <Nav.Link href="/about_us">About</Nav.Link>
-              <Nav.Link href="#pricing">Support</Nav.Link>
+              <Nav.Link href="/support">Support</Nav.Link>
             </Nav>
             <Nav>
               <Cart />
