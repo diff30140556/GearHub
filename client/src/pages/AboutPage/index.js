@@ -79,10 +79,11 @@ function AboutPage() {
                   </h2>
                   <div className="bio">
                     <p className="text-center">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Pariatur sed consequatur eius quae quas! Blanditiis,
-                      consectetur eius sint nesciunt non voluptas ullam adipisci
-                      facilis labore perspiciatis natus, esse enim nam.
+                      Say hello to Shunwei Hu, our creative co-founder and
+                      design extraordinaire. With his keen eye for aesthetics
+                      and user experience, he crafts captivating visuals and
+                      intuitive interfaces, making your online shopping journey
+                      with us visually appealing and effortless.
                     </p>
                   </div>
                 </div>
@@ -102,10 +103,11 @@ function AboutPage() {
                   </h2>
                   <div className="bio">
                     <p className="text-center">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Pariatur sed consequatur eius quae quas! Blanditiis,
-                      consectetur eius sint nesciunt non voluptas ullam adipisci
-                      facilis labore perspiciatis natus, esse enim nam.
+                      Introducing Michael Lin, our dedicated co-founder and tech
+                      guru. With his deep expertise in hardware and software
+                      development, he plays a vital role in curating our product
+                      offerings and ensuring they meet the highest standards of
+                      quality and performance.
                     </p>
                   </div>
                 </div>
@@ -124,10 +126,11 @@ function AboutPage() {
                   </h2>
                   <div className="bio">
                     <p className="text-center">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Pariatur sed consequatur eius quae quas! Blanditiis,
-                      consectetur eius sint nesciunt non voluptas ullam adipisci
-                      facilis labore perspiciatis natus, esse enim nam.
+                      Meet our co-founder, Wenbing Li, a visionary tech
+                      enthusiast with a passion for innovation. With his strong
+                      leadership skills and vast industry knowledge, he drives
+                      our company's strategic direction, ensuring we stay at the
+                      forefront of the ever-evolving tech landscape.
                     </p>
                   </div>
                 </div>
