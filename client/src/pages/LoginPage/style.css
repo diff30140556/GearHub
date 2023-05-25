@@ -1,5 +1,5 @@
 .login-box {
-    width: 40%;
+    width: 90%;
     background: rgba(189, 189, 189, .4);
     margin: 100px auto;
     padding: 20px;
@@ -51,7 +51,7 @@
   }
   
   .login-box button {
-    background-color: #4489b7;
+    background-color: rgb(32, 112, 252);
     color: white;
     padding: 14px 40px;
     margin: 10px 15px 10px 0;
@@ -76,9 +76,20 @@
   }
   
   .login-box a {
-    color: #4489b7;
+    color: #2b83bf;
+    text-decoration: none;
   }
 
 .icon {
   font-family: 'Josefin Sans', sans-serif;
+}
+
+.alert-box {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  font-weight:bold;
 }

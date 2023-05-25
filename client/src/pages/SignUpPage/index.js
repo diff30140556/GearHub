@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
 import { ADD_USER } from "../../utils/mutation";
 import Auth from "../../utils/auth";
+import { Container, Row, Col } from "react-bootstrap";
 
 function SignUp() {
   const [formState, setFromState] = useState({
@@ -23,7 +24,7 @@ function SignUp() {
           password: formState.password,
         },
       });
-      
+
       const token = response.data.addUser.token;
       Auth.login(token);
     } catch (err) {
@@ -42,54 +43,60 @@ function SignUp() {
   return (
     <main>
       <div className="sign-wrap">
+        <Container>
           <h1 className="text-center text-white">Sign Up to GearHub</h1>
-        <div className="login-box text-center">
-          <form className="loginForm" onSubmit={handleFormSubmit}>
-            <label htmlFor="username">
-              <b>Username:</b>
-            </label>
-            <input
-              className="username shadow-sm"
-              type="text"
-              placeholder="username"
-              name="username"
-              id="username"
-              required
-              onChange={handleChange}
-            />
-            <label htmlFor="email">
-              <b>Email Address:</b>
-            </label>
-            <input
-              className="email shadow-sm"
-              type="text"
-              placeholder="youremail@gearhub.com"
-              name="email"
-              id="email"
-              required
-              onChange={handleChange}
-            />
-            <label htmlFor="password">
-              <b>Password</b>
-            </label>
-            <input
-              className="password shadow-sm"
-              type="password"
-              placeholder="Enter Password"
-              name="password"
-              id="pwd"
-              required
-              onChange={handleChange}
-            />
-            <button className="shadow btn-Submit loginBtn" type="submit">
-              Sign Up
-            </button>
-          </form>
-          <p className="signInBtn-text">
-            Click here to return to login page
-            <Link to="/login"> Login</Link>
-          </p>
-        </div>
+          <Row className="justify-content-center">
+            <Col xs={12} sm={8} md={6} lg={4}>
+              <div className="login-box text-center">
+                <form className="loginForm" onSubmit={handleFormSubmit}>
+                  <label htmlFor="username">
+                    <b>Username:</b>
+                  </label>
+                  <input
+                    className="username shadow-sm"
+                    type="text"
+                    placeholder="username"
+                    name="username"
+                    id="username"
+                    required
+                    onChange={handleChange}
+                  />
+                  <label htmlFor="email">
+                    <b>Email Address:</b>
+                  </label>
+                  <input
+                    className="email shadow-sm"
+                    type="text"
+                    placeholder="youremail@gearhub.com"
+                    name="email"
+                    id="email"
+                    required
+                    onChange={handleChange}
+                  />
+                  <label htmlFor="password">
+                    <b>Password</b>
+                  </label>
+                  <input
+                    className="password shadow-sm"
+                    type="password"
+                    placeholder="Enter Password"
+                    name="password"
+                    id="pwd"
+                    required
+                    onChange={handleChange}
+                  />
+                  <button className="shadow btn-Submit loginBtn" type="submit">
+                    Sign Up
+                  </button>
+                </form>
+                <p className="signInBtn-text">
+                  Click here to return to login page
+                  <Link to="/login"> Login</Link>
+                </p>
+              </div>
+            </Col>
+          </Row>
+        </Container>
       </div>
     </main>
   );
