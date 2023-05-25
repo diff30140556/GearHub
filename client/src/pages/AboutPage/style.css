@@ -1,39 +1,78 @@
 @import url('https://fonts.googleapis.com/css2?family=BioRhyme:wght@200;300;400;700;800&display=swap');
 
-.greating{
+.greating {
+    position: relative;
+    z-index: 10;
+}
+
+.greating::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     background: url('../../images/greating.jpg') center no-repeat;
+    background-size: cover;
+    transform: scale(1.2);
+    z-index: -2;
     opacity: 0;
-    transition: opacity 1s ease; 
+    animation: fadeIn2 3s linear;
     animation-fill-mode: forwards;
+}
+
+.greating::after,
+.bgBox::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, .2);
+    z-index: -1;
 }
 
 @keyframes fadeIn {
     0% {
-    opacity: 0;
+        opacity: 0;
     }
     100% {
-     opacity: 1;
+        opacity: 1;
     }
 }
+
+@keyframes fadeIn2 {
+    0% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
 .taipei {
     background: url('../../images/taipei.jpg') center no-repeat;
 }
+
 .dalian {
     background: url('../../images/dalian.jpg') center no-repeat;
 }
+
 .la {
     background: url('../../images/los_angeles.jpg') center no-repeat;
 }
 
 .fade-in {
     opacity: 0;
-    transition: opacity 1s ease-in;
-  }
+    animation: fadeIn 2.2s linear;
+    animation-fill-mode: forwards;
+}
 
-.active{
+.active {
     opacity: 1;
-    
-
 }
 
 .bgBox {
@@ -41,33 +80,28 @@
     background-size: cover;
     background-attachment: fixed;
     margin-bottom: 30px;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
+    position: relative;
+    z-index: 10;
 }
 
 .innerBox {
     background-color: rgba(255, 255, 255, 0.5);
-    font-family: 'BioRhyme', serif;  
-    
-}
-.bio p{
-    font-weight: 400;
-    font-size: x-large
-}
-html {
-    scroll-snap-type: y mandatory;
-    scroll-padding-top: 63px;
+    font-family: 'BioRhyme', serif;
+    border-radius: 8px;
+    padding: 20px 50px;
+    max-width: 650px;
 }
 
-.about-main ~ footer {
-    scroll-snap-align: start;
+.bio p {
+    font-weight: 400;
+    font-size: x-large
 }
 
 .title {
 
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: 900;
-    background-image: linear-gradient(to right, rgb(248, 247, 247), rgb(173, 175, 173), rgb(109, 109, 109)); 
+    background-image: linear-gradient(to right, rgb(248, 247, 247), rgb(173, 175, 173), rgb(109, 109, 109));
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
@@ -75,16 +109,12 @@ html {
 
 }
 
-.title_active
-{
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+.title_active {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: 900;
-    background-image: linear-gradient(to right,  rgb(248, 247, 247), rgb(195, 196, 195), rgb(149, 149, 149)); 
+    background-image: linear-gradient(to right, rgb(248, 247, 247), rgb(195, 196, 195), rgb(149, 149, 149));
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
     color: transparent;
 }
-
-
-  

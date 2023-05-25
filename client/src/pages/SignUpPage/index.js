@@ -4,7 +4,6 @@ import { useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
 import { ADD_USER } from "../../utils/mutation";
 import Auth from "../../utils/auth";
-import { Checkbox } from "antd";
 
 function SignUp() {
   const [formState, setFromState] = useState({
@@ -42,9 +41,9 @@ function SignUp() {
 
   return (
     <main>
-      <div className="wrap">
+      <div className="sign-wrap">
+          <h1 className="text-center text-white">Sign Up to GearHub</h1>
         <div className="login-box text-center">
-          <h1>Sign Up to GearHub</h1>
           <form className="loginForm" onSubmit={handleFormSubmit}>
             <label htmlFor="username">
               <b>Username:</b>
@@ -82,12 +81,11 @@ function SignUp() {
               required
               onChange={handleChange}
             />
-            <Checkbox>Remember me</Checkbox>
             <button className="shadow btn-Submit loginBtn" type="submit">
               Sign Up
             </button>
           </form>
-          <p>
+          <p className="signInBtn-text">
             Click here to return to login page
             <Link to="/login"> Login</Link>
           </p>

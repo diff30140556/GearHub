@@ -87,7 +87,7 @@ const Cart = () => {
             </ul>
           ) : (
             <h3>
-              You haven't added anything to your cart yet!
+              You deserve a gift for yourself
             </h3>
           )}
         </Modal.Body>
@@ -103,7 +103,7 @@ const Cart = () => {
             </Button>
           ) : (
             <Button variant="success" onClick={handleClickDirect}>
-            Click to log in
+            Log in to have these
           </Button>
           )}
         </Modal.Footer>

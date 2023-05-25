@@ -22,16 +22,18 @@ function OpenAIChat() {
 
   return (
     <main>
-      <div>
-        <form onSubmit={handleSubmit}>
+      <div className='ai-support'>
+        <div className="ai-answer">
+          <p className="text-white">{response}</p>
+        </div>
+        <form onSubmit={handleSubmit} className='ai-form'>
           <textarea
             value={prompt}
             onChange={handleInputChange}
-            placeholder="Enter your prompt..."
+            placeholder="Enter your prompt..." className='input-qus'
           />
-          <button type="submit">Submit</button>
+          <button type="submit" className='d-block ms-auto send-btn'>Submit</button>
         </form>
-        <p className="text-white">{response}</p>
       </div>
     </main>
   );

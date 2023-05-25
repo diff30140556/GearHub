@@ -15,9 +15,22 @@
     min-height: 100vh;
     background-size: cover;
     background-attachment: fixed;
-    margin-bottom: 100px;
+    margin-bottom: 60px;
     scroll-snap-align: start;
     scroll-snap-stop: always;
+    position: relative;
+    z-index: 10;
+}
+
+.product-box::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
 }
 
 .btn-icon {
@@ -26,12 +39,18 @@
 
 .product-btn {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .product-btn button {
     display: flex;
     align-items: center;
-    margin: 0 20px;
+    margin: 15px 10px;
+}
+
+
+.product-info h2 {
+    font-size: 2.2rem;
 }
 
 .product-img img {
