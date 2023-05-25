@@ -51,7 +51,7 @@
 }
 
 .login-box button {
-  background-color: #4489b7;
+  background-color: rgb(32, 112, 252);;
   color: white;
   padding: 14px 40px;
   margin: 10px 15px 10px 0;
@@ -85,7 +85,7 @@
 }
 
 .login-box a {
-  color: #4489b7;
+  color: #2b83bf;
 }
 
 .icon {

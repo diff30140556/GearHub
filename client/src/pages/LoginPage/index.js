@@ -4,12 +4,13 @@ import { useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
 import { LOGIN } from "../../utils/mutation";
 import Auth from "../../utils/auth";
-import { Checkbox } from "antd";
+import { Checkbox, Alert } from "antd";
 import { Container, Row, Col } from "react-bootstrap";
 
 function LoginPage() {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN);
+  const [errMessage, setErrMessage] = useState(null);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -18,10 +19,13 @@ function LoginPage() {
         variables: { email: formState.email, password: formState.password },
       });
 
-      const token = response.data.login.token;
-      Auth.login(token);
+      const token = response.data.login?.token;
+
+      if (token) {
+        Auth.login(token);
+      }
     } catch (err) {
-      console.error(err);
+      setErrMessage(err.message);
     }
   };
 
@@ -32,7 +36,7 @@ function LoginPage() {
       [name]: value,
     });
   };
-
+  console.log(error);
   return (
     <main>
       <div className="sign-wrap">
@@ -89,6 +93,18 @@ function LoginPage() {
                       <Checkbox className="remember-me">Remember me</Checkbox>
                     </Col>
                   </Row>
+                  {error && errMessage && (
+                    <Row className="mb-3">
+                      <Col xs={12}>
+                        <Alert
+                          message={errMessage}
+                          type="error"
+                          className="alert-box"
+                          onClose={() => setErrMessage("")}
+                        />
+                      </Col>
+                    </Row>
+                  )}
                 </form>
                 <p className="signInBtn-text">
                   Don't have an account? <Link to="/signup">Sign up</Link>
