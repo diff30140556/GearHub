@@ -43,9 +43,7 @@ const productSchema = new Schema(
   }
 );
 
-//using a virtual to check quantity then return whether a product is in stock.
 productSchema.virtual("inStock").get(function () {
-  //this will return a boolean. If quantity > 0 is true or not, in React, the boolean can be used to redendr "In Stock " or "Out of Stock"
   return this.quantity > 0;
 });
 const Product = model("Product", productSchema);

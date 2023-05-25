@@ -65,7 +65,6 @@ const resolvers = {
         const productObjectId = mongoose.Types.ObjectId(productId);
         const product = await Product.findOne({ _id: productObjectId });
 
-
         if (!product) {
           throw new Error("No Product ID Found!");
         }
@@ -210,36 +209,6 @@ const resolvers = {
         console.error(err);
       }
     },
-
-    // checkOut: async (parent, { userId }) => {
-    //   try {
-    //     // if (context.user){
-    //       const user = mongoose.Types.ObjectId(userId)
-    //       const userFound = await User.findOne({ _id: user });
-  
-    //       const { cart } = userFound;
-
-    //       const productIds = cart.map((item) => item.productId);
-
-    //       const createOrder = await Order.create({ products: cart });
-  
-    //       const { _id, total_price, purchasedAt } = createOrder;
-  
-    //       await User.updateOne({ _id: user }, { $set: { cart: [] } });
-  
-    //       await User.findOneAndUpdate(
-    //         { _id: user },
-    //         { $addToSet: { order: { orderId: _id, total_price, products: productIds, purchasedAt } } },
-    //         { new: true }
-    //       );
-  
-    //       return createOrder;
-    //     // }
-    //   } catch (err) {
-    //     console.error(err);
-    //     throw new Error("No products in your shopping cart!");
-    //   }
-    // },
 
     addComment: async (parent, { productId, comment, categoryId }, context) => {
       try {

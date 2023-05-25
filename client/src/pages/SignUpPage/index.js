@@ -4,7 +4,7 @@ import { useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
 import { ADD_USER } from "../../utils/mutation";
 import Auth from "../../utils/auth";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Checkbox } from "antd";
 
 function SignUp() {
   const [formState, setFromState] = useState({

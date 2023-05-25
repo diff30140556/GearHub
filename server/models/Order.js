@@ -1,16 +1,12 @@
 const { Schema, model } = require("mongoose");
+const formattedTimeStamp = require('../utils/dateFormat')
 
 const orderSchema = new Schema(
   {
     products: [
       {
-        // productId: {
           type: Schema.Types.ObjectId,
           ref: "Product",
-        // },
-        // name: String,
-        // quantity: Number,
-        // price: Number
       },
     ],
 
@@ -19,11 +15,19 @@ const orderSchema = new Schema(
       required: true,
     },
 
+    // purchasedAt: {
+    //   type: Date,
+    //   default: Date.now,
+    //   get: function (timestamp) {
+    //     return new Date(timestamp).toLocaleDateString();
+    //   },
+    // },
+
     purchasedAt: {
       type: Date,
       default: Date.now,
       get: function (timestamp) {
-        return new Date(timestamp).toLocaleDateString();
+        return formattedTimeStamp(timestamp);
       },
     },
   },

@@ -1,10 +1,8 @@
 import "./style.css";
-import { Button, InputNumber } from "antd";
 import { Container, Row, Col } from "react-bootstrap";
 import React, { useEffect, useRef, useState } from "react";
 
 function AboutPage() {
-  // This is to declare a ref object - inner box here - with an initial value of null.
   const [showWelcome, setShowWelcome] = useState(false);
 
   const animationRef = useRef(null);

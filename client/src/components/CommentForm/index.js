@@ -1,9 +1,8 @@
 import Auth from "../../utils/auth";
-import { useEffect, useState } from "react";
-import { useMutation, useQuery } from "@apollo/client";
+import { useState } from "react";
+import { useMutation } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import { ADD_COMMENT } from "../../utils/mutation";
-import { QUERY_ONE_PRODUCT } from "../../utils/queries";
 import { Form, Button, Input } from "antd";
 import { ADD_COMMENTS } from "../../utils/action";
 import { useStoreContext } from "../../utils/GlobalState";
@@ -12,7 +11,7 @@ const { TextArea } = Input;
 
 function CommentForm() {
   const [state, dispatch] = useStoreContext();
-  const {comments} = state;
+  const { comments } = state;
 
   const [userComment, setUserComment] = useState('')
   const [addAComment, { error }] = useMutation(ADD_COMMENT);
@@ -28,7 +27,6 @@ function CommentForm() {
       type: ADD_COMMENTS,
       comment: { userComment }
     });
-    console.log(state);
   }
 
   const handleCreateComment = async () => {
@@ -43,7 +41,7 @@ function CommentForm() {
           }
         }
       );
-      // window.location.reload();
+      window.location.reload();
     } catch (err) {
       console.error(err);
     }

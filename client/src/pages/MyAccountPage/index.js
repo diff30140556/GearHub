@@ -1,8 +1,6 @@
 import "./style.css";
-// import { ShoppingCartOutlined, AppstoreOutlined } from '@ant-design/icons';
 import { QUERY_USER } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
-import { Button, InputNumber } from "antd";
 import { Row, Col } from "react-bootstrap";
 import Link from "antd/es/typography/Link";
 import React, { useState } from "react";

@@ -1,6 +1,5 @@
 .login-box {
     width: 300px;
-    /* background-color: #fff; */
     background: linear-gradient(108deg,#939191,#505050 90%);
     margin: 100px auto;
     padding: 20px;
@@ -13,7 +12,6 @@
     margin-top: 0px;
   }
   
-  /* selectors per type to link html */
   .login-box input[type="username"],
   .login-box input[type="text"],
   .login-box input[type="password"] {

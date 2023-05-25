@@ -78,7 +78,6 @@ const typeDefs = gql`
     addProducts(productId: ID!): User
     updateProducts(cartId: ID!, quantity: Int!): User
     deleteProducts(cartId: ID!): User
-    # checkOut(userId: ID!): Order
     addComment(productId: ID!, comment: String!, categoryId: ID!): Product
     updateComment(productId: ID!, commentId: ID!, comment: String!, categoryId: ID!): Product
     removeComment(productId: ID!, commentId: ID!, categoryId: ID!): Product
