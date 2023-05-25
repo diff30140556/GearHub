@@ -45,17 +45,17 @@ function App() {
       <Router>
         <div className="App">
           <StoreProvider>
-          <Header />
-          <Routes>
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/product/:itemId/:idCategory" element={<ProductPage />} />
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/signup" element={<SignUpPage />} />
-            <Route path="/profile" element={<MyAccountPage />} />
-            <Route path="/about_us" element={<AboutPage />} />
-            <Route path="/support" element={<SupportPage />} />
-          </Routes>
-          <Footer />
+            <Header />
+            <Routes>
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/product/:itemId/:idCategory" element={<ProductPage />} />
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/signup" element={<SignUpPage />} />
+              <Route path="/profile" element={<MyAccountPage />} />
+              <Route path="/about_us" element={<AboutPage />} />
+              <Route path="/support" element={<SupportPage />} />
+            </Routes>
+            <Footer />
           </StoreProvider>
         </div>
       </Router>
