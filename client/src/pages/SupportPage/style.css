@@ -46,7 +46,16 @@
 }
 
 .send-btn {
-    border-radius: 8px;
-    padding: 3px 10px;
-    background: #e2f6e3;
+    background-color: rgb(32, 112, 252);;
+    color: white;
+    padding: 14px 40px;
+    margin: 10px 15px 10px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    min-width: 200px;
 }
+
+.send-btn:hover {
+    background-color: #5a94ba;
+  }
