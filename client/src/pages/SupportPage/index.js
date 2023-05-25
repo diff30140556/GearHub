@@ -14,7 +14,6 @@ function OpenAIChat() {
     event.preventDefault();
     try {
       const response = await axios.post('/api/openai', { prompt });
-      console.log(response);
       setResponse(response.data.data);
     } catch (error) {
       console.error(error);

@@ -1,7 +1,4 @@
 import "./style.css";
-// import { ShoppingCartOutlined, AppstoreOutlined } from "@ant-design/icons";
-// import { Button } from "antd";
-// import { Row, Col } from "react-bootstrap";
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";

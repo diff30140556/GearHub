@@ -1,18 +1,16 @@
-import { ShoppingCartOutlined, AppstoreOutlined } from "@ant-design/icons";
-import { useMutation } from "@apollo/client";
-import { ADD_PRODUCTS } from "../../utils/mutation";
-import { useParams } from "react-router-dom";
+import { ShoppingCartOutlined } from "@ant-design/icons";
 import { Button, InputNumber } from "antd";
 import { Row, Col } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import { Collapse } from "antd";
 import Comment from "../Comment/index";
 import CommentForm from "../CommentForm/index";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/action";
 import { idbPromise } from '../../utils/helpers'
 import "./style.css";
+
 const { Panel } = Collapse;
 
 const Products = ({ data }) => {
@@ -23,8 +21,6 @@ const Products = ({ data }) => {
   const { cart } = state;
 
   const [quantity, setQuantity] = useState(1);
-  const [addProducts, { error }] = useMutation(ADD_PRODUCTS);
-  const { itemId } = useParams();
 
   const handleClick = (e) => {
     const targetName = e.target.name;
@@ -42,12 +38,7 @@ const Products = ({ data }) => {
     setQuantity(value);
   };
 
-  // for debugging
-
-
-  
   const addToCart = async () => {
-    // e.preventDefault();
     const itemInCart = cart.find((cartItem) => cartItem._id === data._id)
     if (itemInCart) {
       dispatch({
@@ -66,33 +57,7 @@ const Products = ({ data }) => {
       });
       idbPromise('cart', 'put', { ...data, purchaseQuantity: quantity });
     }
-
-
-    // try {
-    //   const response = await addProducts(
-    //     { variables: {
-    //       userId: user_id,
-    //       productId: itemId,
-    //     }}
-    //   )
-    //   console.log(response);
-    // } catch (err) {
-    //   console.error(err);
-    // }
   };
-  // const handleAddCart = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await addProducts(
-  //       { variables: {
-  //         productId: itemId,
-  //       }}
-  //     )
-  //     console.log(response);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
 
   return (
     <>
@@ -102,7 +67,6 @@ const Products = ({ data }) => {
             <h4 className="text-white mb-5 d-flex justify-content-end">
               {data.name}
             </h4>
-            {/* need to insert swiper.js and run for loop to show each img */}
             <div className="productPage-img">
               <img src={data.image[0]} alt="product" />
             </div>
@@ -150,7 +114,6 @@ const Products = ({ data }) => {
                     shape="round"
                     icon={<ShoppingCartOutlined className="btn-icon" />}
                     size={"large"}
-                    // onClick={handleAddCart}
                     onClick={addToCart}
                   >
                     add to cart
