@@ -1,5 +1,4 @@
 const { Schema, model } = require("mongoose");
-const formattedTimeStamp = require('../utils/dateFormat')
 
 const orderSchema = new Schema(
   {
@@ -15,19 +14,11 @@ const orderSchema = new Schema(
       required: true,
     },
 
-    // purchasedAt: {
-    //   type: Date,
-    //   default: Date.now,
-    //   get: function (timestamp) {
-    //     return new Date(timestamp).toLocaleDateString();
-    //   },
-    // },
-
     purchasedAt: {
       type: Date,
       default: Date.now,
       get: function (timestamp) {
-        return formattedTimeStamp(timestamp);
+        return new Date(timestamp).toLocaleDateString();
       },
     },
   },
