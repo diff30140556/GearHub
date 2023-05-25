@@ -79,10 +79,9 @@
     background: transparent !important;
 } */
 
-:where(.css-15rg2km).ant-collapse .ant-collapse-content {
+.ant-collapse-content {
     color: #fff !important;
     background: transparent !important;
-
 }
 
 .product-detail-info {

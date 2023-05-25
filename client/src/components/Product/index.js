@@ -164,12 +164,12 @@ const Products = ({ data }) => {
 
       <div className="product-detail-info px-3 py-5 px-md-5">
         <Collapse accordion className="collapse-form w-sm-100 w-md-75 mx-auto">
-          <Panel header="Overview" key="1">
+          <Panel className="text-white" header="Overview" key="1">
             <p>
               {data.description}
             </p>
           </Panel>
-          <Panel header="Specification" key="2">
+          <Panel className="text-white" header="Specification" key="2">
             <Table striped className="text-white" responsive>
               <tbody>
                 {specifications.map((specification) => (
@@ -181,7 +181,7 @@ const Products = ({ data }) => {
               </tbody>
             </Table>
           </Panel>
-          <Panel header="Features" key="3">
+          <Panel className="text-white" header="Features" key="3">
             <p>
               Sorry but we don't have the data for this panel yet..
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima, quis commodi corrupti dolorem vel aliquam blanditiis saepe quam obcaecati alias possimus quos quae modi fugiat quaerat omnis esse maiores dolore?
