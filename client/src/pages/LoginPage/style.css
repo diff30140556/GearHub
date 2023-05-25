@@ -7,24 +7,21 @@
   }
 
   .sign-wrap {
-    background: url(https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80) no-repeat center;
-    background-size: 100%;
     min-height: 100vh;
     padding-top: 40px;
     position: relative;
     z-index: 10;
-    animation: bg-anime 40s linear infinite;
   }
 
   @keyframes bg-anime {
     0% {
-      background-size: 100%;
+      transform: scale(1)
     }
     50% {
-      background-size: 150%;
+      transform: scale(1.5)
     }
     100% {
-      background-size: 100%;
+      transform: scale(1)
     }
   }
 
@@ -37,6 +34,20 @@
     left: 0;
     background: rgba(0, 0, 0, .2);
     z-index: -1;
+  }
+
+  .sign-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: url(https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80) no-repeat center;
+    background-size: cover;
+    z-index: -1;
+    transform: scale(1);
+    animation: bg-anime 40s linear infinite;
   }
 
   .login-box input[type="text"],
@@ -92,4 +103,14 @@
   flex-direction: column;
   text-align: center;
   font-weight:bold;
+}
+
+.remember-me {
+  font-size: 1.2rem;
+}
+
+.ant-checkbox {
+  display: flex;
+  align-items: center;
+  height: 28px;
 }

@@ -16,8 +16,6 @@
     background-size: cover;
     background-attachment: fixed;
     margin-bottom: 60px;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
     position: relative;
     z-index: 10;
 }
@@ -57,15 +55,6 @@
     max-height: 450px;
     max-width: 100%;
     margin: 0 auto;
-}
-
-html {
-    scroll-snap-type: y mandatory;
-    scroll-padding-top: 63px;
-}
-
-.landing-main ~ footer {
-    scroll-snap-align: start;
 }
 
 .linkBtn{
