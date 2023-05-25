@@ -71,12 +71,12 @@
 }
 
 :where(.css-dev-only-do-not-override-15rg2km).ant-collapse>.ant-collapse-item >.ant-collapse-header {
-    color: #fff;
+    color: #fff !important;
 }
 
 :where(.css-dev-only-do-not-override-15rg2km).ant-collapse .ant-collapse-content {
-    color: #fff;
-    background: transparent;
+    color: #fff !important;
+    background: transparent !important;
 }
 
 .product-detail-info {
