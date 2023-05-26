@@ -11,7 +11,8 @@ import SupportPage from './pages/SupportPage/index'
 import { StoreProvider } from "./utils/GlobalState";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import './style.css'
+import './style.css';
+
 import {
   ApolloClient,
   InMemoryCache,

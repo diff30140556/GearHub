@@ -4,7 +4,8 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url(https://images.unsplash.com/photo-1620121478247-ec786b9be2fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80) no-repeat center;
+    background: url(https://images.unsplash.com/photo-1533497374533-d860dceecf74?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=433&q=80) no-repeat center;
+    background-attachment: fixed;
     background-size: cover;
     position: relative;
     z-index: 10;

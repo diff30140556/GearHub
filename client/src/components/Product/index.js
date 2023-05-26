@@ -1,4 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+import { FreeMode, Navigation, Thumbs } from "swiper";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { useMutation } from "@apollo/client";
 import { ADD_PRODUCTS } from "../../utils/mutation";
@@ -19,9 +25,14 @@ import "./style.css";
 const { Panel } = Collapse;
 
 const Products = ({ data }) => {
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
+
   useEffect(() => {
     Aos.init();
   }, [])
+
+
 
   const features = Object.entries(data.features)
   const specifications = Object.entries(data.specification)
@@ -80,7 +91,41 @@ const Products = ({ data }) => {
               {data.name}
             </h4>
             <div className="productPage-img" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1200" data-aos-once="true">
-              <img src={data.image[0]} alt="product" />
+              <Swiper
+                style={{
+                  "--swiper-navigation-color": "#fff",
+                  "--swiper-pagination-color": "#fff",
+                }}
+                loop={true}
+                spaceBetween={10}
+                thumbs={{ swiper: thumbsSwiper }}
+                modules={[FreeMode, Thumbs, Navigation]}
+                navigation={true}
+                className="mySwiper2"
+              >
+                {/* <img src={data.image[0]} alt="product" /> */}
+                {data.image.map((imageUrl => (
+                  <SwiperSlide key={imageUrl}>
+                    <img src={imageUrl} />
+                  </SwiperSlide>
+                )))}
+              </Swiper>
+              <Swiper
+                onSwiper={setThumbsSwiper}
+                loop={true}
+                spaceBetween={30}
+                slidesPerView={2}
+                freeMode={true}
+                watchSlidesProgress={true}
+                modules={[FreeMode, Thumbs, Navigation]}
+                className="mySwiper"
+              >
+                {data.image.map((imageUrl => (
+                  <SwiperSlide key={imageUrl}>
+                    <img src={imageUrl} />
+                  </SwiperSlide>
+                )))}
+              </Swiper>
             </div>
           </Col>
           <Col sm={12} lg={5}>
@@ -89,7 +134,7 @@ const Products = ({ data }) => {
                 <p className="text-white" data-aos="fade-left" data-aos-delay="500" data-aos-duration="1000" data-aos-once="true">{data.description}</p>
                 <ul className="feature-info">
                   {features.map((feature) => (
-                    <li key={feature[0]}>
+                    <li key={feature[0]} className="mb-5">
                       <h5 className="fw-bold" data-aos="zoom-out" data-aos-duration="1400" data-aos-once="true" data-aos-delay="300">{feature[0]}</h5>
                       <p className="text-white" data-aos="fade-left" data-aos-delay="500" data-aos-duration="1000" data-aos-once="true">{feature[1]}</p>
                     </li>
